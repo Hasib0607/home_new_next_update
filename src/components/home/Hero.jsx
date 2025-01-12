@@ -13,7 +13,7 @@ const Hero = async ({ locale }) => {
             className={`${styles.bgAnimate} w-[345px] h-[345px] bg-[#F3BEB3] bg-opacity-50 blur-3xl rounded-full`}
           ></div>
           <h1
-            className={`${styles.archivo} text-3xl font-bold sm:text-[36px] lg:text-[44px] relative z-[1] leading-[40px] sm:leading-[50px] text-shadow-animation mx-auto lg:mx-0 text-center lg:text-left`}
+            className={`${styles.archivo} text-3xl font-bold sm:text-[36px] lg:text-[44px] relative z-[1] leading-[45px] lg:leading-[60px] text-shadow-animation mx-auto lg:mx-0 text-center lg:text-left`}
           >
             {bangla ? (
               <>
@@ -22,7 +22,7 @@ const Hero = async ({ locale }) => {
                 <br className="sm:hidden" />
                 মাত্র ১ মিনিটে সহজেই আপনার{" "}
                 <span className={`${styles.archivo} text-[#f1593a] font-black`}>
-                  অনলাইন স্টোর
+                  অনলাইন স্টোর{" "} 
                 </span>
                 তৈরি করুন!
               </>
