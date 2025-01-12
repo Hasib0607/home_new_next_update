@@ -3,9 +3,16 @@ import Link from "next/link";
 import React from "react";
 
 const PopularBlog = ({ blog }) => {
+  const permalink =
+    blog?.permalink && blog?.permalink !== "" ? blog?.permalink : blog?.slug;
+
+    if (blog?.website !== 1) {
+      return null; 
+    }
+
   return (
     <>
-      <Link href={`/resources/blogs/${blog?.slug}`}>
+      <Link href={`/resources/blogs/${permalink}`}>
         <div key={blog?.id} className="flex gap-2 border-b-2 py-5">
           <div className="max-h-28 w-28">
             <Image

@@ -117,22 +117,30 @@ const faqdata = [
     id: 7,
     titleBn: "সিকিউরিটি কেমন?",
     title: "How is the security?",
-    desc: "আমাদের প্রত্যেকটা ওয়েবসাইট এর সাথেই থাকছে valid SSL সার্টিফিকেশন। যার কারণে ওয়ার্ল্ড এর অন্যান্য সকল ওয়েবসাইট এর মতো সেইম সিকিউরিটি পাচ্ছেন। এবং যদি আপনি আপনার প্রোডাক্ট, কাস্টমার বা অর্ডার এর data সিকিউরিটির কথা বলেন তাহলে database হিসেবে আমরা mySQL ব্যবহার করছি যা ওয়ার্ল্ড ওয়াইড অনেক বেশি সিকিউর এছাড়াও আমাদের প্রত্যেকটি 'Data' 'end to end encrypted' তাই আপনার ব্যবসায়ীক তথ্য ফাঁস হওয়ার কোনো সম্ভাবনা নেই এবং ট্রাস্টেড হিসেবে পরিচিত। তাই  স্যার আপনার ওয়েবসাইট এর সিকিউরিটির ব্যপারে কোন টেনশন করতে হবে না।",
+    descBn: "আমাদের প্রত্যেকটা ওয়েবসাইট এর সাথেই থাকছে valid SSL সার্টিফিকেশন। যার কারণে ওয়ার্ল্ড এর অন্যান্য সকল ওয়েবসাইট এর মতো সেইম সিকিউরিটি পাচ্ছেন। এবং যদি আপনি আপনার প্রোডাক্ট, কাস্টমার বা অর্ডার এর data সিকিউরিটির কথা বলেন তাহলে database হিসেবে আমরা mySQL ব্যবহার করছি যা ওয়ার্ল্ড ওয়াইড অনেক বেশি সিকিউর এছাড়াও আমাদের প্রত্যেকটি 'Data' 'end to end encrypted' তাই আপনার ব্যবসায়ীক তথ্য ফাঁস হওয়ার কোনো সম্ভাবনা নেই এবং ট্রাস্টেড হিসেবে পরিচিত। তাই  স্যার আপনার ওয়েবসাইট এর সিকিউরিটির ব্যপারে কোন টেনশন করতে হবে না।",
+    desc: "Each of our websites comes with a valid SSL certification, ensuring the same level of security as other websites worldwide. If you're concerned about the security of your product, customer, or order data, we use MySQL as the database, which is globally recognized for its high security. Additionally, all our data is 'end-to-end encrypted,' so there's no chance of your business information being exposed, and we are recognized as trusted. Therefore, sir, you don't need to worry about the security of your website.",
   },
   {
     id: 8,
-    title: "এই ওয়েবসাইট গুলো কী wordpress  দিয়ে তৈরি নাকি?",
-    desc: "আমরা আমাদের কাস্টমারদেরকে যে ই-কমার্স ওয়েবসাইট সেবা দিচ্ছি তা খুবই জনপ্রিয় এবং বর্তমানে সর্বাধিক ব্যবহৃত টেকনোলজি React.JS এবং Next.JS এর সমন্বয়ে তৈরি, যার ফলে আপনার ওয়েবসাইটটি খুবই দ্রুততার সাথে কাজ করবে, একই সাথে আপনার কাস্টমাররা আপনার ওয়েবসাইট থেকে সেরা এক্সপেরিয়ান্স উপভোগ করতে পারবে।",
+    titleBn: "এই ওয়েবসাইট গুলো কী wordpress  দিয়ে তৈরি নাকি?",
+    title: "Are these websites created with WordPress?",
+    descBn: "আমরা আমাদের কাস্টমারদেরকে যে ই-কমার্স ওয়েবসাইট সেবা দিচ্ছি তা খুবই জনপ্রিয় এবং বর্তমানে সর্বাধিক ব্যবহৃত টেকনোলজি React.JS এবং Next.JS এর সমন্বয়ে তৈরি, যার ফলে আপনার ওয়েবসাইটটি খুবই দ্রুততার সাথে কাজ করবে, একই সাথে আপনার কাস্টমাররা আপনার ওয়েবসাইট থেকে সেরা এক্সপেরিয়ান্স উপভোগ করতে পারবে।",
+    desc: "The e-commerce website service we provide to our customers is very popular and is built using the highly used technologies React.js and Next.js. As a result, your website will work with great speed, and at the same time, your customers will be able to enjoy the best experience from your website.",
   },
   {
     id: 9,
-    title:
+    titleBn:
       "এটা কোন ফাঁদ নয়তো? দেখা গেলো আমি ব্যবসা শুরু করে দিয়েছি পরে আপনারা সাইট ভ্যানিশ করে দিলেন?",
-    desc: "স্যার আপনার ওয়েবসাইট মেইন্টেইন করলে আমাদের লাভ। ভ্যানিশ করলে তো আমাদেরই ক্ষতি। আপনার ওয়েবসাইট থাকলেই তো  আমরা মান্থলি টাকা পাবো।",
+    title:
+      "Isn't this a trap? What if I start my business and later you vanish the site?",
+    descBn: "স্যার, আপনার ওয়েবসাইট মেইন্টেইন করলে আমাদের লাভ। ভ্যানিশ করলে তো আমাদেরই ক্ষতি। আপনার ওয়েবসাইট থাকলেই তো আমরা মান্থলি টাকা পাবো।",
+    desc: "Sir, it is beneficial for us to maintain your website. If we vanish it, it would be a loss for us. As long as your website is active, we will receive monthly payments.",
   },
   {
     id: 10,
-    title: "eBitans এর ফ্রি এবং পেইড প্যাকেজ গুলোর মধ্যে পার্থক্য কি?",
-    desc: "ট্রায়াল প্যাকেজে আপনি সর্বোচ্চ ২০টি প্রোডাক্ট আপলোড করতে পারবেন এবং একটি সাব ডোমেইন পাবেন। যেখানে আপনি নিজের Domain যুক্ত করতে পারবেন না। কিন্তু আমাদের পেইড প্যাকেজ ভেদে আপনি ৪০ টা থেকে শুরু করে ৪০০ টা পর্যন্ত প্রোডাক্ট যুক্ত করতে পারবেন, নিজেস্ব doamin যুক্ত করা সহ আরও অনেক প্রিমিয়াম ফিচার্স ব্যবহার করতে পারবেন।",
+    titleBn: "eBitans এর ফ্রি এবং পেইড প্যাকেজ গুলোর মধ্যে পার্থক্য কি?",
+    title: "What is the difference between the free and paid packages of eBitans?",
+    descBn: "ট্রায়াল প্যাকেজে আপনি সর্বোচ্চ ২০টি প্রোডাক্ট আপলোড করতে পারবেন এবং একটি সাব ডোমেইন পাবেন। যেখানে আপনি নিজের Domain যুক্ত করতে পারবেন না। কিন্তু আমাদের পেইড প্যাকেজ ভেদে আপনি ৪০ টা থেকে শুরু করে ৪০০ টা পর্যন্ত প্রোডাক্ট যুক্ত করতে পারবেন, নিজেস্ব doamin যুক্ত করা সহ আরও অনেক প্রিমিয়াম ফিচার্স ব্যবহার করতে পারবেন।",
+    desc: "In the trial package, you can upload a maximum of 20 products and get a subdomain. However, you will not be able to add your own domain. On the other hand, with our paid packages, you can add anywhere from 40 to 400 products, use your own domain, and enjoy many other premium features.",
   },
 ];

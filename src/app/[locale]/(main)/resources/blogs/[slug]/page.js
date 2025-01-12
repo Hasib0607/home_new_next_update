@@ -67,33 +67,39 @@ const BlogDetails = async ({ params }) => {
               <h3 className="text-2xl pb-5">Related Blogs</h3>
               {filterBlog?.length > 0 ? (
                 <div>
-                  {filterBlog?.slice(0, 4).map((blog) => (
-                    <Link
-                      href={`/resources/blogs/${blog?.slug}`}
-                      key={blog?.id}
-                    >
-                      <div
+                  {filterBlog?.slice(0, 4).map((blog) => {
+                    const permalink =
+                      blog?.permalink && blog?.permalink !== ""
+                        ? blog?.permalink
+                        : blog?.slug;
+                    return (
+                      <Link
+                        href={`/resources/blogs/${permalink}`}
                         key={blog?.id}
-                        className="flex gap-2 border-b-2 py-5"
                       >
-                        <div className="h-28 w-28">
-                          <img
-                            src={blog?.thumbnail}
-                            alt="blogImage"
-                            className="max-h-28 w-28 rounded-lg"
-                          />
+                        <div
+                          key={blog?.id}
+                          className="flex gap-2 border-b-2 py-5"
+                        >
+                          <div className="h-28 w-28">
+                            <img
+                              src={blog?.thumbnail}
+                              alt="blogImage"
+                              className="max-h-28 w-28 rounded-lg"
+                            />
+                          </div>
+                          <div className="w-full h-full">
+                            <p className="text-lg text-[#f1593a] font-medium xl:mb-3">
+                              {blog?.type}
+                            </p>
+                            <h3 className="xl:text-base text-sm font-semibold">
+                              {blog?.title}
+                            </h3>
+                          </div>
                         </div>
-                        <div className="w-full h-full">
-                          <p className="text-lg text-[#f1593a] font-medium xl:mb-3">
-                            {blog?.type}
-                          </p>
-                          <h3 className="xl:text-base text-sm font-semibold">
-                            {blog?.title}
-                          </h3>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+                      </Link>
+                    );
+                  })}
                 </div>
               ) : (
                 <div>
