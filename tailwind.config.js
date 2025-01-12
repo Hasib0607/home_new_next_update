@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import keepPreset from "keep-react/preset";
-module.exports = {
+export default {
   content: [
     "./index.html",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
