@@ -20,17 +20,17 @@ const MobApp = ({ data, locale }) => {
               {!bangla
                 ? `eBitans offers a mobile app to help you present your eCommerce business to customers in a simple and attractive way. This app builds trust between your business and your customers. Designed with entrepreneurs in mind, the eBitans app ensures a seamless user experience. Customers will enjoy smooth shopping and excellent service through our app, tailored specifically for your eCommerce business. With eBitans, you stay ahead of the competition and offer your customers an easy and enjoyable online shopping experience. Expand your online business with our mobile eCommerce app today!`
                 : `eBitans আপনার ইকমার্স ব্যবসাকে সহজ এবং আকর্ষণীয়ভাবে উপস্থাপন করতে একটি মোবাইল অ্যাপ প্রদান করে। এই অ্যাপ আপনার ব্যবসা এবং গ্রাহকদের মধ্যে বিশ্বাস স্থাপন করে। উদ্যোক্তাদের কথা বিবেচনা করে ডিজাইন করা ইবিতান্স অ্যাপ একটি নিরবচ্ছিন্ন ইউজার অভিজ্ঞতা নিশ্চিত করে।
-                  গ্রাহকরা এই অ্যাপের মাধ্যমে সহজেই কেনাকাটা করতে পারবেন এবং অসাধারণ সেবা উপভোগ করবেন। ইবিতান্সের মোবাইল অ্যাপ আপনার ইকমার্স ব্যবসার জন্য বিশেষভাবে তৈরি, যা আপনাকে প্রতিযোগিতায় এগিয়ে রাখে এবং গ্রাহকদের জন্য সহজ ও উপভোগ্য অনলাইন কেনাকাটার অভিজ্ঞতা প্রদান করে। আজই ইবিতান্সের মোবাইল ইকমার্স অ্যাপ দিয়ে আপনার অনলাইন ব্যবসা প্রসারিত করুন!`}
+                  গ্রাহকরা এই অ্যাপের মাধ্যমে সহজেই কেনাকাটা করতে পারবেন এবং অসাধারণ সেবা উপভোগ করবেন। ই-বিতান্সের মোবাইল অ্যাপ আপনার ইকমার্স ব্যবসার জন্য বিশেষভাবে তৈরি, যা আপনাকে প্রতিযোগিতায় এগিয়ে রাখে এবং গ্রাহকদের জন্য সহজ ও উপভোগ্য অনলাইন কেনাকাটার অভিজ্ঞতা প্রদান করে। আজই ইবিতান্সের মোবাইল ইকমার্স অ্যাপ দিয়ে আপনার অনলাইন ব্যবসা প্রসারিত করুন!`}
             </p>
 
-            {data && (
+            {/* {data && (
               <div className="relative w-max group">
                 <button className=" text-[#f1593a] font-medium text-sm py-0 leading-5 font-details uppercase">
                   {data}
                 </button>
                 <p className="h-[1px] absolute bottom-0 bg-[#f1593a] w-full group-hover:scale-x-100 scale-x-0 duration-500"></p>
               </div>
-            )}
+            )} */}
           </div>
           <div
             // data-aos="fade-up"

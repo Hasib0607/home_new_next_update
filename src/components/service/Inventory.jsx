@@ -38,14 +38,14 @@ const Inventory = ({ data, locale }) => {
                   এই সিস্টেমটি স্টক কমে গেলে নোটিফিকেশন পাঠায়, ফলে আপনি সময়মতো পণ্য পুনরায় মজুত করতে পারবেন এবং ওভারস্টকিং এড়াতে পারবেন। eBitans এর মাধ্যমে সহজেই আপনার ইনভেন্টরি ম্যানেজ করুন এবং ব্যবসাকে আরও সুসংগঠিত রাখুন।`}
             </p>
 
-            {data && (
+            {/* {data && (
               <div className="relative w-max group">
                 <button className=" text-[#f1593a] font-medium text-sm py-0 leading-5 font-details uppercase">
                   {data}
                 </button>
                 <p className="h-[1px] absolute bottom-0 bg-[#f1593a] w-full group-hover:scale-x-100 scale-x-0 duration-500"></p>
               </div>
-            )}
+            )} */}
           </div>
 
           <div

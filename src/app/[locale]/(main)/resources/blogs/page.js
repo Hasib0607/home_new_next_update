@@ -26,47 +26,37 @@ const Blogs = async ({ params: { locale } }) => {
   const blogTypeData = (await fetchBlogTypeData()) ?? [];
   const bangla = locale !== "en";
 
+  const filterBlog = blogData?.filter(
+    (blog) => blog?.type === details?.type && blog?.id !== details?.id
+  );
 
   return (
     <>
-    <div className="container px-5 lg:px-10 sm:pt-[100px] pt-[65px] relative z-[1]">
-      <div className="relative flex justify-center items-center">
-        <Image
-          width={500}
-          height={500}
-          src={banner}
-          alt="career image"
-          className="w-full h-auto rounded-lg border-white border-2"
-        />
-        <h1
-          className={`${styles.archivo} absolute z-[1] text-gray-800 md:tracking-[15px] tracking-widest text-xl lg:text-4xl md:mt-[-120px] mt-[-40px] font-bold`}
-        >
-          {bangla ? "eBitans সম্পর্কে কিছু কথা" : "Latest News & Updates"}
-        </h1>
-        <h1
-          className={` ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light   absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
-        >
-          {bangla ? "টার্মস এবং কন্ডিশনস" : "Blogs"}
-        </h1>
-      </div>
-
-      {/* blog section  */}
-      <div className="container px-5 lg:px-10 my-10">
-        <div className="flex flex-col lg:flex-row gap-8 ">
-          {/* blog card section  */}
-          <Suspense
-            fallback={
-              <div>
-                <Loading />
-              </div>
-            }
+      <div className="container px-5 lg:px-10 sm:pt-[100px] pt-[65px] relative z-[1]">
+        <div className="relative flex justify-center items-center">
+          <Image
+            width={500}
+            height={500}
+            src={banner}
+            alt="career image"
+            className="w-full h-auto rounded-lg border-white border-2"
+          />
+          <h1
+            className={`${styles.archivo} absolute z-[1] text-gray-800 md:tracking-[15px] tracking-widest text-xl lg:text-4xl md:mt-[-120px] mt-[-40px] font-bold`}
           >
-            <SingleBlog blogData={blogData} />
-          </Suspense>
+            {bangla ? "সর্বশেষ সংবাদ ও আপডেট" : "Latest News & Updates"}
+          </h1>
+          <h1
+            className={` ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light   absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
+          >
+            {bangla ? "ব্লগ" : "Blogs"}
+          </h1>
+        </div>
 
-          {/* popular blogs */}
-          <div className="basis-2/5">
-            <h1 className="text-2xl pb-5">Popular Blogs</h1>
+        {/* blog section  */}
+        <div className="container px-5 lg:px-10 my-10">
+          <div className="flex flex-col lg:flex-row gap-8 ">
+            {/* blog card section  */}
             <Suspense
               fallback={
                 <div>
@@ -74,34 +64,63 @@ const Blogs = async ({ params: { locale } }) => {
                 </div>
               }
             >
-              {blogPopularData?.slice(0, 5).map((blog) => (
-                <PopularBlog blog={blog} key={blog?.id} />
-              ))}
+              <SingleBlog blogData={blogData} />
+            </Suspense>
+
+            {/* popular blogs */}
+            <div className="basis-2/5">
+              <h1 className="text-2xl pb-5">
+                {bangla ? "জনপ্রিয় ব্লগ" : "Popular Blogs"}
+              </h1>
+              <Suspense
+                fallback={
+                  <div>
+                    <Loading />
+                  </div>
+                }
+              >
+                {blogPopularData?.slice(0, 5).map((blog) => (
+                  <PopularBlog blog={blog} key={blog?.id} />
+                ))}
+              </Suspense>
+            </div>
+          </div>
+        </div>
+
+        {/* banner section  */}
+        <a
+          href="https://admin.ebitans.com/register"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="container px-5 lg:px-10 my-10">
+            <Image
+              width={500}
+              height={500}
+              src={images?.blogBanner}
+              alt="blogImage"
+              className="h-auto min-w-full"
+            />
+          </div>
+        </a>
+
+        {/* type of blog section  */}
+        <div className="container px-5 lg:px-10 my-10">
+          <div>
+            <Suspense
+              fallback={
+                <div>
+                  <Loading />
+                </div>
+              }
+            >
+              <BlogType blogTypeData={blogTypeData} />
             </Suspense>
           </div>
         </div>
-      </div>
 
-      {/* banner section  */}
-      <a
-        href="https://admin.ebitans.com/register"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+        {/* all blog section  */}
         <div className="container px-5 lg:px-10 my-10">
-          <Image
-            width={500}
-            height={500}
-            src={images?.blogBanner}
-            alt="blogImage"
-            className="h-auto min-w-full"
-          />
-        </div>
-      </a>
-
-      {/* type of blog section  */}
-      <div className="container px-5 lg:px-10 my-10">
-        <div>
           <Suspense
             fallback={
               <div>
@@ -109,24 +128,10 @@ const Blogs = async ({ params: { locale } }) => {
               </div>
             }
           >
-            <BlogType blogTypeData={blogTypeData} />
+            {filterBlog?.length > 0 ? <AllBlog /> : ""}
           </Suspense>
         </div>
       </div>
-
-      {/* all blog section  */}
-      <div className="container px-5 lg:px-10 my-10">
-        <Suspense
-          fallback={
-            <div>
-              <Loading />
-            </div>
-          }
-        >
-          <AllBlog />
-        </Suspense>
-      </div>
-    </div>
     </>
   );
 };
