@@ -32,11 +32,11 @@ const Faq = ({ params: { locale } }) => {
           <h1
             className={` ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light   absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
           >
-            {bangla ? "টার্মস এবং কন্ডিশনস" : "FAQ"}
+            {bangla ? "প্রশ্নোত্তর" : "FAQ"}
           </h1>
         </div>
       </div>
-      <FaqContent />
+      <FaqContent bangla={bangla} />
       <div className="container px-5 lg:px-10">
         <Registration />
       </div>

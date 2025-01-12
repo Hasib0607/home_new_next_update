@@ -32,14 +32,14 @@ const POS = ({ data, locale }) => {
               `}
             </p>
 
-            {data && (
+            {/* {data && (
               <div className="relative w-max group">
                 <button className=" text-[#f1593a] font-medium text-sm py-0 leading-5 font-details uppercase">
                   {data}
                 </button>
                 <p className="h-[1px] absolute bottom-0 bg-[#f1593a] w-full group-hover:scale-x-100 scale-x-0 duration-500"></p>
               </div>
-            )}
+            )} */}
           </div>
           <div
             // data-aos="fade-up"

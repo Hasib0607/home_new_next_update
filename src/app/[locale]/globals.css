@@ -50,36 +50,49 @@ input[type=number] {
   --blog-h4-size: 16px;
   --blog-h5-size: 13.28px;
   --blog-h6-size: 10.72px;
+
+  --blog-h1-margin: 24px; /* Appropriate spacing for h1 */
+  --blog-h2-margin: 20px;
+  --blog-h3-margin: 18px;
+  --blog-h4-margin: 16px;
+  --blog-h5-margin: 14px;
+  --blog-h6-margin: 12px;
 }
 
 .blog h1,
 h1.blog {
   font-size: var(--blog-h1-size);
+  margin: var(--blog-h1-margin) 0;
 }
 
 .blog h2,
 h2.blog {
   font-size: var(--blog-h2-size);
+  margin: var(--blog-h2-margin) 0;
 }
 
 .blog h3,
 h3.blog {
   font-size: var(--blog-h3-size);
+  margin: var(--blog-h3-margin) 0;
 }
 
 .blog h4,
 h4.blog {
   font-size: var(--blog-h4-size);
+  margin: var(--blog-h4-margin) 0;
 }
 
 .blog h5,
 h5.blog {
   font-size: var(--blog-h5-size);
+  margin: var(--blog-h5-margin) 0;
 }
 
 .blog h6,
 h6.blog {
   font-size: var(--blog-h6-size);
+  margin: var(--blog-h6-margin) 0;
 }
 
 /* General table styling */
