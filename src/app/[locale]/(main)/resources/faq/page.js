@@ -44,4 +44,5 @@ const Faq = ({ params: { locale } }) => {
   );
 };
 
+
 export default Faq;
