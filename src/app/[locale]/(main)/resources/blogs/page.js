@@ -21,14 +21,15 @@ export const metadata = {
 };
 
 const Blogs = async ({ params: { locale } }) => {
+  const bangla = locale !== "en";
   const blogData = (await fetchBlogData()) ?? [];
   const blogPopularData = (await fetchBlogPopularData()) ?? [];
   const blogTypeData = (await fetchBlogTypeData()) ?? [];
-  const bangla = locale !== "en";
 
   const filterBlog = blogData?.filter(
     (blog) => blog?.type === details?.type && blog?.id !== details?.id
   );
+
 
   return (
     <>
