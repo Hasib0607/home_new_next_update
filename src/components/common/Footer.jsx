@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import images from "@/lib/images";
 import styles from "@/components/home/home.module.css";
+import WhatsAppPopup from '@/components/WhatsAppPopup';
 
 const Footer = ({ locale }) => {
   let date = new Date().getFullYear();
@@ -176,6 +177,7 @@ const Footer = ({ locale }) => {
         chatbox.setAttribute("page_id", "104694832190312");
         chatbox.setAttribute("attribution", "biz_inbox");
       </script>
+      <WhatsAppPopup />
     </footer>
   );
 };
