@@ -100,7 +100,7 @@ const OtpVerify = () => {
         <div className="container px-5 lg:px-10 text-center rounded-lg relative z-[1] overflow-hidden py-16 h-screen">
           <div className="mb-10 md:mb-6 text-center">
             <h2 className="text-sm md:text-base text-[#5A5A5A] mt-12 mb-8 font-bold">
-              Check "<span className="text-[#f1593a]">{user?.phone}</span>" for
+              Check "<span className="text-[#f1593a]">{user?.email_or_phone}</span>" for
               Verify Your OTP{" "}
             </h2>
           </div>

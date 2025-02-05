@@ -13,6 +13,8 @@ import images from "@/lib/images";
 import BlogType from "@/components/blogs/BlogType";
 import AllBlog from "@/components/blogs/AllBlog";
 import Loading from "@/app/[locale]/loading";
+import DynamicHeadBlog from "@/components/DynamicHeadBlog";
+
 
 export const metadata = {
   title: "Blogs",
@@ -30,9 +32,10 @@ const Blogs = async ({ params: { locale } }) => {
     (blog) => blog?.type === details?.type && blog?.id !== details?.id
   );
 
-
   return (
     <>
+      <DynamicHeadBlog blogPopularData={blogPopularData} />
+
       <div className="container px-5 lg:px-10 sm:pt-[100px] pt-[65px] relative z-[1]">
         <div className="relative flex justify-center items-center">
           <Image
@@ -54,7 +57,7 @@ const Blogs = async ({ params: { locale } }) => {
           </h1>
         </div>
 
-        {/* blog section  */}
+        {/* blog section */}
         <div className="container px-5 lg:px-10 my-10">
           <div className="flex flex-col lg:flex-row gap-8 ">
             {/* blog card section  */}
@@ -80,7 +83,7 @@ const Blogs = async ({ params: { locale } }) => {
                   </div>
                 }
               >
-                {blogPopularData?.slice(0, 5).map((blog) => (
+                {blogPopularData?.slice(0, 5)?.map((blog) => (
                   <PopularBlog blog={blog} key={blog?.id} />
                 ))}
               </Suspense>
