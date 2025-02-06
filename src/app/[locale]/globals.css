@@ -127,3 +127,36 @@ h6.blog {
   font-weight: bold;
   text-align: left;
 }
+
+.fixed-button {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  background-color: #25D366 !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 3px 3px 5px #999796 !important;
+  z-index: 100 !important;
+  cursor: pointer !important;
+  animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.fixed-button.whatsapp:hover {
+  color: #999796  !important;
+}
+
+.fixed-button.whatsapp:hover::after {
+  left: auto !important;
+  right: 0 !important;
+  width: 100% !important;
+}
+
+.fixed-button.whatsapp:active {
+  top: 2px !important;
+}
+

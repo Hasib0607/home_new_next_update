@@ -13,6 +13,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@next/third-parties": "^14.2.3",
     "aos": "^3.0.0-beta.6",
+    "font-awesome": "^4.7.0",
     "i18next": "^23.10.1",
     "i18next-resources-to-backend": "^1.2.0",
     "keep-react": "^1.2.0",
