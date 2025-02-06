@@ -11,10 +11,9 @@ import { dir } from "i18next";
 import i18nConfig from "../../../i18nConfig";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import StructuredData from "@/components/StructuredData";
+import { fetchBlogPopularData } from "@/helper/api";
 
 const archivo = Archivo({ subsets: ["latin"], display: 'swap' });
-
-
 
 
 export const metadata = {
@@ -35,17 +34,15 @@ export const metadata = {
   },
 };
 
+
 export function generateStaticParams() {
   return i18nConfig.locales.map(locale => ({ locale }));
 }
 
-
 export default async function RootLayout({ children, params: { locale } }) {
-
   return (
     <html lang={locale} dir={dir(locale)}>
       <AOSInit />
-
       <body className={archivo.className}>
         <ScrollToTop />
         <div className='absolute top-0 left-0 bottom-0 h-full w-full lg:grid grid-cols-6 divide-x hidden'>

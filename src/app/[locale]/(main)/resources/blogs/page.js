@@ -13,7 +13,6 @@ import images from "@/lib/images";
 import BlogType from "@/components/blogs/BlogType";
 import AllBlog from "@/components/blogs/AllBlog";
 import Loading from "@/app/[locale]/loading";
-import DynamicHeadBlog from "@/components/DynamicHeadBlog";
 
 
 export const metadata = {
@@ -21,6 +20,7 @@ export const metadata = {
   description:
     "Ebitans Blog is your one-stop shop for valuable insights and practical tips to help you thrive in the exciting world of Bangladeshi e-commerce. Whether you're a seasoned seller or just starting your online business journey, we've got something for you.",
 };
+
 
 const Blogs = async ({ params: { locale } }) => {
   const bangla = locale !== "en";
@@ -34,8 +34,6 @@ const Blogs = async ({ params: { locale } }) => {
 
   return (
     <>
-      <DynamicHeadBlog blogPopularData={blogPopularData} />
-
       <div className="container px-5 lg:px-10 sm:pt-[100px] pt-[65px] relative z-[1]">
         <div className="relative flex justify-center items-center">
           <Image

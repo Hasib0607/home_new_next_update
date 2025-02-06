@@ -2,6 +2,8 @@ import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchBlogData, fetchBlogDetailsData } from "@/helper/api";
+import Script from "next/script";
+import Head from "next/head";
 
 export async function generateMetadata({ params }) {
   const { details } = (await fetchBlogDetailsData(params)) ?? [];
@@ -17,19 +19,41 @@ export async function generateMetadata({ params }) {
         },
       ],
     },
+    alternates: {
+      canonical: details?.canonical_url, 
+    },
   };
 }
+
 
 const BlogDetails = async ({ params }) => {
   const blogData = (await fetchBlogData()) ?? [];
   const { details } = (await fetchBlogDetailsData(params)) ?? [];
-
+  
   const filterBlog = blogData?.filter(
     (blog) => blog?.type === details?.type && blog?.id !== details?.id
   );
 
   return (
     <>
+      {/* Injecting Custom Script Safely */}
+      {/* <Head>
+        {details?.custom_script && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function() { ${details?.custom_script} })();`,
+            }}
+          />
+        )}
+      </Head> */}
+
+      {/* Alternative: Use Next.js <Script> */}
+      {details?.custom_script && (
+        <Script id="custom-script" strategy="afterInteractive">
+          {`(function() { ${details?.custom_script} })();`}
+        </Script>
+      )}
+
       <div className="bg-[#f7f7f7] sm:pt-[85px] pt-[50px] container px-5 lg:px-10 relative z-[1]">
         <div className="relative">
           <div>
