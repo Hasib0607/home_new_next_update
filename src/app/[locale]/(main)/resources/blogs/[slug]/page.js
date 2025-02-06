@@ -35,7 +35,7 @@ const BlogDetails = async ({ params }) => {
 
   return (
     <>
-      {/* Injecting Custom Script Safely */}
+      {/* Injecting Custom Script Safely  */}
       {/* <Head>
         {details?.custom_script && (
           <script
