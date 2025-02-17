@@ -14,6 +14,9 @@ const Chat = ({ onClose }) => {
     const [conversation, setConversation] = useState(null);
     const [isFormVisible, setIsFormVisible] = useState(true);
     const [isSending, setIsSending] = useState(false);
+    const [timeUpdateTrigger, setTimeUpdateTrigger] = useState(0);
+    const [isSessionModalOpen, setIsSessionModalOpen] = useState(false);
+    const [endSessionTime, setEndSessionTime] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -79,6 +82,7 @@ const Chat = ({ onClose }) => {
                 };
 
                 setMessages((prev) => [...prev, responseMessage]);
+                setEndSessionTime(response.data?.data?.endSessionTime);
             }
         } catch (error) {
             console.error('Error sending message:', error);
@@ -164,21 +168,54 @@ const Chat = ({ onClose }) => {
     useEffect(() => {
         const sessionId = sessionStorage.getItem('sessionID');
         const storedConversationID = sessionStorage.getItem('conversationID');
-        const storedTopic = localStorage.getItem('selectedTopic');
-        const storedLanguage = localStorage.getItem('selectedLanguage');
+
+        const fetchExistingConversation = async() => {
+            try{
+                const response = await axios.post('https://admin.ebitans.com/api/v1/get-visitor/conversation',
+                  {},
+                  {
+                    headers: {
+                        "Authorization": `Bearar${sessionId}`
+                    }
+                  }
+                );
+
+                if(response.data.status){
+                    const {messages, conversation} = response.data;
+
+                    setConversationID(conversation?.id);
+                    setConversation(conversation);
+                    localStorage.setItem("selectedTopic", conversation?.type);
+                    localStorage.setItem("selectedLanguage", conversation?.lang);
+                    setSelectedTopic(String(conversation?.type));
+                    setSelectedLanguage(String(conversation?.lang));
+
+                    if(messages) {
+                        const formattedMessages = messages?.reverse().map(msg => ({
+                            text: msg?.content,
+                            isSelf: msg?.sender_type === "visitor",
+                            createdAt: msg?.created_at,
+                        }))
+                        setMessages(formattedMessages);
+                    }
+                }
+
+            }catch(error){
+                console.error('Error fetching conversation:', error);
+                sessionStorage.removeItem('sessionID');
+                sessionStorage.removeItem('conversationID');
+                setIsFormVisible(true);
+            }
+        }
 
         if (sessionId) {
             setIsFormVisible(false);
+            fetchExistingConversation();
         }
         if (storedConversationID) {
             setConversationID(storedConversationID);
         }
-        if (storedTopic) {
-            setSelectedTopic(storedTopic);
-        }
-        if (storedLanguage) {
-            setSelectedLanguage(storedLanguage);
-        }
+       
     }, []);
 
     // Handle radio button and make API call
@@ -208,9 +245,52 @@ const Chat = ({ onClose }) => {
         }
     };
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTimeUpdateTrigger((prev) => prev + 1);
+        }, 3000);
+
+        return ()=> clearInterval(interval);
+    }, [])
+
     const getRelativeTime = (timestamp) => {
         return moment(timestamp).fromNow();
     };
+
+    // sessionTimeout
+    useEffect(() => {
+        let sessionTimeout;
+
+        if(endSessionTime) {
+            sessionTimeout = setTimeout(() => {
+                setIsSessionModalOpen(true);
+            })
+        }
+    },[endSessionTime, messages]); // Reset timer on new messages or endSessionTime change
+
+    // Modal component
+    const SessionTimeoutModal = () => (
+    <div className={styles.sessionModal}>
+        <div className={styles.modalContent}>
+            <h3>Session Timeout Warning!!</h3>
+            <p>Your session will expire due to inactivity. Do you want to continue?</p>
+            <div className={styles.modalActions}>
+                <button 
+                    className={styles.modalButton}
+                    onClick={onClose}
+                >
+                    End Session
+                </button>
+                <button
+                    className={styles.modalButtonPrimary}
+                    onClick={() => setIsSessionModalOpen(false)}
+                >
+                    Continue Chatting
+                </button>
+            </div>
+        </div>
+    </div>
+    );
 
     return (
         <div className={styles.chatContainer} ref={chatContainerRef}>
@@ -219,7 +299,7 @@ const Chat = ({ onClose }) => {
                     <div className={styles.header}>
                         <div className={styles.headerTop}>
                             <span className={styles.title}>
-                                what's on your mind?
+                                Chat Support
                             </span>
                             <button
                                 className={styles.closeButton}
@@ -471,6 +551,7 @@ const Chat = ({ onClose }) => {
                     )}
                 </div>
             </div>
+            {isSessionModalOpen && <SessionTimeoutModal />}
         </div>
     );
 };

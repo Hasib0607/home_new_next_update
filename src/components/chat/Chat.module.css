@@ -194,7 +194,8 @@
 }
 
 .title {
-    font-weight: 600;
+    font-weight: 900;
+    font-size: 20px;
     color: #050505;
 }
 
@@ -218,7 +219,7 @@
     flex-direction: column;
     gap: 8px;
     max-height: 350px; /* Prevents overflow */
-
+    white-space: pre-wrap;
     /* Hide scrollbar */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -286,7 +287,7 @@
     margin-top: 4px;
     text-align: right;
     position: absolute;
-    top: 90%;
+    top: 100%;
     margin-left: 40px;
     margin-right: 40px;
 }
@@ -349,4 +350,74 @@
     transform: translateX(1px);
 }
 
+/* sessionTimeout modal */
+.sessionModal {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
 
+.modalContent {
+    background: #5A6068;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modalActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+}
+
+.modalButton {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #f1593a;
+    color: #f0f0f0;
+}
+
+.modalButtonPrimary {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #f0f0f0;
+    color: #050505;
+}
+
+/* sessionEndMessage */
+.sessionEndMessageOverlay {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sessionEndMessageContent {
+    padding: 20px 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    color: #333;
+    text-align: center;
+    border: 1px solid #eee;
+}

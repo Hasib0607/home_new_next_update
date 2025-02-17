@@ -146,7 +146,7 @@ import Chat from "./chat/Chat";
 const FloatingContact = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showChat, setShowChat] = useState(false);
-  const phoneNumber = "8801886515578"; // e.g., +8801234567890
+  const phoneNumber = "8801886515579"; // e.g., +8801234567890
   const message = "আমি eBitans এবং এর সার্ভিস সম্পর্কে বিস্তারিত জানতে চাই?";
 
   const toggleServices = () => {
