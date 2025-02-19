@@ -19,6 +19,7 @@ const Chat = ({ onClose }) => {
   const [isSessionModalOpen, setIsSessionModalOpen] = useState(false);
   const [endSessionTime, setEndSessionTime] = useState(null);
   const [sessionEndMessage, setSessionEndMessage] = useState(null);
+  const [isTyping, setIsTyping] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -28,6 +29,8 @@ const Chat = ({ onClose }) => {
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
   const textareaRef = useRef(null);
+  const typingTimeoutRef = useRef(null);
+  const messageTimeoutRef = useRef(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -35,7 +38,7 @@ const Chat = ({ onClose }) => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, isTyping]);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -60,6 +63,10 @@ const Chat = ({ onClose }) => {
     setMessages((prev) => [...prev, newMessageObj]);
     setNewMessage("");
 
+    setIsTyping(false); // Reset typing state
+    if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
+    if (messageTimeoutRef.current) clearTimeout(messageTimeoutRef.current);
+
     try {
       // Send message to API
       const response = await axios.post(
@@ -74,14 +81,25 @@ const Chat = ({ onClose }) => {
 
       // Add bot's response to UI
       if (response.data?.status && response.data.data?.response?.content) {
+        const responseData = response.data.data;
         const responseMessage = {
-          text: response.data.data.response.content,
+          text: responseData?.response?.content,
           isSelf: false,
-          createdAt: response.data.data.response.created_at,
+          createdAt: responseData?.response?.created_at,
         };
 
-        setMessages((prev) => [...prev, responseMessage]);
-        setEndSessionTime(response.data?.data?.endSessionTime);
+        const { timeOut, responseTimeout } = responseData;
+
+        typingTimeoutRef.current = setTimeout(() => {
+          setIsTyping(true);
+        }, timeOut);
+
+        messageTimeoutRef.current = setTimeout(() => {
+          setIsTyping(false);
+          setMessages((prev) => [...prev, responseMessage]);
+        }, responseTimeout);
+
+        setEndSessionTime(responseData?.endSessionTime);
       }
     } catch (error) {
       console.error("Error sending message:", error);
@@ -517,6 +535,30 @@ const Chat = ({ onClose }) => {
                     </li>
                   ))
                 )}
+
+                {isTyping && (
+                  <li
+                    className={`${styles.messageContainer} ${styles.otherContainer}`}
+                  >
+                    <div className={styles.icon}>
+                      <Image
+                        src="/chat/ebitans-logo.png"
+                        alt="eBitans"
+                        width={30}
+                        height={30}
+                        className="rounded-full"
+                      />
+                    </div>
+                    <div className={`${styles.message} ${styles.other}`}>
+                      <div className={styles.typingAnimation}>
+                        <div className={styles.dot}></div>
+                        <div className={styles.dot}></div>
+                        <div className={styles.dot}></div>
+                      </div>
+                    </div>
+                  </li>
+                )}
+
                 <div ref={messagesEndRef} />
               </ul>
               <div className={styles.footer}>
