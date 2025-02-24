@@ -4,6 +4,8 @@ import axios from "axios";
 import Image from "next/image";
 import moment from "moment";
 import ReactMarkdown from "react-markdown";
+import socket from "../../lib/socket";
+import SessionTimeoutModal from "./SessionTimeoutModal";
 
 const Chat = ({ onClose }) => {
   const [messages, setMessages] = useState([]);
@@ -17,7 +19,6 @@ const Chat = ({ onClose }) => {
   const [isSending, setIsSending] = useState(false);
   const [timeUpdateTrigger, setTimeUpdateTrigger] = useState(0);
   const [isSessionModalOpen, setIsSessionModalOpen] = useState(false);
-  const [endSessionTime, setEndSessionTime] = useState(null);
   const [sessionEndMessage, setSessionEndMessage] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
   const [formData, setFormData] = useState({
@@ -31,6 +32,31 @@ const Chat = ({ onClose }) => {
   const textareaRef = useRef(null);
   const typingTimeoutRef = useRef(null);
   const messageTimeoutRef = useRef(null);
+  const sessionTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    const sessionId = sessionStorage.getItem("sessionID");
+
+    const messageListener = (data) => {
+      if (data?.sessionToken === sessionId && data?.senderType === "agent") {
+        setMessages((prev) => [
+          ...prev,
+          {
+            text: data.message?.message?.content,
+            isSelf: false,
+            createdAt: data.message?.message?.created_at,
+          },
+        ]);
+      }
+    };
+
+    socket.on("message", messageListener);
+
+    // Cleanup function to prevent duplicate event listeners
+    return () => {
+      socket.off("message", messageListener);
+    };
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,6 +74,7 @@ const Chat = ({ onClose }) => {
   }, [newMessage]);
 
   const handleSend = async () => {
+    const sessionId = sessionStorage.getItem("sessionID");
     const messageText = newMessage.trim();
     if (!messageText) return;
 
@@ -62,8 +89,8 @@ const Chat = ({ onClose }) => {
     // Optimistically add user's message to UI
     setMessages((prev) => [...prev, newMessageObj]);
     setNewMessage("");
-
     setIsTyping(false); // Reset typing state
+
     if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
     if (messageTimeoutRef.current) clearTimeout(messageTimeoutRef.current);
 
@@ -79,38 +106,47 @@ const Chat = ({ onClose }) => {
         }
       );
 
-      // Add bot's response to UI
-      if (response.data?.status && response.data.data?.response?.content) {
+      if (response?.data?.status) {
         const responseData = response.data.data;
-        const responseMessage = {
-          text: responseData?.response?.content,
-          isSelf: false,
-          createdAt: responseData?.response?.created_at,
-        };
+        const agentID = responseData.conversation?.agent_id;
 
-        const { timeOut, responseTimeout } = responseData;
+        if (agentID) {
+          const socketMessage = {
+            message: responseData,
+            agentId: agentID,
+            senderType: "visitor",
+            sessionToken: sessionId,
+            visitorUserId: "null",
+          };
 
-        typingTimeoutRef.current = setTimeout(() => {
-          setIsTyping(true);
-        }, timeOut);
+          if (socket.connected) {
+            socket.emit("message", socketMessage);
+          }
+        } else {
+          console.log("sdrtg");
 
-        messageTimeoutRef.current = setTimeout(() => {
-          setIsTyping(false);
-          setMessages((prev) => [...prev, responseMessage]);
-        }, responseTimeout);
+          const responseMessage = {
+            text: responseData?.response?.content,
+            isSelf: false,
+            createdAt: responseData?.response?.created_at,
+          };
 
-        setEndSessionTime(responseData?.endSessionTime);
+          const { timeOut, responseTimeout } = responseData;
+
+          typingTimeoutRef.current = setTimeout(() => {
+            setIsTyping(true);
+          }, timeOut);
+
+          messageTimeoutRef.current = setTimeout(() => {
+            setIsTyping(false);
+            setMessages((prev) => [...prev, responseMessage]);
+          }, responseTimeout);
+        }
+
+        startTimeout(responseData?.endSessionTime);
       }
     } catch (error) {
-      console.error("Error sending message:", error);
-      // Optional: Show error message to user
-      setMessages((prev) => [
-        ...prev,
-        {
-          text: "Sorry, there was an error processing your message.",
-          isSelf: false,
-        },
-      ]);
+      // console.error("Error sending message:", error);
     } finally {
       setIsSending(false);
     }
@@ -164,6 +200,11 @@ const Chat = ({ onClose }) => {
 
         // Hide the form after successful submission
         setIsFormVisible(false);
+
+        socket.emit("joined", {
+          userID: "null",
+          session_token: visitor?.session_token,
+        });
 
         // Display bot's initial message
         // setMessages([
@@ -229,6 +270,7 @@ const Chat = ({ onClose }) => {
     if (sessionId) {
       setIsFormVisible(false);
       fetchExistingConversation();
+      socket.emit("joined", { userID: "null", session_token: sessionId });
     }
     if (storedConversationID) {
       setConversationID(storedConversationID);
@@ -274,23 +316,15 @@ const Chat = ({ onClose }) => {
     return moment(timestamp).fromNow();
   };
 
-  // sessionTimeout
-  useEffect(() => {
-    let sessionTimeout;
-
-    if (endSessionTime) {
-      sessionTimeout = setTimeout(() => {
-        setIsSessionModalOpen(true);
-      }, endSessionTime);
+  const startTimeout = (endSessionTime) => {
+    if (sessionTimeoutRef.current) {
+      clearTimeout(sessionTimeoutRef.current);
     }
 
-    // Cleanup timeout on unmount or endSessionTime change
-    return () => {
-      if (sessionTimeout) {
-        clearTimeout(sessionTimeout);
-      }
-    };
-  }, [endSessionTime]);
+    sessionTimeoutRef.current = setTimeout(() => {
+      setIsSessionModalOpen(true);
+    }, endSessionTime);
+  };
 
   const handleEndSession = async () => {
     try {
@@ -315,29 +349,6 @@ const Chat = ({ onClose }) => {
       setIsSessionModalOpen(false);
     }
   };
-
-  // Modal component
-  const SessionTimeoutModal = () => (
-    <div className={styles.sessionModal}>
-      <div className={styles.modalContent}>
-        <h3>Session Timeout Warning!!</h3>
-        <p>
-          Your session will expire due to inactivity. Do you want to continue?
-        </p>
-        <div className={styles.modalActions}>
-          <button className={styles.modalButton} onClick={handleEndSession}>
-            End Session
-          </button>
-          <button
-            className={styles.modalButtonPrimary}
-            onClick={() => setIsSessionModalOpen(false)}
-          >
-            Continue Chatting
-          </button>
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <div className={styles.chatContainer} ref={chatContainerRef}>
@@ -584,7 +595,12 @@ const Chat = ({ onClose }) => {
           )}
         </div>
       </div>
-      {isSessionModalOpen && <SessionTimeoutModal />}
+      {isSessionModalOpen && (
+        <SessionTimeoutModal
+          handleEndSession={handleEndSession}
+          setIsSessionModalOpen={setIsSessionModalOpen}
+        />
+      )}
     </div>
   );
 };

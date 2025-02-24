@@ -7,6 +7,7 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import styles from "./home.module.css";
 import { onSubmit } from "@/lib/registration";
 import images from "@/lib/images";
+import Link from "next/link";
 
 const HeroRegister = () => {
   const {
@@ -79,7 +80,31 @@ const HeroRegister = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center lg:justify-start lg:-mt-5 mt-3 btn-register">
+         {/* Add this new checkbox section */}
+         <div className="flex items-center mt-4 mb-4">
+          <label className="flex items-center text-sm">
+            <input
+              type="checkbox"
+              {...register("terms_agreed", { required: true })}
+              className={`mr-2 w-4 h-4 accent-[#F1593A] ${
+                errors.terms_agreed ? "border-red-500" : "border-gray-300"
+              } rounded focus:ring-[#F1593A]`}
+            />
+            <span className={styles.archivo}>
+              I have read and agree to the{" "}
+              <Link href="/terms-and-conditions" className="text-[#F1593A] hover:underline">
+                Terms and Conditions
+              </Link>
+            </span>
+          </label>
+        </div>
+        {errors.terms_agreed && (
+          <span className="text-xs text-red-500 block -mt-2 mb-2">
+            You must agree to the terms and conditions
+          </span>
+        )}
+
+        <div className="flex items-center justify-center lg:justify-start lg:-mt-8 mt-3 btn-register">
           {loading ? (
             <button
               className={`group relative h-12 w-48 overflow-hidden rounded-lg bg-[#F1593A] text-lg shadow `}
