@@ -17,7 +17,8 @@ export const onSubmit = async (data, setLoading, router, reset) => {
 
     const registerData = {
         email_or_phone: data?.email_or_phone,
-        code: otpNumber
+        code: otpNumber,
+        type: data?.type
     };
 
     const requestOptions = {
