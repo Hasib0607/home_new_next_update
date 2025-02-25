@@ -3,6 +3,7 @@ import Image from "next/image";
 import hands from "@/assets/images/affiliate/hands.png";
 import Rectangle from "@/assets/images/affiliate/Rectangle.png";
 import Ellipse from "@/assets/images/affiliate/Ellipse.png";
+import AffiliateRegistration from "./AffiliateRegistration";
 
 const Partner = ({ locale }) => {
   const bangla = locale !== "en";
@@ -54,13 +55,16 @@ const Partner = ({ locale }) => {
               </>
             )}
           </p>
-          <div className="relative w-max flex items-center gap-2 font-bold">
+          {/* <div className="relative w-max flex items-center gap-2 font-bold">
             <a href="https://admin.ebitans.com/register">
               <p className={``}>
                 {!bangla ? "Let’s Work Together" : "Let’s Work Together"}
               </p>
             </a>
             <BsArrowRight />
+          </div> */}
+          <div className="relative md:w-max flex items-center">
+            <AffiliateRegistration />
           </div>
         </div>
 

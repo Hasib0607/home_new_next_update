@@ -8,7 +8,7 @@ import styles from "@/components/home/home.module.css";
 import images from "@/lib/images";
 import Link from "next/link";
 
-const AffiliateRegistration = () => {
+const AffiliateRegistrationWithImage = () => {
   const {
     register,
     handleSubmit,
@@ -25,8 +25,8 @@ const AffiliateRegistration = () => {
   };
 
   return (
-    <div className="relative z-[4] mb-10 lg:mb-20 rounded-lg">
-      <div className="flex flex-col gap-y-10 lg:flex-row justify-around lg:py-8 py-5">
+    <div className="bg-white relative z-[4] mb-10 lg:mb-20 mt-10 lg:mt-40 rounded-lg">
+      <div className="flex flex-col gap-y-10 lg:flex-row justify-around lg:px-10 lg:py-8 py-5">
         <div className=" lg:basis-3/4 text-center lg:text-left">
           <p
             className={`${styles.paragraph} ${styles.archivo} px-2 tracking-[5px] lg:tracking-[6px] text-base capitalize`}
@@ -37,7 +37,7 @@ const AffiliateRegistration = () => {
             Registration Now
           </h2>
           <form onSubmit={handleSubmit(handleRegister)}>
-            <div className="flex gap-2 w-full mt-10 lg:mt-[50px] px-4 lg:px-0">
+            <div className="flex gap-2 w-full mt-10 lg:mt-[70px] px-4 lg:px-0">
               <div className="lg:w-[260px] w-full">
                 <input
                   autoComplete="tel"
@@ -85,7 +85,7 @@ const AffiliateRegistration = () => {
             </div>
 
             {/* Add this new checkbox section */}
-            <div className="flex items-center mt-4 mb-4 ml-4 lg:ml-0 w-full">
+            <div className="flex items-center mt-4 mb-4">
               <label className="flex items-center text-sm">
                 <input
                   type="checkbox"
@@ -141,16 +141,16 @@ const AffiliateRegistration = () => {
             )}
           </form>
         </div>
-        {/* <div className="relative lg:basis-1/4 mx-auto hidden lg:block">
+        <div className="relative lg:basis-1/4 mx-auto hidden lg:block">
           <Image
             src={images?.businessman}
             alt="ebitans image"
             className="lg:absolute left-0 -bottom-8 z-[1]"
           />
-        </div> */}
+        </div>
       </div>
     </div>
   );
 };
 
-export default AffiliateRegistration;
+export default AffiliateRegistrationWithImage;
