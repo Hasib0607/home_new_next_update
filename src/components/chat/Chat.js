@@ -123,7 +123,6 @@ const Chat = ({ onClose }) => {
             socket.emit("message", socketMessage);
           }
         } else {
-          console.log("sdrtg");
 
           const responseMessage = {
             text: responseData?.response?.content,
