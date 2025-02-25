@@ -454,12 +454,3 @@
       transform: translateY(-6px);
     }
   }
-
-
-  /* scroll load */
-  .loadingIndicator {
-    padding: 10px;
-    text-align: center;
-    color: #666;
-    font-size: 0.9em;
-  }

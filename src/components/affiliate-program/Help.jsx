@@ -3,6 +3,8 @@ import team from "@/assets/images/affiliate/team.png";
 import commission from "@/assets/images/affiliate/comission.png";
 import graph from "@/assets/images/affiliate/graph.png";
 import design2 from "@/assets/images/affiliate/design2.png";
+import AffiliateRegistrationWithImage from "./AffiliateRegistrationWithImage";
+import AffiliateRegistration from "./AffiliateRegistration";
 
 const Help = ({ locale }) => {
   const bangla = locale !== "en";
@@ -91,7 +93,7 @@ const Help = ({ locale }) => {
               </>
             )}
           </p>
-          <div className="relative w-max shadow-xl">
+          {/* <div className="relative w-max shadow-xl">
             <a href="https://admin.ebitans.com/register">
               <p
                 className={`py-3 px-6 font-medium tracking-widest text-white bg-[#f1593a] rounded border-2 border-[#f1593a] hover:text-[#f1593a] hover:bg-white lg:cursor-pointer shadow-[5px_5px_1px_1px_black] hover:shadow-none duration-500`}
@@ -99,7 +101,8 @@ const Help = ({ locale }) => {
                 {!bangla ? "Let’s Work Together" : "Let’s Work Together"}
               </p>
             </a>
-          </div>
+          </div> */}
+          <AffiliateRegistration />
         </div>
 
         <div className="lg:justify-self-end justify-self-center">
