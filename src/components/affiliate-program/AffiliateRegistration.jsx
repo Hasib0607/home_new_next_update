@@ -141,13 +141,6 @@ const AffiliateRegistration = () => {
             )}
           </form>
         </div>
-        {/* <div className="relative lg:basis-1/4 mx-auto hidden lg:block">
-          <Image
-            src={images?.businessman}
-            alt="ebitans image"
-            className="lg:absolute left-0 -bottom-8 z-[1]"
-          />
-        </div> */}
       </div>
     </div>
   );

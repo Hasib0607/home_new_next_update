@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./Chat.module.css";
 import axios from "axios";
 import Image from "next/image";
@@ -26,6 +26,9 @@ const Chat = ({ onClose }) => {
     phone: "",
     email: "",
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
@@ -33,6 +36,105 @@ const Chat = ({ onClose }) => {
   const typingTimeoutRef = useRef(null);
   const messageTimeoutRef = useRef(null);
   const sessionTimeoutRef = useRef(null);
+  const messagesContainerRef = useRef(null);
+
+  const loadMessages = useCallback(async (page) => {
+    const sessionId = sessionStorage.getItem("sessionID");
+    if (!sessionId) return;
+
+    setIsLoadingMore(true);
+    try {
+      let prevScrollHeight, prevScrollTop;
+      if (page > 1) {
+        const container = messagesContainerRef.current;
+        if (container) {
+          prevScrollHeight = container.scrollHeight;
+          prevScrollTop = container.scrollTop;
+        }
+      }
+
+      const response = await axios.post(
+        "https://admin.ebitans.com/api/v1/get-visitor/conversation",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${sessionId}`,
+          },
+          params: {
+            page: page,
+          },
+        }
+      );
+
+      if (response.data.status) {
+        const { messages, conversation, current_page, last_page } = response.data;
+
+        setCurrentPage(current_page);
+        setHasMore(current_page < last_page);
+
+        if (messages) {
+          const formattedMessages = messages.reverse().map((msg) => ({
+            text: msg?.content,
+            isSelf: msg?.sender_type === "visitor",
+            createdAt: msg?.created_at,
+          }));
+
+          if (page === 1) {
+            setMessages(formattedMessages);
+          } else {
+            setMessages((prev) => {
+              const newMessages = [...formattedMessages, ...prev];
+              setTimeout(() => {
+                const container = messagesContainerRef.current;
+                if (container) {
+                  const newScrollHeight = container.scrollHeight;
+                  container.scrollTop = newScrollHeight - prevScrollHeight + prevScrollTop;
+                }
+              }, 0);
+              return newMessages;
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error loading messages:", error);
+      if (page === 1) {
+        setIsFormVisible(true);
+      }
+    } finally {
+      setIsLoadingMore(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const sessionId = sessionStorage.getItem("sessionID");
+    const storedConversationID = sessionStorage.getItem("conversationID");
+
+    if (sessionId) {
+      setIsFormVisible(false);
+      loadMessages(1);
+      socket.emit("joined", { userID: "null", session_token: sessionId });
+    }
+    if (storedConversationID) {
+      setConversationID(storedConversationID);
+    }
+  }, [loadMessages]);
+
+  useEffect(() => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      if (container.scrollTop < 100 && !isLoadingMore && hasMore) {
+        loadMessages(currentPage + 1);
+      }
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, [isLoadingMore, hasMore, currentPage, loadMessages]);
+// see previous message load end
+
 
   useEffect(() => {
     const sessionId = sessionStorage.getItem("sessionID");
@@ -204,17 +306,6 @@ const Chat = ({ onClose }) => {
           userID: "null",
           session_token: visitor?.session_token,
         });
-
-        // Display bot's initial message
-        // setMessages([
-        //   {
-        //     text:
-        //       response?.data?.conversation?.last_message ||
-        //       "Hello, how can I help you?",
-        //     isSelf: false,
-        //     createdAt: new Date().toISOString(),
-        //   },
-        // ]);
       }
     } catch (error) {
       console.log("Error submitting form:", error);
@@ -492,7 +583,10 @@ const Chat = ({ onClose }) => {
                 </div>
               </div>
 
-              <ul className={styles.messages}>
+              <ul className={styles.messages} ref={messagesContainerRef}>
+              {isLoadingMore && (
+          <li className={styles.loadingIndicator}>Loading older messages...</li>
+        )}
                 {sessionEndMessage ? (
                   <div className={styles.sessionEndMessageOverlay}>
                     <div className={styles.sessionEndMessageContent}>

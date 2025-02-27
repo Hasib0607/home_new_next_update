@@ -53,9 +53,9 @@ const OtpVerify = () => {
     if (Number(atob(otp)) === Number(data?.otp)) {
       const registerData = {
         name: user?.name ? user?.name : null,
-        email: user?.email ? user?.email : null,
         email_or_phone: user?.email_or_phone,
         password: user?.password,
+        type: "affiliate",
         time: dis === 1 ? time : null,
       };
 
