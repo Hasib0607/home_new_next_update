@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { saveToSessionStorage } from "./sessionstorage";
 import { baseUrl } from "@/constants/baseUrl";
 
-export const onSubmit = async (data, setLoading, router, reset) => {
+export const onSubmit = async ( data, setLoading, router, reset) => {
 
     const min = 100000; // Minimum 6-digit number
     const max = 999999; // Maximum 6-digit number
