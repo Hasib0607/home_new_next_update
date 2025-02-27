@@ -55,7 +55,7 @@ const OtpVerify = () => {
         name: user?.name ? user?.name : null,
         email_or_phone: user?.email_or_phone,
         password: user?.password,
-        type: user?.type,
+        type: user?.type ?? null,
         time: dis === 1 ? time : null,
       };
 
