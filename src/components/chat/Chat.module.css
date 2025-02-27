@@ -454,3 +454,10 @@
       transform: translateY(-6px);
     }
   }
+
+  /* loading indicator for previous message */
+  .loadingIndicator {
+    text-align: center;
+    padding: 10px;
+    color: #666;
+  }
