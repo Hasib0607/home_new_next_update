@@ -27,11 +27,12 @@ const Blogs = async ({ params: { locale } }) => {
   const blogData = (await fetchBlogData()) ?? [];
   const blogPopularData = (await fetchBlogPopularData()) ?? [];
   const blogTypeData = (await fetchBlogTypeData()) ?? [];
-
+  
   const filterBlog = blogData?.filter(
     (blog) => blog?.type === details?.type && blog?.id !== details?.id
   );
 
+ 
   return (
     <>
       <div className="container px-5 lg:px-10 sm:pt-[100px] pt-[65px] relative z-[1]">
