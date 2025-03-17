@@ -20,7 +20,7 @@ const BlogType = ({ blogTypeData }) => {
                 setBlogType([])
                 console.error("Error fetching data:", error);
             });
-    }, [blogTypeId, typePage])
+    }, [blogTypeId, typePage]);
 
 
     return (
