@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 const SingleBlog = ({ blogData }) => {
+  
     return (
         <div className='relative basis-3/5 '>
             {

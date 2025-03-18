@@ -32,6 +32,7 @@ const Blogs = async ({ params: { locale } }) => {
     (blog) => blog?.type === details?.type && blog?.id !== details?.id
   );
 
+  console.log("blogData", blogData);
  
   return (
     <>
@@ -50,7 +51,7 @@ const Blogs = async ({ params: { locale } }) => {
             {bangla ? "সর্বশেষ সংবাদ ও আপডেট" : "Latest News & Updates"}
           </h1>
           <h1
-            className={` ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light   absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
+            className={` ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
           >
             {bangla ? "ব্লগ" : "Blogs"}
           </h1>
