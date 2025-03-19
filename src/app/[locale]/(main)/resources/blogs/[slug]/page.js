@@ -3,11 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { fetchBlogData, fetchBlogDetailsData } from "@/helper/api";
 import Script from "next/script";
+import Head from "next/head";
 
 export async function generateMetadata({ params }) {
   const { details } = (await fetchBlogDetailsData(params)) ?? [];
   return {
-    title: details.title,
+    title: details?.title,
     description: details?.sub_title,
     openGraph: {
       images: [
@@ -19,11 +20,10 @@ export async function generateMetadata({ params }) {
       ],
     },
     alternates: {
-      canonical: details?.canonical_url, 
+      canonical: details?.canonical_url,
     },
   };
 }
-
 
 const BlogDetails = async ({ params }) => {
   const blogData = (await fetchBlogData()) ?? [];
@@ -33,25 +33,41 @@ const BlogDetails = async ({ params }) => {
     (blog) => blog?.type === details?.type && blog?.id !== details?.id
   );
 
+  // Clean and validate JSON-LD
+  const getStructuredData = () => {
+    if (!details?.custom_script) return null;
+
+    try {
+      const cleanScript = details.custom_script
+        .replace(/<\/?script.*?>/g, "") // Remove script tags
+        .replace(/\\/g, "") // Remove escape characters
+        .trim();
+
+      return JSON.parse(cleanScript);
+    } catch (error) {
+      console.error("Error parsing JSON-LD:", error);
+      return null;
+    }
+  };
+
+  const structuredData = getStructuredData();
+
   return (
     <>
       {/* Injecting Custom Script Safely  */}
-      {/* <Head>
-        {details?.custom_script && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function() { ${details?.custom_script} })();`,
-            }}
-          />
-        )}
-      </Head> */}
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      )}
 
       {/* Alternative: Use Next.js <Script> */}
-      {details?.custom_script && (
+      {/* {details?.custom_script && (
         <Script id="custom-script" strategy="afterInteractive">
           {`(function() { ${details?.custom_script} })();`}
         </Script>
-      )}
+      )} */}
 
       <div className="bg-[#f7f7f7] sm:pt-[85px] pt-[50px] container px-5 lg:px-10 relative z-[1]">
         <div className="relative">

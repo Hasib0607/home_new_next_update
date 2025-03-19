@@ -44,56 +44,65 @@ input[type=number] {
 /* for blog css start */
 /* Global styles for headings inside blog content */
 :root {
-  --blog-h1-size: 32px;
-  --blog-h2-size: 24px;
-  --blog-h3-size: 20px;
-  --blog-h4-size: 16px;
-  --blog-h5-size: 13.28px;
-  --blog-h6-size: 10.72px;
+  --blog-h1-size: 66px;
+  --blog-h2-size: 42px;
+  --blog-h3-size: 26px;
+  --blog-h4-size: 20px;
+  --blog-h5-size: 18px;
+  --blog-h6-size: 15px;
 
-  --blog-h1-margin: 24px; /* Appropriate spacing for h1 */
+  --blog-h1-line-height: 79px;
+  --blog-h2-line-height: 55px;
+  --blog-h3-line-height: 39px;
+  --blog-h4-line-height: 24px;
+  --blog-h5-line-height: 22px;
+  --blog-h6-line-height: 19px;
+
+  --blog-h1-margin: 24px;
   --blog-h2-margin: 20px;
   --blog-h3-margin: 18px;
   --blog-h4-margin: 16px;
   --blog-h5-margin: 14px;
   --blog-h6-margin: 12px;
+
+  --blog-link-color: #f1593a;
 }
 
 .blog h1,
-h1.blog {
+h1.blog,
+.blog h2,
+h2.blog,
+.blog h3,
+h3.blog,
+.blog h4,
+h4.blog,
+.blog h5,
+h5.blog,
+.blog h6,
+h6.blog {
   font-size: var(--blog-h1-size);
+  line-height: var(--blog-h1-line-height);
   margin: var(--blog-h1-margin) 0;
 }
 
-.blog h2,
-h2.blog {
-  font-size: var(--blog-h2-size);
-  margin: var(--blog-h2-margin) 0;
+.blog h2 { font-size: var(--blog-h2-size); line-height: var(--blog-h2-line-height); margin: var(--blog-h2-margin) 0; }
+.blog h3 { font-size: var(--blog-h3-size); line-height: var(--blog-h3-line-height); margin: var(--blog-h3-margin) 0; }
+.blog h4 { font-size: var(--blog-h4-size); line-height: var(--blog-h4-line-height); margin: var(--blog-h4-margin) 0; }
+.blog h5 { font-size: var(--blog-h5-size); line-height: var(--blog-h5-line-height); margin: var(--blog-h5-margin) 0; }
+.blog h6 { font-size: var(--blog-h6-size); line-height: var(--blog-h6-line-height); margin: var(--blog-h6-margin) 0; }
+
+/* Styling links inside blog headings and paragraphs */
+.blog h1 a,
+.blog h2 a,
+.blog h3 a,
+.blog h4 a,
+.blog h5 a,
+.blog h6 a,
+.blog p a {
+  color: var(--blog-link-color);
+  text-decoration: underline;
 }
 
-.blog h3,
-h3.blog {
-  font-size: var(--blog-h3-size);
-  margin: var(--blog-h3-margin) 0;
-}
-
-.blog h4,
-h4.blog {
-  font-size: var(--blog-h4-size);
-  margin: var(--blog-h4-margin) 0;
-}
-
-.blog h5,
-h5.blog {
-  font-size: var(--blog-h5-size);
-  margin: var(--blog-h5-margin) 0;
-}
-
-.blog h6,
-h6.blog {
-  font-size: var(--blog-h6-size);
-  margin: var(--blog-h6-margin) 0;
-}
 
 /* General table styling */
 .table {
