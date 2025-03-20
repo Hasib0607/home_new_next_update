@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import images from "@/lib/images";
 import styles from "@/components/home/home.module.css";
-import WhatsAppPopup from '@/components/WhatsAppPopup';
+import WhatsAppPopup from "@/components/WhatsAppPopup";
 
 const Footer = ({ locale }) => {
   let date = new Date().getFullYear();
@@ -75,7 +75,16 @@ const Footer = ({ locale }) => {
               Download Our Mobile App
             </p>
             <div className="flex items-center gap-2 lg:mt-5 mt-2">
-              <Image src={images?.googlePlay} alt="ebitans image" />
+              <a
+                href="https://play.google.com/store/apps/details?id=com.ebitans.adminebitans"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={images?.googlePlay}
+                  alt="ebitans Google Play image"
+                />
+              </a>
               <Image src={images?.appleStore} alt="ebitans image" />
             </div>
           </div>
