@@ -2,8 +2,6 @@ import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchBlogData, fetchBlogDetailsData } from "@/helper/api";
-import Script from "next/script";
-import Head from "next/head";
 
 export async function generateMetadata({ params }) {
   const { details } = (await fetchBlogDetailsData(params)) ?? [];
