@@ -32,7 +32,6 @@ const Blogs = async ({ params: { locale } }) => {
     (blog) => blog?.type === details?.type && blog?.id !== details?.id
   );
 
-  console.log("blogData", blogData);
  
   return (
     <>

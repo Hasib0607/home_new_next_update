@@ -8,13 +8,13 @@ const sitemap = async () => {
     const category = (await fetchPseCategory()) ?? []
 
     const blogs = blogData.map((post) => ({
-        url: `${webUrl}/resources/blogs/${post.slug}`,
+        url: `${webUrl}/resources/blogs/${post.permalink || post.slug}`,
         lastModified: `${post.updated_at}`
-    }))
+    })) ?? {};
     const blogsBn = blogData.map((post) => ({
-        url: `${webUrl}/bn/resources/blogs/${post.slug}`,
+        url: `${webUrl}/bn/resources/blogs/${post.permalink || post.slug}`,
         lastModified: `${post.updated_at}`
-    }))
+    })) ?? {};
     const productKhujo = category.map(({slug}) => ({
         url: `${webUrl}/product-khujo/category/${slug}`
     }))
