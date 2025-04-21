@@ -8,7 +8,7 @@ const PopupWrapper = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 3000); // 30 seconds
+    }, 60000);
 
     return () => clearTimeout(timer);
   }, []);

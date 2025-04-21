@@ -32,7 +32,6 @@ const Popup = ({ onClose }) => {
     onClose();
   };
 
-  console.log(popupData);
 
   if (!popupData) return null; // Wait for data to load
 
