@@ -7,8 +7,8 @@ import Services from "@/components/home/Services";
 import Theme from "@/components/home/Theme";
 import Work from "@/components/home/Work";
 import Register from "@/components/home/Register";
-
 import RegisterMiddle from "@/components/home/RegisterMiddle";
+import ViewContentGtm from "./ViewContentGtm";
 
 export const metadata = {
   title: {
@@ -19,6 +19,7 @@ export const metadata = {
 const Home = async ({ params: { locale } }) => {
   return (
     <main className="">
+      <ViewContentGtm title="Home Page" category="Landing" />
       <Hero locale={locale} />
       <CompanyLogo />
       <Dream locale={locale} />
