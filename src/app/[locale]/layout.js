@@ -11,7 +11,10 @@ import { dir } from "i18next";
 import i18nConfig from "../../../i18nConfig";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/components/StructuredData";
-import { fetchBlogPopularData } from "@/helper/api";
+import FacebookPixel from "@/utils/FacebookPixel";
+import GoogleTagManager from "@/utils/GoogleTagManager";
+import dynamic from "next/dynamic";
+const PopupWrapper = dynamic(() => import("@/components/PopupWrapper"), { ssr: false });
 
 const archivo = Archivo({ subsets: ["latin"], display: "swap" });
 
@@ -93,6 +96,8 @@ export default async function RootLayout({ children, params: { locale } }) {
           name="google-site-verification"
           content="Xs0AWKWY2yKdJjyWwwxt61arffxOHxDvaYBi2e3uKRM"
         />
+        <FacebookPixel />
+        <GoogleTagManager />
       </head>
       <body className={archivo.className}>
         <ScrollToTop />
@@ -112,6 +117,18 @@ export default async function RootLayout({ children, params: { locale } }) {
             <Footer locale={locale} />
           </ThemeProvider>
         </ThemeContextProvider>
+
+        <PopupWrapper /> 
+        
+        {/* GTM noscript */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NNL4WP82"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
       </body>
       <GoogleAnalytics gaId="G-R1P19DNPR8" />
     </html>
