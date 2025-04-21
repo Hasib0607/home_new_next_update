@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Popup = ({ onClose }) => {
     const [popupData, setPopupData] = useState(null);
@@ -36,8 +37,18 @@ const Popup = ({ onClose }) => {
   if (!popupData) return null; // Wait for data to load
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999]">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999] px-4">
+      <div className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-sm md:max-w-2xl lg:max-w-3xl text-center">
+        {/* Close icon in top right */}
+        <button
+          onClick={handleClick}
+          className="absolute top-1 right-1 p-1 text-white bg-gray-900 rounded-full hover:text-red-500 transition"
+          aria-label="Close popup"
+        >
+          <AiOutlineClose size={24} />
+        </button>
+
+        {/* Popup Image */}
         {popupData.image && (
           <img
             src={`https://admin.ebitans.com/assets/images/setting/${popupData.image}`}
@@ -45,14 +56,10 @@ const Popup = ({ onClose }) => {
             className="w-full h-auto mb-4 rounded"
           />
         )}
-        {/* <h2 className="text-xl font-bold mb-2">{popupData.title}</h2>
+
+        {/* Optional Title/SubTitle */}
+        {/* <h2 className="text-2xl font-bold mb-2">{popupData.title}</h2>
         <p className="mb-4">{popupData.subtitle}</p> */}
-        <button
-          onClick={handleClick}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Close
-        </button>
       </div>
     </div>
   );
