@@ -45,8 +45,8 @@ const Popup = ({ onClose }) => {
             className="w-full h-auto mb-4 rounded"
           />
         )}
-        <h2 className="text-xl font-bold mb-2">{popupData.title}</h2>
-        <p className="mb-4">{popupData.subtitle}</p>
+        {/* <h2 className="text-xl font-bold mb-2">{popupData.title}</h2>
+        <p className="mb-4">{popupData.subtitle}</p> */}
         <button
           onClick={handleClick}
           className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
