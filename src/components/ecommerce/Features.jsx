@@ -5,16 +5,16 @@ const Features = () => {
         eBitans-এ স্বল্প খরচে ই-কমার্সের সকল সুবিধাসহ ওয়েবসাইট
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-5">
-        <img src="/image/after-sales.png" alt="" />
-        <img src="/image/courier.png" alt="" />
-        <img src="/image/gtm.png" alt="" />
-        <img src="/image/mobile-app.png" alt="" />
-        <img src="/image/order-manegement.png" alt="" />
-        <img src="/image/payment-getway.png" alt="" />
-        <img src="/image/pixel.png" alt="" />
-        <img src="/image/pos.png" alt="" />
-        <img src="/image/customer.png" alt="" />
-        <img src="/image/order.png" alt="" />
+        <img src="/image/after-sales.webp" alt="" />
+        <img src="/image/courier.webp" alt="" />
+        <img src="/image/gtm.webp" alt="" />
+        <img src="/image/mobile-app.webp" alt="" />
+        <img src="/image/order-manegement.webp" alt="" />
+        <img src="/image/payment-getway.webp" alt="" />
+        <img src="/image/pixel.webp" alt="" />
+        <img src="/image/pos.webp" alt="" />
+        <img src="/image/customer.webp" alt="" />
+        <img src="/image/order.webp" alt="" />
       </div>
     </div>
   );

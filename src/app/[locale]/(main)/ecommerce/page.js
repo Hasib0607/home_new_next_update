@@ -6,6 +6,7 @@ import CustomerReview from "@/components/ecommerce/CustomerReview";
 import Demo from "@/components/ecommerce/Demo";
 import Features from "@/components/ecommerce/Features";
 import Intro from "@/components/ecommerce/Intro";
+import LandingContacts from "@/components/ecommerce/LandingContacts";
 import LandingFaq from "@/components/ecommerce/LandingFaq";
 import LandingRegistration from "@/components/ecommerce/LandingRegistration";
 import Price from "@/components/ecommerce/Price";
@@ -22,7 +23,7 @@ const Ecommerce = async ({ params: { locale } }) => {
   const registrationRef = useRef(null);
 
   return (
-    <div className="bg-[#F9F7F6] pt-20 relative">
+    <div className="bg-[#F9F7F6] pt-12 md:pt-20 relative">
       <div>
         <Intro />
       </div>
@@ -51,6 +52,9 @@ const Ecommerce = async ({ params: { locale } }) => {
       </div>
       <div>
         <LandingFaq />
+      </div>
+      <div>
+        <LandingContacts />
       </div>
     </div>
   );

@@ -1,11 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import Popup from "./Popup";
+import { usePathname } from "next/navigation";
 
 const PopupWrapper = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    // Don't show popup on /ecommerce (with or without locale)
+    const shouldHidePopup = pathname?.endsWith("/ecommerce");
+
+    if(shouldHidePopup) return;
+
     const timer = setTimeout(() => {
       setShowPopup(true);
       document.body.classList.add("overflow-hidden");

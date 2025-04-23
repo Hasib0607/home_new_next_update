@@ -6,7 +6,7 @@ const AdvantageFromOthers = () => {
       </h1>
       <div className="bg-gray-300 rounded-md py-4 md:py-32 px-4 md:px-20">
         <div className="border-b pb-2 border-black flex items-center gap-2 mb-4">
-          <img src="/image/checkbox.png" alt="" className="w-6" />
+          <img src="/image/checkbox.webp" alt="" className="w-6" />
           <h2 className="text-lg">
             <span className="font-bold">অসংখ্য থিম:</span>{" "}
             <span className="">
@@ -15,7 +15,7 @@ const AdvantageFromOthers = () => {
           </h2>
         </div>
         <div className="border-b pb-2 border-black flex items-center gap-2 mb-4">
-          <img src="/image/checkbox.png" alt="" className="w-6" />
+          <img src="/image/checkbox.webp" alt="" className="w-6" />
           <h2 className="text-lg">
             <span className="font-bold">প্রিমিয়াম ক্লাউড হোস্টিং:</span>{" "}
             <span className="">
@@ -24,7 +24,7 @@ const AdvantageFromOthers = () => {
           </h2>
         </div>
         <div className="border-b pb-2 border-black flex items-center gap-2 mb-4">
-          <img src="/image/checkbox.png" alt="" className="w-6" />
+          <img src="/image/checkbox.webp" alt="" className="w-6" />
           <h2 className="text-lg">
             <span className="font-bold">
               পেমেন্ট ছাড়াই ব্যবহার করার সুযোগ:
@@ -35,7 +35,7 @@ const AdvantageFromOthers = () => {
           </h2>
         </div>
         <div className="flex items-center gap-2">
-          <img src="/image/checkbox.png" alt="" className="w-6" />
+          <img src="/image/checkbox.webp" alt="" className="w-6" />
           <h2 className="text-lg">
             <span className="font-bold">সহজ পেমেন্ট গেইট-ওয়ে:</span>{" "}
             <span className="">

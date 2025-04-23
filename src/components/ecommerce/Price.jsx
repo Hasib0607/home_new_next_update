@@ -19,7 +19,7 @@ const Price = ({ scrollToRef }) => {
           <div className="">
             <div className="rounded-lg overflow-hidden shadow-md mb-10 border-4 border-[#f1593a]">
               <img
-                src="/image/besic.png"
+                src="/image/besic.webp"
                 alt=""
                 className="w-full h-full object-cover"
               />
@@ -35,7 +35,7 @@ const Price = ({ scrollToRef }) => {
           <div>
             <div className="rounded-lg overflow-hidden shadow-md mb-10 border-4 border-black">
               <img
-                src="/image/standard.png"
+                src="/image/standard.webp"
                 alt=""
                 className="w-full h-full object-cover"
               />
@@ -51,7 +51,7 @@ const Price = ({ scrollToRef }) => {
           <div>
             <div className="rounded-lg overflow-hidden shadow-md mb-10 border-4 border-[#f1593a]">
               <img
-                src="/image/standard-plus-6.png"
+                src="/image/standard-plus-6.webp"
                 alt=""
                 className="w-full h-full object-cover"
               />
@@ -67,7 +67,7 @@ const Price = ({ scrollToRef }) => {
           <div>
             <div className="rounded-lg overflow-hidden shadow-md mb-10 border-4 border-black">
               <img
-                src="/image/premium plan.png"
+                src="/image/premium plan.webp" 
                 alt=""
                 className="w-full h-full object-cover"
               />

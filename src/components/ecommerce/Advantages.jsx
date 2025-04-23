@@ -18,7 +18,7 @@ const Advantages = ({ scrollToRef }) => {
           <div className="border-2 border-black px-10 py-4 shadow-xl shadow-slate-600 w-full md:w-[450px]">
             <div className="flex items-center justify-center">
               <img
-                src="/image/checkbox.png"
+                src="/image/checkbox.webp"
                 alt="checkbox"
                 className="w-10 py-3"
               />
@@ -33,7 +33,7 @@ const Advantages = ({ scrollToRef }) => {
           <div className="border-2 border-black px-10 py-4 shadow-xl shadow-slate-600 w-full md:w-[450px]">
             <div className="flex items-center justify-center">
               <img
-                src="/image/checkbox.png"
+                src="/image/checkbox.webp"
                 alt="checkbox"
                 className="w-10 py-3"
               />
@@ -48,7 +48,7 @@ const Advantages = ({ scrollToRef }) => {
           <div className="border-2 border-black px-10 py-4 shadow-xl shadow-slate-600 w-full md:w-[450px]">
             <div className="flex items-center justify-center">
               <img
-                src="/image/checkbox.png"
+                src="/image/checkbox.webp"
                 alt="checkbox"
                 className="w-10 py-3"
               />
@@ -63,7 +63,7 @@ const Advantages = ({ scrollToRef }) => {
           <div className="border-2 border-black px-10 py-4 shadow-xl shadow-slate-600 w-full md:w-[550px]">
             <div className="flex items-center justify-center">
               <img
-                src="/image/checkbox.png"
+                src="/image/checkbox.webp"
                 alt="checkbox"
                 className="w-10 py-3"
               />
@@ -78,7 +78,7 @@ const Advantages = ({ scrollToRef }) => {
           <div className="border-2 border-black px-10 py-4 shadow-xl shadow-slate-600 w-full md:w-[550px]">
             <div className="flex items-center justify-center">
               <img
-                src="/image/checkbox.png"
+                src="/image/checkbox.webp"
                 alt="checkbox"
                 className="w-10 py-3"
               />
@@ -93,7 +93,7 @@ const Advantages = ({ scrollToRef }) => {
           <div className="border-2 border-black px-10 py-4 shadow-xl shadow-slate-600 w-full md:w-[550px]">
             <div className="flex items-center justify-center">
               <img
-                src="/image/checkbox.png"
+                src="/image/checkbox.webp"
                 alt="checkbox"
                 className="w-10 py-3"
               />
