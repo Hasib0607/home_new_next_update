@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 const layout = ({ children, params: { locale } }) => {
   const pathname = usePathname();
-  const hideHeaderFooter = pathname === `/${locale}/ecommerce`;
+  const hideHeaderFooter = pathname?.endsWith("/ecommerce");
   return (
     <>
       {hideHeaderFooter ? <LandingHeader /> : <MainHeader locale={locale} />}

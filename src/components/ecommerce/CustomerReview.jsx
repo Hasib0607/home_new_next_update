@@ -9,13 +9,13 @@ SwiperCore.use([Autoplay]);
 
 const CustomerReview = () => {
   const reviewImages = [
-    "/image/customer-review1.png",
-    "/image/customer-review2.png",
-    "/image/customer-review3.png",
-    "/image/customer-review4.png",
-    "/image/customer-review5.png",
-    "/image/customer-review6.png",
-    "/image/customer-review7.png",
+    "/image/customer-review1.webp",
+    "/image/customer-review2.webp",
+    "/image/customer-review3.webp",
+    "/image/customer-review4.webp",
+    "/image/customer-review5.webp",
+    "/image/customer-review6.webp",
+    "/image/customer-review7.webp",
   ];
 
   return (
