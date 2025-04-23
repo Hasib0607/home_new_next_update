@@ -84,7 +84,9 @@ const LandingRegistration = () => {
   return (
     <div className="border-black border-2 shadow-lg shadow-black">
       <form onSubmit={handleSubmit(handleRegister)} className="mx-2 md:mx-20">
-        <h1 className="text-3xl font-bold text-center py-4 my-10 bg-[#f1593a] text-white mx-4 md:mx-40 rounded-md shadow-xl shadow-slate-600">ই-কমার্স ওয়েবসাইট তৈরির জন্য এখনই রেজিস্ট্রেশন করুন</h1>
+        <h1 className="text-2xl md:text-3xl font-bold text-center py-4 my-10 bg-[#f1593a] text-white mx-4 px-2 md:mx-40 rounded-md shadow-xl shadow-slate-600">
+          ই-কমার্স ওয়েবসাইট তৈরির জন্য এখনই রেজিস্ট্রেশন করুন
+        </h1>
         <div className="flex gap-2 w-full">
           <div className="w-full">
             <input
@@ -101,7 +103,7 @@ const LandingRegistration = () => {
                 errors?.email_or_phone?.type === "required"
                   ? "border-red-500 focus:border-red-500"
                   : "border-[#f1593a] focus:border-[#f1593a]"
-              } h-[40px] sm:h-[48px] drop-shadow-4xl text-xs lg:text-base border-[2px] placeholder:text-[#a39f9e] focus:outline-none focus:ring-0 rounded-sm px-4`}
+              } h-[40px] sm:h-[48px] drop-shadow-4xl text-xs lg:text-base border-[2px] placeholder:text-[#a39f9e] focus:outline-none focus:ring-0 rounded-sm px-2`}
             />
             {errors?.email_or_phone?.type === "required" && (
               <span className="text-xs text-red-500 block">
@@ -123,9 +125,9 @@ const LandingRegistration = () => {
                 errors?.password?.type === "required"
                   ? "border-red-500 focus:border-red-500"
                   : "border-[#f1593a] focus:border-[#f1593a]"
-              } focus:outline-none focus:ring-0 rounded-sm px-4`}
+              } focus:outline-none focus:ring-0 rounded-sm px-2`}
             />
-            <div className="absolute right-2 top-1/2 -translate-y-1/2 z-[2] lg:cursor-pointer">
+            <div className="absolute right-2 top-[40%] -translate-y-1/2 z-[2] lg:cursor-pointer">
               {show ? (
                 <BsEye onClick={() => setShow(!show)} />
               ) : (
@@ -168,7 +170,7 @@ const LandingRegistration = () => {
           </span>
         )}
 
-        <div className="flex items-center justify-center lg:-mt-8 mt-3">
+        <div className="flex items-center justify-center lg:-mt-8 mt-3 mb-10">
           {loading ? (
             <button
               className={`group relative h-12 w-48 overflow-hidden rounded-lg bg-[#F1593A] text-lg shadow `}
