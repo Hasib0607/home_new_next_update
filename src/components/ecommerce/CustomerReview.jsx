@@ -21,7 +21,7 @@ const CustomerReview = () => {
   return (
     <div>
       <div className="container px-5 lg:px-10">
-        <h1 className="text-3xl font-bold text-center px-10 py-4 my-10 bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
+        <h1 className="text-2xl md:text-3xl font-bold text-center px-2 md:px-10 py-4 my-10 bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
           eBitans এর সার্ভিস সম্পর্কে সম্মানিত গ্রাহকদের কিছু মন্তব্য
         </h1>
 

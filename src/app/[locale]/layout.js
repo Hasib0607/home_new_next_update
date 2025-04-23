@@ -114,7 +114,7 @@ export default async function RootLayout({ children, params: { locale } }) {
         <ThemeContextProvider>
           <ThemeProvider>
             <div className="min-h-screen">{children}</div>
-            <Footer locale={locale} />
+            {/* <Footer locale={locale} /> */}
           </ThemeProvider>
         </ThemeContextProvider>
 

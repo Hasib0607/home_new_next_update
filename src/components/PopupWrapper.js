@@ -8,6 +8,7 @@ const PopupWrapper = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
+      document.body.classList.add("overflow-hidden");
     }, 60000);
 
     return () => clearTimeout(timer);
@@ -15,7 +16,15 @@ const PopupWrapper = () => {
 
   const handleClose = () => {
     setShowPopup(false);
+    document.body.classList.remove("overflow-hidden");
   };
+
+  // Also remove overflow-hidden if component unmounts
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, []);
 
   return showPopup ? <Popup onClose={handleClose} /> : null;
 };

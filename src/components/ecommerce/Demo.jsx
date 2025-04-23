@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { baseUrl } from "@/constants/baseUrl";
 import LandingButton from "./LandingButton";
 
-const Demo = ({ locale }) => {
+const Demo = ({ locale, scrollToRef }) => {
   const bangla = locale !== "en";
   const [templates, setTemplates] = useState([]);
   const [isMobile, setIsMobile] = useState(null);
@@ -32,13 +32,20 @@ const Demo = ({ locale }) => {
       setIsMobile(window.innerWidth < 1024);
     }
   }, []);
+
+  const handleScroll = () => {
+    if (scrollToRef?.current) {
+      scrollToRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section>
       <div className={`${styles.templateBgGradient} relative z-[1]`}>
         <div className="">
-          <div className="flex justify-center items-center pt-16">
+          <div className="flex justify-center items-center pt-10 px-5">
             <div className="">
-              <h1 className="text-3xl font-bold text-center px-10 py-4 my-10 bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
+              <h1 className="text-2xl md:text-3xl font-bold text-center px-2 md:px-10 py-4 my-10 bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
                 আপনার পছন্দের ডেমো দেখুন
               </h1>
             </div>
@@ -117,7 +124,7 @@ const Demo = ({ locale }) => {
           <div className="flex justify-center pb-28">
             <LandingButton
               label="ওয়েবসাইট নিন"
-              onClick={() => console.log("ওয়েবসাইট নিন clicked")}
+              onClick={handleScroll}
               className="mx-auto my-11"
             />
           </div>

@@ -1,11 +1,17 @@
 "use client";
 import LandingButton from "./LandingButton";
 
-const Advantages = () => {
+const Advantages = ({ scrollToRef }) => {
+  const handleScroll = () => {
+    if (scrollToRef?.current) {
+      scrollToRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="bg-[#F9F7F6] relative">
-      <div className="border-y-2 border-black">
-        <h1 className="text-3xl font-bold text-center py-4 my-10 bg-[#f1593a] text-white mx-40 rounded-md shadow-lg shadow-slate-600">
+      <div className="border-y-2 border-black px-4">
+        <h1 className="text-2xl md:text-3xl font-bold text-center py-4 my-10 bg-[#f1593a] text-white px-2 md:mx-40 rounded-md shadow-lg shadow-slate-600">
           eBitans থেকে ই-কমার্স ওয়েবসাইট নেওয়ার সুবিধাসমূহ
         </h1>
         <div className="flex gap-5 justify-center flex-col md:flex-row">
@@ -103,7 +109,7 @@ const Advantages = () => {
         <div className="flex justify-center my-12">
           <LandingButton
             label="ওয়েবসাইট নিন"
-            onClick={() => console.log("ওয়েবসাইট নিন clicked")}
+            onClick={handleScroll}
             className="mx-auto"
           />
         </div>
