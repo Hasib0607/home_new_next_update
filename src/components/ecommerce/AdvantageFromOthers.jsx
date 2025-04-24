@@ -36,7 +36,7 @@ const AdvantageFromOthers = () => {
           <img src="/image/checkbox.webp" alt="" className="w-6" />
           <h2 className="text-lg">
             <span className="font-bold text-2xl md:text-3xl">প্রিমিয়াম ক্লাউড হোস্টিং:</span>{" "}
-            <span className="text-2xl md:text-3xl">
+            <span className="text-xl md:text-2xl">
               প্যাকেজের মধ্যে আনলিমিটেড ক্লাউড হোস্টিং এবং ব্যান্ডউইথ। এর জন্য আলাদা করে কোনো টাকা খরজ করতে হচ্ছে না।
             </span>
           </h2>
@@ -47,7 +47,7 @@ const AdvantageFromOthers = () => {
             <span className="font-bold text-2xl md:text-3xl">
               পেমেন্ট ছাড়াই ব্যবহার করার সুযোগ:
             </span>{" "}
-            <span className="text-2xl md:text-3xl">
+            <span className="text-xl md:text-2xl">
               আগে ব্যবহার করে তারপর মাসের শেষে পেমেন্ট করার সুযোগ। 
             </span>
           </h2>
@@ -56,7 +56,7 @@ const AdvantageFromOthers = () => {
           <img src="/image/checkbox.webp" alt="" className="w-6" />
           <h2 className="text-lg">
             <span className="font-bold text-2xl md:text-3xl">সহজ পেমেন্ট গেইট-ওয়ে:</span>{" "}
-            <span className="text-2xl md:text-3xl">
+            <span className="text-xl md:text-2xl">
               বিকাশ, নগদ-এর মাধ্যমে অ্যাকাউন্ট ছাড়াই অগ্রিম ডেলিভারি চার্জ
               নেওয়ার সুবিধা
             </span>
