@@ -1,10 +1,10 @@
 const AdvantageFromOthers = () => {
   return (
-    <div className="border-y-2 border-black py-4 md:py-32 px-4 md:px-20">
-      <h1 className="text-2xl md:text-3xl font-bold text-center py-4 my-10 bg-[#f1593a] text-white px-2 md:mx-40 rounded-md shadow-lg shadow-slate-600">
+    <div className="border-y-2 border-black py-4 md:py-32 px-4 md:px-20 bg-red-100">
+      <h1 className="container text-2xl md:text-3xl font-bold text-center py-4 my-10 bg-[#f1593a] text-white px-2 rounded-md shadow-lg shadow-slate-600">
         অন্যদের থেকে eBitans-এ কী কী বেশি পাচ্ছেন?
       </h1>
-      <div className="bg-gray-300 rounded-md py-4 md:py-32 px-4 md:px-20">
+      <div className="bg-gray-300 container rounded-md py-4 md:py-32 px-4 md:px-20">
         <div className="border-b pb-2 border-black flex items-center gap-2 mb-4">
           <img src="/image/checkbox.webp" alt="" className="w-6" />
           <h2 className="text-lg">

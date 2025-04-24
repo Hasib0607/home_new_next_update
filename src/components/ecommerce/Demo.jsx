@@ -50,7 +50,7 @@ const Demo = ({ locale, scrollToRef }) => {
       <div className={`bg-red-100 relative z-[1]`}>
         <div className="">
           <div className="flex justify-center items-center pt-10 px-5">
-            <div className="">
+            <div className="container">
               <h1 className="text-2xl md:text-3xl font-bold text-center px-2 md:px-10 py-4 my-10 bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
                 আপনার পছন্দের ডেমো দেখুন
               </h1>
@@ -127,7 +127,7 @@ const Demo = ({ locale, scrollToRef }) => {
               </a>
             ))}
           </Marquee>
-          <div className="flex justify-center pb-10">
+          <div className="flex justify-center py-20 ">
             {/* <LandingButton
               label="ওয়েবসাইট নিন"
               onClick={handleScroll}
@@ -135,7 +135,7 @@ const Demo = ({ locale, scrollToRef }) => {
             /> */}
             <a
             href="/solutions/all-theme"
-            className={`mx-auto my-11 bg-black text-white px-9 py-3 rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}>
+            className={`px-16 py-6 mx-auto my-11 bg-black text-white rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}>
               আরও ডেমো দেখুন 
             </a>
           </div>

@@ -18,19 +18,19 @@ const LandingHeader = () => {
                 height={600}
                 src={images?.darkBoldLogo}
                 alt="ebitansLogo"
-                className="lg:h-22 h-8 w-44"
+                className="lg:h-auto h-8 w-48"
               />
             </Link>
           </div>
 
-          <Marquee className="mx-10" speed={40} pauseOnHover={true}>
+          <Marquee className="mx-2 md:mx-10 py-10" speed={40} pauseOnHover={true}>
             <div className="flex gap-1 items-center justify-center font-bold md:text-3xl">
               {/* <BsFillTelephoneFill /> */}
               {/* <a href="tel:01886515579" className="hover:underline">
                 01886515579 
               </a> */}
-              <a className="px-20">
-              কোন খরচ ছাড়াই, শুধু রেজিস্ট্রেশন ফি দিয়ে ব্যবহার করুন 🛒 নিজের পূর্ণাজ্ঞ ই-কমার্স ওয়েবসাইট আর বিক্রি শুরু করুন আজই।🛒 -
+              <a className="px-20 tracking-wide">
+              কোন খরচ ছাড়াই, শুধু রেজিস্ট্রেশন ফি দিয়ে ব্যবহার করুন   🛒   নিজের পূর্ণাঙ্গ ই-কমার্স ওয়েবসাইট আর বিক্রি শুরু করুন আজই   🛒 
               </a>
             </div>
           </Marquee>
