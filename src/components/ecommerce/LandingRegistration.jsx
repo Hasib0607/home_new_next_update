@@ -82,10 +82,10 @@ const LandingRegistration = () => {
   };
 
   return (
-    <div className="border-black border-2 shadow-lg shadow-black">
-      <form onSubmit={handleSubmit(handleRegister)} className="mx-2 md:mx-20">
-        <h1 className="text-2xl md:text-3xl font-bold text-center py-4 my-10 bg-[#f1593a] text-white mx-4 px-2 md:mx-40 rounded-md shadow-xl shadow-slate-600">
-          ই-কমার্স ওয়েবসাইট তৈরির জন্য এখনই রেজিস্ট্রেশন করুন
+    <div className="border-black border-4 shadow-lg shadow-black">
+      <form onSubmit={handleSubmit(handleRegister)} className="mx-2 md:mx-20 py-20">
+        <h1 className="text-2xl md:text-3xl font-bold text-center py-4 mt-12 mb-28 bg-[#f1593a] text-white mx-4 px-2 md:mx-40 rounded-md shadow-xl shadow-slate-600">
+          ই-কমার্স ওয়েবসাইট তৈরির জন্য আপনার মোবাইল নাম্বার এবং পাসওয়ার্ড দিয়ে এখনই রেজিস্ট্রেশন করুন
         </h1>
         <div className="flex gap-2 w-full">
           <div className="w-full">
@@ -186,10 +186,10 @@ const LandingRegistration = () => {
             <>
               <button
                 type="submit"
-                className={`group relative h-16 w-80 overflow-hidden rounded-[3px] bg-[#F1593A] text-lg shadow `}
+                className={`group relative h-16 w-80 overflow-hidden rounded-[3px] bg-[#F1593A] text-lg shadow-xl `}
               >
                 <div
-                  className={`absolute inset-0 w-1 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
+                  className={`absolute inset-0 w-1 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full `}
                 ></div>
                 <span
                   className={`${styles.archivo} relative text-white flex items-center justify-around font-bold text-2xl`}

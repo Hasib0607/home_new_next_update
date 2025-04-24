@@ -2,6 +2,7 @@
 import laptop from '@/assets/images/laptop.png';
 import review from '@/assets/images/review.png';
 import darkLogo from '@/assets/images/logo-dark.png';
+import darkBoldLogo from '@/assets/images/dark_bold.png';
 import plan from '@/assets/images/plan.png';
 import register from '@/assets/images/register.png';
 import world from '@/assets/images/world.png';
@@ -87,6 +88,7 @@ import phoneEbitans from "@/assets/images/phone ebitans.png"
 
 const images = {
     darkLogo: darkLogo,
+    darkBoldLogo: darkBoldLogo,
     laptop: laptop,
     review: review,
     plan: plan,

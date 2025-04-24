@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "@/components/home/home.module.css";
 import images from "@/lib/images";
-import { BsFillTelephoneFill } from "react-icons/bs";
+// import { BsFillTelephoneFill } from "react-icons/bs";
 import Marquee from "react-fast-marquee";
 
 const LandingHeader = () => {
@@ -14,20 +14,23 @@ const LandingHeader = () => {
           <div>
             <Link href="/">
               <Image
-                width={500}
-                height={500}
-                src={images?.darkLogo}
+                width={600}
+                height={600}
+                src={images?.darkBoldLogo}
                 alt="ebitansLogo"
-                className="lg:h-12 h-7 w-auto"
+                className="lg:h-auto h-8 w-48"
               />
             </Link>
           </div>
 
-          <Marquee speed={60} pauseOnHover={true}>
+          <Marquee className="mx-2 md:mx-10 py-10" speed={40} pauseOnHover={true}>
             <div className="flex gap-1 items-center justify-center font-bold md:text-3xl">
-              <BsFillTelephoneFill />
-              <a href="tel:01886515579" className="hover:underline">
-                01886515579
+              {/* <BsFillTelephoneFill /> */}
+              {/* <a href="tel:01886515579" className="hover:underline">
+                01886515579 
+              </a> */}
+              <a className="px-20 tracking-wide">
+              কোন খরচ ছাড়াই, শুধু রেজিস্ট্রেশন ফি দিয়ে ব্যবহার করুন   🛒   নিজের পূর্ণাঙ্গ ই-কমার্স ওয়েবসাইট আর বিক্রি শুরু করুন আজই   🛒 
               </a>
             </div>
           </Marquee>

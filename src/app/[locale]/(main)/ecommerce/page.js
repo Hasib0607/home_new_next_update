@@ -9,7 +9,7 @@ import Intro from "@/components/ecommerce/Intro";
 import LandingContacts from "@/components/ecommerce/LandingContacts";
 import LandingFaq from "@/components/ecommerce/LandingFaq";
 import LandingRegistration from "@/components/ecommerce/LandingRegistration";
-import Price from "@/components/ecommerce/Price";
+// import Price from "@/components/ecommerce/Price";
 import { useRef } from "react";
 
 // export const metadata = {
@@ -36,9 +36,9 @@ const Ecommerce = async ({ params: { locale } }) => {
       <div>
         <Features />
       </div>
-      <div>
+      {/* <div>
         <Price scrollToRef={registrationRef} />
-      </div>
+      </div> */}
       <div>
         <CustomerReview />
       </div>
