@@ -128,11 +128,16 @@ const Demo = ({ locale, scrollToRef }) => {
             ))}
           </Marquee>
           <div className="flex justify-center pb-28">
-            <LandingButton
+            {/* <LandingButton
               label="ওয়েবসাইট নিন"
               onClick={handleScroll}
               className="mx-auto my-11"
-            />
+            /> */}
+            <a
+            href="/solutions/all-theme"
+            className={`bg-black text-white px-9 py-3 rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}>
+              আরও ডেমো দেখুন 
+            </a>
           </div>
         </div>
       </div>

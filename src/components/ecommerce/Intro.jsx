@@ -1,7 +1,7 @@
 const Intro = () => {
   return (
     <div>
-      <picture>
+      <picture >
         <source
           media="(max-width: 767px)"
           srcSet="/image/header-image-mobile.png"
