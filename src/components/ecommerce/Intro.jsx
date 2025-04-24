@@ -1,7 +1,18 @@
 const Intro = () => {
   return (
     <div>
-      <img src="/image/header-image.webp" alt="" className="w-full h-full object-cover" />
+      <picture>
+        <source
+          media="(max-width: 767px)"
+          srcSet="/image/header-image-mobile.png"
+          className="w-full h-full object-cover"
+        />
+        <img
+          src="/image/header-image.webp"
+          alt="Header"
+          className="w-full h-full object-cover"
+        />
+      </picture>
     </div>
   );
 };
