@@ -3,11 +3,23 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
 import "swiper/css";
-
+import LandingButton from "./LandingButton";
 // Activate autoplay
 SwiperCore.use([Autoplay]);
 
-const CustomerReview = () => {
+const CustomerReview = ({ scrollToRef }) => {
+  const handleScroll = () => {
+    if (scrollToRef?.current) {
+      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const offset = -200; // adjust this value to scroll a bit higher (try -80 to -150 as needed)
+  
+      window.scrollTo({
+        top: topOffset + offset,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const reviewImages = [
     "/image/customer-review1.webp",
     "/image/customer-review2.webp",
@@ -52,6 +64,13 @@ const CustomerReview = () => {
           ))}
         </Swiper>
       </div>
+
+      <div className="flex justify-center my-12">
+          <LandingButton
+            onClick={handleScroll}
+            className="mx-auto"
+          />
+        </div>
     </div>
   );
 };

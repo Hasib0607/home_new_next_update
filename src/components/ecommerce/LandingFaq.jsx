@@ -10,6 +10,11 @@ const LandingFaq = () => {
   `;
 
   return (
+    <div>
+      <h1 className="text-2xl md:text-3xl font-bold text-center px-2 md:px-10 py-4 my-10 bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
+        কাস্টমাররা যা যা জানতে চায় 
+      </h1>
+    
     <div className="lg:px-10 py-10 gap-4 grid grid-cols-1 lg:grid-cols-2 w-full bg-gray-300">
       <style>{styleCss}</style>
       <div className="flex flex-col gap-4 w-full">
@@ -66,6 +71,7 @@ const LandingFaq = () => {
           ))}
         </Accordion>
       </div>
+    </div>
     </div>
   );
 };

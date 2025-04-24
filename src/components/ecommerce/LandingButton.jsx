@@ -1,4 +1,4 @@
-const LandingButton = ({  onClick, className = "", type = "button" }) => {
+const LandingButton = ({ onClick, className = "", type = "button" }) => {
     return (
         <button
           type={type}
