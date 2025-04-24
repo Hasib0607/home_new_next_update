@@ -36,7 +36,7 @@ const Features = ({ scrollToRef }) => {
         <img src="/image/order.webp" alt="" />
       </div>
 
-      <div className="flex justify-center pt-24 mb-16">
+      <div className="flex justify-center pt-8 md:pt-24 mb-8 md:mb-16">
           <LandingButton
             onClick={handleScroll}
             className="mx-auto"

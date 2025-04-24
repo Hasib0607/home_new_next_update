@@ -127,7 +127,7 @@ const Demo = ({ locale, scrollToRef }) => {
               </a>
             ))}
           </Marquee>
-          <div className="flex justify-center py-20 ">
+          <div className="flex justify-center py-2 md:py-20 ">
             {/* <LandingButton
               label="ওয়েবসাইট নিন"
               onClick={handleScroll}
@@ -135,7 +135,7 @@ const Demo = ({ locale, scrollToRef }) => {
             /> */}
             <a
             href="/solutions/all-theme"
-            className={`px-16 py-6 mx-auto my-11 bg-black text-white rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}>
+            className={`px-10 md:px-16 py-4 md:py-6 mx-auto my-11 bg-black text-white rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}>
               আরও ডেমো দেখুন 
             </a>
           </div>
