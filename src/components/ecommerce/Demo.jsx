@@ -47,7 +47,7 @@ const Demo = ({ locale, scrollToRef }) => {
 
   return (
     <section>
-      <div className={`${styles.templateBgGradient} relative z-[1]`}>
+      <div className={`bg-red-100 relative z-[1]`}>
         <div className="">
           <div className="flex justify-center items-center pt-10 px-5">
             <div className="">
@@ -127,7 +127,7 @@ const Demo = ({ locale, scrollToRef }) => {
               </a>
             ))}
           </Marquee>
-          <div className="flex justify-center pb-28">
+          <div className="flex justify-center pb-10">
             {/* <LandingButton
               label="ওয়েবসাইট নিন"
               onClick={handleScroll}
@@ -135,7 +135,7 @@ const Demo = ({ locale, scrollToRef }) => {
             /> */}
             <a
             href="/solutions/all-theme"
-            className={`bg-black text-white px-9 py-3 rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}>
+            className={`mx-auto my-11 bg-black text-white px-9 py-3 rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}>
               আরও ডেমো দেখুন 
             </a>
           </div>

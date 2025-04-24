@@ -4,7 +4,7 @@ const Intro = () => {
       <picture >
         <source
           media="(max-width: 767px)"
-          srcSet="/image/header-image-mobile.png"
+          srcSet="/image/header-image-3.webp"
           className="w-full h-full object-cover"
         />
         <img

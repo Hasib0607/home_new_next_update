@@ -16,7 +16,7 @@ const Advantages = ({ scrollToRef }) => {
 
   return (
     <div className="bg-[#F9F7F6] relative">
-      <div className="border-y-2 border-black px-4">
+      <div className="border-y-4 border-black pb-4">
         <h1 className="text-2xl md:text-3xl font-bold text-center py-4 my-10 bg-[#f1593a] text-white px-2 md:mx-40 rounded-md shadow-lg shadow-slate-600">
           eBitans থেকে ই-কমার্স ওয়েবসাইট নেওয়ার সুবিধাসমূহ
         </h1>
