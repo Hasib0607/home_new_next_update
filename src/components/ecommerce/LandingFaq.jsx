@@ -3,6 +3,7 @@ import { Accordion } from "keep-react";
 import styles from "@/components/home/home.module.css";
 
 const LandingFaq = () => {
+  
   const styleCss = `
   .red-link {
       color: blue;
