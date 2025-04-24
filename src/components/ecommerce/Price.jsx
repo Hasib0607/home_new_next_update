@@ -5,7 +5,13 @@ import LandingButton from "./LandingButton";
 const Price = ({ scrollToRef }) => {
   const handleScroll = () => {
     if (scrollToRef?.current) {
-      scrollToRef.current.scrollIntoView({ behavior: "smooth" });
+      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const offset = -200;
+  
+      window.scrollTo({
+        top: topOffset + offset,
+        behavior: "smooth",
+      });
     }
   };
 

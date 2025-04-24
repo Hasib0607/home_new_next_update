@@ -41,9 +41,9 @@ const Ecommerce = async ({ params: { locale } }) => {
       </div>
       <div>
         <CustomerReview />
-        <div>
-          <AdvantageFromOthers />
-        </div>
+      </div>
+      <div>
+        <AdvantageFromOthers />
       </div>
       <div className="bg-[#f1593a] py-14">
         <div className="container bg-white" ref={registrationRef}>

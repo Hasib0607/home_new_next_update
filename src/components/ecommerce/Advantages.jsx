@@ -4,7 +4,13 @@ import LandingButton from "./LandingButton";
 const Advantages = ({ scrollToRef }) => {
   const handleScroll = () => {
     if (scrollToRef?.current) {
-      scrollToRef.current.scrollIntoView({ behavior: "smooth" });
+      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const offset = -200; // adjust this value to scroll a bit higher (try -80 to -150 as needed)
+  
+      window.scrollTo({
+        top: topOffset + offset,
+        behavior: "smooth",
+      });
     }
   };
 

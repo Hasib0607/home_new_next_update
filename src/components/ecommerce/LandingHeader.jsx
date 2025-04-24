@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "@/components/home/home.module.css";
 import images from "@/lib/images";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import Marquee from "react-fast-marquee";
 
 const LandingHeader = () => {
   return (
@@ -22,12 +23,14 @@ const LandingHeader = () => {
             </Link>
           </div>
 
-          <div className="flex gap-1 items-center justify-center font-bold md:text-3xl">
-            <BsFillTelephoneFill />
-            <a href="tel:01886515579" className="hover:underline">
-              01886515579
-            </a>
-          </div>
+          <Marquee speed={60} pauseOnHover={true}>
+            <div className="flex gap-1 items-center justify-center font-bold md:text-3xl">
+              <BsFillTelephoneFill />
+              <a href="tel:01886515579" className="hover:underline">
+                01886515579
+              </a>
+            </div>
+          </Marquee>
 
           <div className="flex items-center gap-2">
             <a href="https://admin.ebitans.com/login">
