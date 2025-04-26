@@ -4,16 +4,16 @@ import LandingButton from "./LandingButton";
 import VideoModal from "./VideoModal";
 
 const videoData = [
-  { src: "/image/after-sales.webp", videoUrl: "https://www.youtube.com/embed/UV0mhY2Dxr0?si=wkTgCw6TPTd39K0t" },
-  { src: "/image/courier.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID2" },
-  { src: "/image/gtm.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID3" },
-  { src: "/image/mobile-app.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID4" },
-  { src: "/image/order-manegement.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID5" },
-  { src: "/image/payment-getway.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID6" },
-  { src: "/image/pixel.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID7" },
-  { src: "/image/pos.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID8" },
-  { src: "/image/customer.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID9" },
-  { src: "/image/order.webp", videoUrl: "https://www.youtube.com/embed/VIDEO_ID10" },
+  { src: "/image/payment-getway.webp", videoUrl: "https://www.youtube.com/embed/EFPk-Cyb-bo" },
+  { src: "/image/pixel.webp", videoUrl: "https://www.youtube.com/embed/udxpwATYASQ" },
+  { src: "/image/order.webp", videoUrl: "https://www.youtube.com/embed/aXtCpdwvmuo" },
+  { src: "/image/order-manegement.webp", videoUrl: "https://www.youtube.com/embed/DKh49y0B8BQ" },
+  { src: "/image/gtm.webp", videoUrl: "https://www.youtube.com/embed/6adBh9ZfIBQ" },
+  { src: "/image/mobile-app.webp", videoUrl: "https://www.youtube.com/embed/0JbCpG85UjA" },
+  { src: "/image/after-sales.webp", videoUrl: "" },
+  { src: "/image/courier.webp", videoUrl: "" },
+  { src: "/image/pos.webp", videoUrl: "https://www.youtube.com/embed/jyxU4qGTntM" },
+  { src: "/image/customer.webp", videoUrl: "" },
 ];
 
 const Features = ({ scrollToRef }) => {
@@ -22,7 +22,7 @@ const Features = ({ scrollToRef }) => {
   const handleScroll = () => {
     if (scrollToRef?.current) {
       const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
-      const offset = -200;
+      const offset = -160;
 
       window.scrollTo({
         top: topOffset + offset,
@@ -32,14 +32,14 @@ const Features = ({ scrollToRef }) => {
   };
 
   return (
-    <div className="border-b-2 border-black bg-red-100">
+    <div className="border-y-2 border-black bg-red-100">
       <div className="container pb-5 lg:pb-10 pt-20">
         <h1 className="text-2xl md:text-3xl font-bold text-center px-2 md:px-10 py-4  bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
           eBitans-এ স্বল্প খরচে ই-কমার্সের সকল সুবিধাসহ ওয়েবসাইট
         </h1>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {videoData.map((item, index) => (
-            <div key={index} className="text-center">
+            <div key={index} className="text-center ">
               <img src={item.src} alt="" className="mx-auto" />
               <button
                 onClick={() => setSelectedVideo(item.videoUrl)}

@@ -31,11 +31,12 @@ const Ecommerce = async ({ params: { locale } }) => {
       <div>
         <Intro />
       </div>
-      <div>
-        <Demo scrollToRef={registrationRef} />
-      </div>
+
       <div>
         <Advantages scrollToRef={registrationRef} />
+      </div>
+      <div>
+        <Youtube />
       </div>
       <div>
         <Features scrollToRef={registrationRef} />
@@ -43,6 +44,9 @@ const Ecommerce = async ({ params: { locale } }) => {
       {/* <div>
         <Price scrollToRef={registrationRef} />
       </div> */}
+            <div>
+        <Demo scrollToRef={registrationRef} />
+      </div>
       <div>
         <CustomerReview scrollToRef={registrationRef} />
       </div>
@@ -52,9 +56,7 @@ const Ecommerce = async ({ params: { locale } }) => {
       <div>
         <Price1 />
       </div>
-      <div>
-        <Youtube />
-      </div>
+      
       <div className="bg-[#f1593a] py-14">
         <div className="container bg-white" ref={registrationRef}>
           <LandingRegistration />
