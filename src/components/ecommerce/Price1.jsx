@@ -29,7 +29,7 @@ const Price1 = ({ scrollToRef }) => {
           <h2 className="font-bold text-3xl md:text-[50px] text-center my-10" heartbeat={true}>
             অফার প্রাইস <span className="text-green-500 text-3xl md:text-[80px]" heartbeat={true}>২৪৯</span> টাকা
           </h2>
-          <h2 className="font-bold text-2xl md:text-4xl text-center mt-10 px-28" >
+          <h2 className="font-bold text-2xl md:text-4xl text-center mt-10 px-4 md:px-28" >
             এক মাস একদম ফ্রি ই-কমার্স ওয়েবসাইট ব্যবহার করুন —🛒 মাত্র ২৪৯ টাকায় রেজিস্ট্রেশন করে — আজই বিক্রি শুরু করুন আপনার নিজের ওয়েবসাইট থেকে!
           </h2>
         </div>
