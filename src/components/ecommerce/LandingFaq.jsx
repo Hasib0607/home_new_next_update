@@ -53,7 +53,7 @@ const LandingFaq = () => {
               className="w-full h-auto px-4 mb-2 rounded border lg:cursor-pointer"
             >
               <Accordion.Container className="text-left bg-[#f1593a]">
-                <h3 className={`${styles.archivo} text-lg md:text-2xl mr-2`}>
+                <h3 className={`${styles.archivo} text-lg md:text-2xl mr-2 font-semibold`}>
                   {item?.titleBn}
                 </h3>
                 <Accordion.Icon />
