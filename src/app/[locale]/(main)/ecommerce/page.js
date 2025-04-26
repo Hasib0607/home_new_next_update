@@ -34,13 +34,13 @@ const Ecommerce = async ({ params: { locale } }) => {
         <Advantages scrollToRef={registrationRef} />
       </div>
       <div>
-        <Features />
+        <Features scrollToRef={registrationRef} />
       </div>
       {/* <div>
         <Price scrollToRef={registrationRef} />
       </div> */}
       <div>
-        <CustomerReview />
+        <CustomerReview scrollToRef={registrationRef} />
       </div>
       <div>
         <AdvantageFromOthers />

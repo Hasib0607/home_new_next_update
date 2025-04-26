@@ -39,6 +39,8 @@ const Features = ({ scrollToRef }) => {
       <div className="flex justify-center pt-8 md:pt-24 mb-8 md:mb-16">
           <LandingButton
             onClick={handleScroll}
+            label="ওয়েবসাইট তৈরি করুন এখনই"
+            heartbeat={true}
             className="mx-auto"
           />
         </div>
