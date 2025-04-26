@@ -1,7 +1,6 @@
 import initTranslations from '@/app/i18n';
 import Header from './Header'
 import TranslationsProvider from '../TranslationProvider';
-import LandingHeader from '../ecommerce/LandingHeader';
 
 const MainHeader = async ({ locale }) => {
     const i18nNamespaces = ['home'];
@@ -13,7 +12,6 @@ const MainHeader = async ({ locale }) => {
                 locale={locale}
                 resources={resources}>
                 <Header locale={locale} />
-                <LandingHeader />
             </TranslationsProvider>
         </div>
     )
