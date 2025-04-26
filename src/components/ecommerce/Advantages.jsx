@@ -4,9 +4,10 @@ import LandingButton from "./LandingButton";
 const Advantages = ({ scrollToRef }) => {
   const handleScroll = () => {
     if (scrollToRef?.current) {
-      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const topOffset =
+        scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
       const offset = -200; // adjust this value to scroll a bit higher (try -80 to -150 as needed)
-  
+
       window.scrollTo({
         top: topOffset + offset,
         behavior: "smooth",
@@ -33,7 +34,7 @@ const Advantages = ({ scrollToRef }) => {
               আনলিমিটেড ক্লাউড হোস্টিং
             </h2>
             <p className="text-center text-lg py-3">
-              আমরা Cloud হোস্টিং দিচ্ছি, আপনাকে আলাদা করে হোস্টিং কিনতে হবে না। 
+              আমরা Cloud হোস্টিং দিচ্ছি, আপনাকে আলাদা করে হোস্টিং কিনতে হবে না।
             </p>
           </div>
           <div className="border-2 border-black px-10 py-4 shadow-xl shadow-slate-600 w-full md:w-[450px]">
@@ -48,7 +49,8 @@ const Advantages = ({ scrollToRef }) => {
               সুপার-ফাস্ট ওয়েবসাইট
             </h2>
             <p className="text-center text-lg py-3">
-              ওয়েবসাইট হবে সুপার ফাস্ট, সর্বোচ্চ ১ সেকেন্ডের মধ্যে ওয়েবসাইট লোড হবে।
+              ওয়েবসাইট হবে সুপার ফাস্ট, সর্বোচ্চ ১ সেকেন্ডের মধ্যে ওয়েবসাইট লোড
+              হবে।
             </p>
           </div>
           <div className="border-2 border-black px-10 py-4 shadow-xl shadow-slate-600 w-full md:w-[450px]">
@@ -115,9 +117,11 @@ const Advantages = ({ scrollToRef }) => {
         <div className="flex justify-center pt-24 mb-16">
           <LandingButton
             onClick={handleScroll}
+            label="ওয়েবসাইট তৈরি করুন এখনই"
             className="mx-auto"
           />
         </div>
+       
       </div>
     </div>
   );
