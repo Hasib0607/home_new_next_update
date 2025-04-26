@@ -5,7 +5,6 @@ import Marquee from "react-fast-marquee";
 import styles from "../home/home.module.css";
 import { useEffect, useState } from "react";
 import { baseUrl } from "@/constants/baseUrl";
-import LandingButton from "./LandingButton";
 
 const Demo = ({ locale, scrollToRef }) => {
   const bangla = locale !== "en";
@@ -35,9 +34,10 @@ const Demo = ({ locale, scrollToRef }) => {
 
   const handleScroll = () => {
     if (scrollToRef?.current) {
-      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const topOffset =
+        scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
       const offset = -200;
-  
+
       window.scrollTo({
         top: topOffset + offset,
         behavior: "smooth",
@@ -128,15 +128,11 @@ const Demo = ({ locale, scrollToRef }) => {
             ))}
           </Marquee>
           <div className="flex justify-center py-2 md:py-20 ">
-            {/* <LandingButton
-              label="ওয়েবসাইট নিন"
-              onClick={handleScroll}
-              className="mx-auto my-11"
-            /> */}
             <a
-            href="/solutions/all-theme"
-            className={`px-10 md:px-16 py-4 md:py-6 mx-auto my-11 bg-black text-white rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}>
-              আরও ডেমো দেখুন 
+              href="/solutions/all-theme"
+              className={`px-10 md:px-16 py-4 md:py-6 mx-auto my-11 bg-black text-white rounded-md text-2xl font-bold shadow-lg hover:bg-[#f1593a] transition-all duration-300 `}
+            >
+              আরও ডেমো দেখুন
             </a>
           </div>
         </div>

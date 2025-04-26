@@ -11,6 +11,7 @@ import LandingFaq from "@/components/ecommerce/LandingFaq";
 import LandingRegistration from "@/components/ecommerce/LandingRegistration";
 // import Price from "@/components/ecommerce/Price";
 import { useRef } from "react";
+import ViewContentGtm from "../ViewContentGtm";
 
 // export const metadata = {
 //   title: "E-Commerce",
@@ -24,6 +25,7 @@ const Ecommerce = async ({ params: { locale } }) => {
 
   return (
     <div className="bg-[#F9F7F6] pt-12 md:pt-20 relative">
+      <ViewContentGtm title="eCommerce" category="Landing Page" />
       <div>
         <Intro />
       </div>
