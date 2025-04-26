@@ -12,6 +12,8 @@ import LandingRegistration from "@/components/ecommerce/LandingRegistration";
 // import Price from "@/components/ecommerce/Price";
 import { useRef } from "react";
 import ViewContentGtm from "../ViewContentGtm";
+import Price1 from "@/components/ecommerce/Price1";
+import Youtube from "@/components/ecommerce/Youtube";
 
 // export const metadata = {
 //   title: "E-Commerce",
@@ -46,6 +48,12 @@ const Ecommerce = async ({ params: { locale } }) => {
       </div>
       <div>
         <AdvantageFromOthers />
+      </div>
+      <div>
+        <Price1 />
+      </div>
+      <div>
+        <Youtube />
       </div>
       <div className="bg-[#f1593a] py-14">
         <div className="container bg-white" ref={registrationRef}>
