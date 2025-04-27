@@ -40,7 +40,7 @@ const Features = ({ scrollToRef }) => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {videoData.map((item, index) => (
             <div key={index} className="text-center ">
-              <img src={item.src} alt="" className="mx-auto" />
+              <img src={item.src} alt="" className="mx-auto mt-10 mb-6" />
               <button
                 onClick={() => setSelectedVideo(item.videoUrl)}
                 className=" bg-[#f1593a] text-white px-4 py-2 rounded-md text-sm shadow hover:bg-[#d8482c] transition"
