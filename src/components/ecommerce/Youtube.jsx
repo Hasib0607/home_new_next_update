@@ -5,7 +5,7 @@ const Youtube = ({ scrollToRef }) => {
   const handleScroll = () => {
     if (scrollToRef?.current) {
       const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
-      const offset = -160; // adjust this value to scroll a bit higher (try -80 to -150 as needed)
+        const offset = -160;
 
       window.scrollTo({
         top: topOffset + offset,
