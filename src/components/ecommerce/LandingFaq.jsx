@@ -26,7 +26,7 @@ const LandingFaq = () => {
               className="w-full h-auto px-4 mb-2 rounded border lg:cursor-pointer"
             >
               <Accordion.Container className="text-left bg-[#f1593a]">
-                <h3 className={`${styles.archivo} text-sm sm:text-lg mr-2`}>
+                <h3 className={`${styles.archivo} text-lg md:text-2xl mr-2 font-semibold`}>
                   {item?.titleBn}
                 </h3>
                 <Accordion.Icon />
@@ -35,7 +35,7 @@ const LandingFaq = () => {
                 className={`${styles.archivo} ${styles.paragraph}`}
               >
                 <p
-                  className="mt-4 text-black"
+                  className="mt-4 text-black text-lg md:text-xl font-medium"
                   dangerouslySetInnerHTML={{
                     __html: item?.descBn,
                   }}
@@ -53,7 +53,7 @@ const LandingFaq = () => {
               className="w-full h-auto px-4 mb-2 rounded border lg:cursor-pointer"
             >
               <Accordion.Container className="text-left bg-[#f1593a]">
-                <h3 className={`${styles.archivo} text-sm sm:text-lg mr-2`}>
+                <h3 className={`${styles.archivo} text-lg md:text-2xl mr-2 font-semibold`}>
                   {item?.titleBn}
                 </h3>
                 <Accordion.Icon />
@@ -62,7 +62,7 @@ const LandingFaq = () => {
                 className={`${styles.archivo} ${styles.paragraph}`}
               >
                 <p
-                  className="mt-4 text-black"
+                  className="mt-4 text-black text-lg md:text-xl font-medium"
                   dangerouslySetInnerHTML={{
                     __html: item?.descBn,
                   }}
@@ -90,12 +90,11 @@ const faqdata = [
   },
   {
     id: 2,
-    titleBn: "ফ্রি ওয়েবসাইট দিয়ে eBitans এর লাভ কী?",
-    title: "What is eBitans' profit from offering free websites?",
+    titleBn: "ডোমেইন কি?",
     descBn:
-      "বাংলাদেশে অটোমেটিক ইকমার্স ওয়েবসাইট কনসেপ্টটা একদমই নতুন এবং অনেকেই এই  বিষয়ে এখনও জানে না। তাই আমরা অল্প সময়ে অনেক বেশি মানুষের কাছে আমাদের সার্ভিসটা পৌছানোর জন্য একটি ফ্রী ই-কমার্স ওয়েবসাইট প্যাকেজ দিচ্ছি। এর সাথে আমাদের পেইড প্যাকেজও থাকছে।",
-    desc: "The concept of automatic e-commerce websites is entirely new in Bangladesh, and many people are still unaware of it. Therefore, to reach a large number of people in a short period of time, we are offering a free e-commerce website package. Along with this, we also have paid packages available.",
+      "ডোমেইন হলো ইন্টারনেটে ওয়েবসাইটের নাম বা ঠিকানা, যেটা লিখে আমরা কোনো ওয়েবসাইটে যাই। <br> যেমন: google.com, facebook.com — এগুলো ডোমেইন। <br> সংক্ষেপে: বাসার ঠিকানা যেমন দরকার, তেমনি ওয়েবসাইটের ঠিকানাও দরকার — সেটাই ডোমেইন।",
   },
+ 
   {
     id: 3,
     titleBn: "আমি কি আমার ডোমেইন এড করতে পারবো?",
@@ -105,44 +104,80 @@ const faqdata = [
     desc: "Yes, you can definitely add your personal domain. For this, you will need to purchase one of our paid packages.",
   },
   {
+    id: 2,
+    titleBn: "হোস্টিং কি?",
+    descBn:
+      "হোস্টিং হলো একটা অনলাইন জায়গা, যেখানে আপনার ওয়েবসাইটের সব ফাইল, ছবি আর তথ্য সংরক্ষণ থাকে।",
+  },
+  {
     id: 4,
     titleBn: "হোস্টিং কি আপনারা দিবেন? নাকি এর জন্য আলাদা পেমেন্ট করতে হবে?",
-    title:
-      "Will you provide hosting, or will there be an additional payment for it?",
     descBn:
       "জী স্যার হোস্টিং আমারাই দিচ্ছি। এর জন্য আপনাকে কোন এক্সট্রা পেমেন্ট করতে হবে না। আমাদের প্যাকেজের প্রাইসিং এর ভিতরেই হোস্টিং এর প্রাইস সংযুক্ত করা আছে।",
-    desc: "Yes, sir, we are providing the hosting. You won't need to make any extra payment for it. The cost of hosting is included within the pricing of our package.",
-  },
+   },
   {
     id: 5,
     titleBn: "কিভাবে আমি পেমেন্ট গেটওয়ে অপশন এড করবো?",
-    title: "How can I add a payment gateway option?",
     descBn:
       "জী আপনি অবশ্যই পেমেন্ট গেটওয়ে এড করতে পারবেন । এর জন্য আপনাকে আমাদের এড-অনসসার্ভিস নিতে হবে যার প্রাইজ মাত্র ১০০০ টাকা ।(আপনি যাদের(বিকাশ/ নগদ/ SSL commerce, etc ) পেমেন্ট গেটওয়ে নিতে চাচ্ছেন তাদের API  আমাদের সাথে শেয়ার করলে আমরা আপনার ওয়েবসাইট এর সাথে পেমেন্ট গেইটওয়ে যুক্ত করে দিব।)",
-    desc: "Yes, you can definitely add a payment gateway. For this, you will need to take our add-on service, which costs only 1000 Taka. (If you want to integrate payment gateways such as bKash, Nagad, SSL Commerce, etc., you can share their API with us, and we will integrate the payment gateway with your website.)",
   },
   {
     id: 6,
-    titleBn: "ওয়েবসাইট কিংবা সিস্টেম এর ডেমো দেখা যাবে?",
-    title: "Can the demo of the website or system be viewed?",
-    descBn: ` স্যার, আপনি চাইলেই খুব সহজেই রেজিস্ট্রেশন করে আমাদের প্লাটফর্ম থেকে ফ্রি ওয়েবসাইট তৈরি করে ব্যবহার করতে পারবেন। এর জন্য আমারা ডেমো লিংক প্রোভাইড করি না। </br> তবে আমাদের অসংখ্য থিম আছে চাইলে আপনি সেগুলো চেক আউট করতে পারেন রেজিস্ট্রেশন করে <a href="https://ebitans.com/" target="_blank" class="red-link">https://ebitans.com/ </a> </br> থিম লিংক/ডেমো লিংক : <a href="https://ebitans.com/all-theme" target="_blank" class="red-link">https://ebitans.com/all-theme</a>`,
-    desc: `Sir, you can easily register and create a free website using our platform. We do not provide demo links for this. </br> However, we have numerous themes available, and you can check them out by registering at <a href="https://ebitans.com/" target="_blank" class="red-link">https://ebitans.com/</a> </br> Theme Link/Demo Link: <a href="https://ebitans.com/all-theme" target="_blank" class="red-link">https://ebitans.com/all-theme</a>`,
+    titleBn: "ব্যান্ডউইথ কি?",
+    descBn: ` ব্যান্ডউইথ হলো, ওয়েবসাইট ভিজিটরদের দ্বারা ব্যবহৃত মোট ডাটার পরিমাণ। পেজ, ছবি, ভিডিও লোড হওয়ার সময় যে ডাটা লাগে, সেটাই ব্যান্ডউইথ।
+<br>আপনার ওয়েবসাইটে ভিজিটরের সংখ্যা যত বেশি হবে ততো বেশি ব্যান্ডউইথ বেশি খরচ হবে।`,
   },
   {
     id: 7,
-    titleBn: "সিকিউরিটি কেমন?",
-    title: "How is the security?",
+    titleBn: "ওয়েবসাইটে কিভাবে প্রোডাক্ট আপলোড করবো?",
     descBn:
-      "আমাদের প্রত্যেকটা ওয়েবসাইট এর সাথেই থাকছে valid SSL সার্টিফিকেশন। যার কারণে ওয়ার্ল্ড এর অন্যান্য সকল ওয়েবসাইট এর মতো সেইম সিকিউরিটি পাচ্ছেন। এবং যদি আপনি আপনার প্রোডাক্ট, কাস্টমার বা অর্ডার এর data সিকিউরিটির কথা বলেন তাহলে database হিসেবে আমরা mySQL ব্যবহার করছি যা ওয়ার্ল্ড ওয়াইড অনেক বেশি সিকিউর এছাড়াও আমাদের প্রত্যেকটি 'Data' 'end to end encrypted' তাই আপনার ব্যবসায়ীক তথ্য ফাঁস হওয়ার কোনো সম্ভাবনা নেই এবং ট্রাস্টেড হিসেবে পরিচিত। তাই  স্যার আপনার ওয়েবসাইট এর সিকিউরিটির ব্যপারে কোন টেনশন করতে হবে না।",
-    desc: "Each of our websites comes with a valid SSL certification, ensuring the same level of security as other websites worldwide. If you're concerned about the security of your product, customer, or order data, we use MySQL as the database, which is globally recognized for its high security. Additionally, all our data is 'end-to-end encrypted,' so there's no chance of your business information being exposed, and we are recognized as trusted. Therefore, sir, you don't need to worry about the security of your website.",
-  },
+      `eBitans প্ল্যাটফর্মে পণ্য যুক্ত করার ধাপসমূহ:
+
+আপনার eBitans অ্যাডমিন প্যানেলে লগইন করুন:
+<a href="https://admin.ebitans.com">https://admin.ebitans.com </a> ওয়েবসাইটে গিয়ে আপনার ড্যাশবোর্ডে প্রবেশ করুন।
+
+পণ্য ম্যানেজমেন্ট সেকশনে যান:
+সাইডবার মেনু থেকে "Products" ট্যাবে ক্লিক করুন। <br>
+
+নতুন পণ্য যোগ করুন:
+
+"Add Product" বাটনে ক্লিক করুন। <br>
+
+পণ্যের বিবরণ পূরণ করুন:
+
+পণ্যের নাম
+
+বর্ণনা
+
+মূল্য
+
+SKU (স্টক কিপিং ইউনিট)
+
+স্টকের পরিমাণ
+
+ক্যাটাগরি এবং সাবক্যাটাগরি
+
+ভেরিয়েন্ট (যেমন: সাইজ, রঙ)
+
+পণ্যের ছবি আপলোড করুন <br>
+
+অতিরিক্ত সেটিংস কনফিগার করুন:
+
+ডিসকাউন্ট বা প্রমোশনাল মূল্য সেট করুন (যদি থাকে)। <br>
+
+শিপিং অপশন এবং খরচ নির্ধারণ করুন।
+
+প্রয়োজন অনুযায়ী ট্যাক্স সেটিংস ঠিক করুন। <br>
+
+সেভ এবং প্রকাশ করুন:
+
+সমস্ত তথ্য পূরণের পর "Publish" বাটনে ক্লিক করে পণ্যটি আপনার অনলাইন স্টোরে প্রকাশ করুন।`,
+   },
   {
     id: 8,
-    titleBn: "এই ওয়েবসাইট গুলো কী wordpress  দিয়ে তৈরি নাকি?",
-    title: "Are these websites created with WordPress?",
+    titleBn: "ওয়েবসাইট পরিচালনা করার জন্য কোনও টিটোরিয়াল আছে?",
     descBn:
-      "আমরা আমাদের কাস্টমারদেরকে যে ই-কমার্স ওয়েবসাইট সেবা দিচ্ছি তা খুবই জনপ্রিয় এবং বর্তমানে সর্বাধিক ব্যবহৃত টেকনোলজি React.JS এবং Next.JS এর সমন্বয়ে তৈরি, যার ফলে আপনার ওয়েবসাইটটি খুবই দ্রুততার সাথে কাজ করবে, একই সাথে আপনার কাস্টমাররা আপনার ওয়েবসাইট থেকে সেরা এক্সপেরিয়ান্স উপভোগ করতে পারবে।",
-    desc: "The e-commerce website service we provide to our customers is very popular and is built using the highly used technologies React.js and Next.js. As a result, your website will work with great speed, and at the same time, your customers will be able to enjoy the best experience from your website.",
+      `কিভাবে আপনি আপনার ওয়েবসাইট পরিচালনা করবেন তার বিস্তারিত আমাদের Youtube চ্যানেলে দেয়া আছে।<br> Youtube চ্যানেলের লিংক: <a href="https://www.youtube.com/channel/UCNYZdTPddwoGeMWy5cQ733w" >https://www.youtube.com/channel/UCNYZdTPddwoGeMWy5cQ733w</a>`,
   },
   
 

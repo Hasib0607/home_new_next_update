@@ -6,7 +6,7 @@ const Advantages = ({ scrollToRef }) => {
     if (scrollToRef?.current) {
       const topOffset =
         scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
-      const offset = -200; // adjust this value to scroll a bit higher (try -80 to -150 as needed)
+      const offset = -160; // adjust this value to scroll a bit higher (try -80 to -150 as needed)
 
       window.scrollTo({
         top: topOffset + offset,
@@ -118,6 +118,7 @@ const Advantages = ({ scrollToRef }) => {
           <LandingButton
             onClick={handleScroll}
             label="ওয়েবসাইট তৈরি করুন এখনই"
+            heartbeat={true}
             className="mx-auto"
           />
         </div>
