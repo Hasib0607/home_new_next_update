@@ -83,18 +83,28 @@ const LandingRegistration = () => {
 
   return (
     <div className="border-black border-4 shadow-lg shadow-black">
-      <form onSubmit={handleSubmit(handleRegister)} className="mx-2 md:mx-20 py-20">
+      <form
+        onSubmit={handleSubmit(handleRegister)}
+        className="mx-2 md:mx-20 py-20"
+      >
         <h1 className="text-2xl md:text-3xl font-bold text-center py-4 mt-12 mb-28 bg-[#f1593a] text-white mx-4 px-2 md:mx-40 rounded-md shadow-xl shadow-slate-600">
-          ই-কমার্স ওয়েবসাইট তৈরির জন্য আপনার মোবাইল নাম্বার এবং পাসওয়ার্ড দিয়ে এখনই রেজিস্ট্রেশন করুন
+          ই-কমার্স ওয়েবসাইট তৈরির জন্য আপনার মোবাইল নাম্বার এবং পাসওয়ার্ড দিয়ে
+          এখনই রেজিস্ট্রেশন করুন
         </h1>
         <div className="flex gap-2 w-full">
           <div className="w-full">
             <input
               autoComplete=""
-              placeholder="আপনার ইমেইল অথবা ফোন নম্বর লিখুন"
-              type="text"
+              placeholder="আপনার ফোন নম্বর লিখুন"
+              type="number"
               {...register("email_or_phone", {
-                required: true,
+                required: "ফোন নম্বর আবশ্যক",
+                validate: (value) => {
+                  const bdMobileRegex = /^(?:\+?88)?01[3-9]\d{8}$/;
+                  return (
+                    bdMobileRegex.test(value.trim()) || "ভ্যালিড ফোন নম্বর দিন"
+                  );
+                },
               })}
               aria-invalid={errors.email_or_phone ? "true" : "false"}
               data-audio="/audio/mobile_number.mp3"
@@ -105,9 +115,9 @@ const LandingRegistration = () => {
                   : "border-[#f1593a] focus:border-[#f1593a]"
               } h-[40px] sm:h-[48px] drop-shadow-4xl text-xs lg:text-base border-[2px] placeholder:text-[#a39f9e] focus:outline-none focus:ring-0 rounded-sm px-2`}
             />
-            {errors?.email_or_phone?.type === "required" && (
+            {errors?.email_or_phone && (
               <span className="text-xs text-red-500 block">
-                Email or Phone is required
+                {errors.email_or_phone.message}
               </span>
             )}
           </div>
