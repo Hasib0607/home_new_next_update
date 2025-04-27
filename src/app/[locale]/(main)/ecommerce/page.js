@@ -50,10 +50,10 @@ const Ecommerce = async ({ params: { locale } }) => {
         <AdvantageFromOthers />
       </div>
       <div>
-        <Price1 />
+        <Price1 scrollToRef={registrationRef} />
       </div>
       <div>
-        <Youtube />
+        <Youtube scrollToRef={registrationRef} />
       </div>
       <div className="bg-[#f1593a] py-14">
         <div className="container bg-white" ref={registrationRef}>
