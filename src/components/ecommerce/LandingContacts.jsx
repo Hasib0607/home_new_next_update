@@ -2,14 +2,26 @@
 
 import { FaWhatsapp } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
+import LandingButton from "./LandingButton";
 
-const LandingContacts = () => {
+const LandingContacts = ({ scrollToRef }) => {
+  const handleScroll = () => {
+    if (scrollToRef?.current) {
+      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+        const offset = -160;
+
+      window.scrollTo({
+        top: topOffset + offset,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <>
       {/* Call Button - Bottom Left with Pulse Animation */}
       <a
         href="tel:+8801886515579"
-        className="fixed bottom-8 left-4 md:left-8 z-50 text-white rounded-full shadow-lg transition duration-300 flex items-center justify-center bg-blue-500 w-16 h-16 text-2xl btn-call-pulse"
+        className="fixed bottom-24 md:bottom-8 left-4 md:left-8 z-50 text-white rounded-full shadow-lg transition duration-300 flex items-center justify-center bg-blue-500 w-16 h-16 text-2xl btn-call-pulse"
       >
         <FiPhoneCall />
       </a>
@@ -19,10 +31,20 @@ const LandingContacts = () => {
         href="https://wa.me/8801886515579"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-4 md:right-8 z-50 text-white rounded-full shadow-lg transition duration-300 flex items-center justify-center bg-[#25D366] w-16 h-16 text-2xl btn-whatsapp-pulse"
+        className="fixed bottom-24 md:bottom-8 right-4 md:right-8 z-50 text-white rounded-full shadow-lg transition duration-300 flex items-center justify-center bg-[#25D366] w-16 h-16 text-2xl btn-whatsapp-pulse"
       >
         <FaWhatsapp />
       </a>
+
+      {/* Landing Button - Only Mobile */}
+      <div className="fixed bottom-2 left-1/2 transform -translate-x-1/2 w-[90%] md:hidden z-50">
+        <LandingButton
+          label="ওয়েবসাইট তৈরি করুন"
+          onClick={handleScroll}
+          className="w-full"
+          heartbeat={true}
+        />
+      </div>
 
       {/* Custom styles for pulse animations */}
       <style jsx>{`

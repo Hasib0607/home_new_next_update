@@ -146,7 +146,7 @@ const LandingRegistration = () => {
             </div>
             {errors?.password?.type === "required" && (
               <span className="text-xs text-red-500 block">
-                Password is required
+                পাসওয়ার্ড আবশ্যক
               </span>
             )}
           </div>
@@ -183,12 +183,12 @@ const LandingRegistration = () => {
         <div className="flex items-center justify-center lg:-mt-8 mt-3 mb-10">
           {loading ? (
             <button
-              className={`group relative h-12 w-48 overflow-hidden rounded-lg bg-[#F1593A] text-lg shadow `}
+              className={`group relative h-12 w-48 overflow-hidden rounded-lg bg-[#F1593A] text-lg shadow heartbeat`}
             >
               <div
                 className={`absolute inset-0 w-0 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
               ></div>
-              <span className={`${styles.archivo} relative  text-white`}>
+              <span className={`${styles.archivo} relative text-white`}>
                 লোড হচ্ছে
               </span>
             </button>
@@ -196,7 +196,7 @@ const LandingRegistration = () => {
             <>
               <button
                 type="submit"
-                className={`group relative h-16 w-80 overflow-hidden rounded-[3px] bg-[#F1593A] text-lg shadow-xl `}
+                className={`group relative h-16 w-80 overflow-hidden rounded-[3px] bg-[#F1593A] text-lg shadow-xl heartbeat`}
               >
                 <div
                   className={`absolute inset-0 w-1 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full `}

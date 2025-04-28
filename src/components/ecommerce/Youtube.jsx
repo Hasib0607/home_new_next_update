@@ -27,7 +27,7 @@ const Youtube = ({ scrollToRef }) => {
             <div className="w-full md:w-2/3 aspect-w-16 aspect-h-9 border-[#f1593a] border-8 rounded-2xl">
               <iframe
                 className="w-full h-[50vh] md:h-[60vh] rounded-lg shadow-lg "
-                src="https://www.youtube.com/embed/0slp9mpW-vw"
+                src="https://www.youtube.com/embed/0slp9mpW-vw?rel=0"
                 // title="YouTube Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
