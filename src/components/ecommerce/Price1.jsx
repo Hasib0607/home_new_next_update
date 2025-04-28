@@ -28,7 +28,7 @@ const Price1 = ({ scrollToRef }) => {
           </h2>
           <h2 className="font-bold text-3xl md:text-[50px] text-center my-10">
             অফার প্রাইস{" "}
-            <div className="text-green-500 text-3xl md:text-[80px] heartbeat inline-block">
+            <div className="text-green-500 text-[50px] md:text-[90px] heartbeat inline-block px-2">
               ২৪৯
             </div>{" "}
             টাকা
