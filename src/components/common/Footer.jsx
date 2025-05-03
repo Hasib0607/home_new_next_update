@@ -15,26 +15,9 @@ const Footer = ({ locale }) => {
     elfsightScript.src = "https://static.elfsight.com/platform/platform.js";
     elfsightScript.setAttribute("data-use-service-core", "");
     elfsightScript.defer = true;
-    document.body.appendChild(elfsightScript);
 
-    // Add Facebook Messenger script
-    const fbScript = document.createElement("script");
-    fbScript.id = "facebook-jssdk";
-    fbScript.src =
-      "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-    document.body.appendChild(fbScript);
-
-    window.fbAsyncInit = function () {
-      FB.init({
-        xfbml: true,
-        version: "v11.0", // Replace with desired API version
-      });
-    };
-
-    // Clean up scripts on unmount
     return () => {
-      document.body.removeChild(elfsightScript);
-      document.body.removeChild(fbScript);
+
     };
   }, []);
 
@@ -178,14 +161,7 @@ const Footer = ({ locale }) => {
           Trade License: TRAD/DNCC/004256/2023
         </p>
       </div>
-      {/* Facebook Messenger Chat Plugin */}
-      <div id="fb-root"></div>
-      <div id="fb-customer-chat" className="fb-customerchat"></div>
-      <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "104694832190312");
-        chatbox.setAttribute("attribution", "biz_inbox");
-      </script>
+
       <WhatsAppPopup />
     </footer>
   );
