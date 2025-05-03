@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import styles from "./home.module.css";
@@ -20,9 +20,10 @@ const HeroRegister = () => {
   const [show, setShow] = useState(false);
 
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleRegister = (data) => {
-    onSubmit(data, setLoading, router, reset);
+    onSubmit(data, setLoading, router, reset, pathname);
   };
 
   return (

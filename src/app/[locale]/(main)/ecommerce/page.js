@@ -64,7 +64,7 @@ const Ecommerce = async ({ params: { locale } }) => {
         <LandingFaq />
       </div>
       <div>
-        <LandingContacts scrollToRef={registrationRef} />
+        <LandingContacts scrollToRef={registrationRef} locale={locale} />
       </div>
     </div>
   );

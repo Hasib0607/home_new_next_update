@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { saveToSessionStorage } from "./sessionstorage";
 import { baseUrl } from "@/constants/baseUrl";
 
-export const onSubmit = async ( data, setLoading, router, reset) => {
+export const onSubmit = async ( data, setLoading, router, reset, pathname) => {
 
     const min = 100000; // Minimum 6-digit number
     const max = 999999; // Maximum 6-digit number
@@ -36,7 +36,8 @@ export const onSubmit = async ( data, setLoading, router, reset) => {
         .then(res => {
             if (res.status) {
                 reset();
-                router.push('/otp-verify', { scroll: false })
+                const redirectUrl = pathname?.endsWith("/ecommerce") ? "/landing-otp-verify" : "/otp-verify";
+                router.push(redirectUrl, { scroll: false });
             }else{
                 const err = res?.errors || {};
                 const inputError = err?.email_or_phone && err?.email_or_phone[0];
