@@ -50,7 +50,7 @@ const LandingContacts = ({ scrollToRef }) => {
 
       {/* WhatsApp Button - Bottom Right with Pulse Animation */}
       <a
-        href="https://wa.me/8801886515578"
+        href="https://wa.me/8801886515579"
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleWhatsappClick}
