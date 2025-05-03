@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { baseUrl } from "@/constants/baseUrl";
 import {
   getFromLocalStorage,
@@ -16,6 +16,7 @@ import {
 const OtpVerify = () => {
   const { register, handleSubmit, errors } = useForm();
   const router = useRouter();
+  const pathname = usePathname();
 
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState(null);
@@ -57,6 +58,7 @@ const OtpVerify = () => {
         password: user?.password,
         type: user?.type ?? null,
         time: dis === 1 ? time : null,
+        origin_domain: "ebitans.com.bd",
       };
 
       const requestOptions = {
@@ -80,7 +82,7 @@ const OtpVerify = () => {
             removeFromSessionStorage("isUserReg");
             removeFromLocalStorage("time");
             removeFromLocalStorage("register");
-            router.replace(`https://admin.ebitans.com/login?token=${res?.data?.token}`);
+            // router.replace(`https://admin.ebitans.com/login?token=${res?.data?.token}`);
           }
         })
         .catch((error) => {

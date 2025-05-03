@@ -66,7 +66,6 @@ const WebsitePricing = ({ locale }) => {
 
   useEffect(() => {
     if (newArray.length > 0) {
-      console.log(newArray);
       const x = newArray.find((item) => item.name === cardName);
       if (x) {
         setAllState(x.types.all);

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import styles from "../home/home.module.css";
@@ -20,6 +20,7 @@ const LandingRegistration = () => {
   const [show, setShow] = useState(false);
 
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     let currentAudio = null;
@@ -78,7 +79,7 @@ const LandingRegistration = () => {
   }, []);
 
   const handleRegister = (data) => {
-    onSubmit(data, setLoading, router, reset);
+    onSubmit(data, setLoading, router, reset, pathname);
   };
 
   return (
