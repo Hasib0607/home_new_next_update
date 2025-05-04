@@ -82,7 +82,7 @@ const OtpVerify = () => {
             removeFromSessionStorage("isUserReg");
             removeFromLocalStorage("time");
             removeFromLocalStorage("register");
-            // router.replace(`https://admin.ebitans.com/login?token=${res?.data?.token}`);
+            router.replace(`https://admin.ebitans.com/login?token=${res?.data?.token}`);
           }
         })
         .catch((error) => {
