@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { usePathname, useRouter } from "next/navigation";
-import { baseUrl } from "@/constants/baseUrl";
 import {
   getFromLocalStorage,
   removeFromLocalStorage,
