@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { usePathname, useRouter } from "next/navigation";
-import { baseUrl } from "@/constants/baseUrl";
 import {
   getFromLocalStorage,
   removeFromLocalStorage,
@@ -82,7 +81,7 @@ const LandingOtpVerify = () => {
             removeFromSessionStorage("isUserReg");
             removeFromLocalStorage("time");
             removeFromLocalStorage("register");
-            // router.replace(`https://admin.ebitans.com/login?token=${res?.data?.token}`);
+            router.replace(`https://admin.ebitans.com/login?token=${res?.data?.token}`);
           }
         })
         .catch((error) => {
