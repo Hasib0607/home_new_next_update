@@ -18,31 +18,15 @@ const Price1 = ({ scrollToRef }) => {
 
   return (
     <div className="border-b-2 border-black bg-red-100">
-      <div className="container pb-5 lg:pb-10 pt-20">
-        <h1 className="text-2xl md:text-3xl font-bold text-center px-2 md:px-10 py-4  bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
-          আপনার নিজের ই-কমার্স ওয়েবসাইট শুরু করুন এখনই মাত্র ২৪৯ টাকায়
+      <div className="container px-4 pt-24 pb-10 md:pt-32 md:pb-20">
+        <h1 className="text-[#000] leading-8 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white text-center text-3xl md:text-5xl font-extrabold py-6 px-4 md:px-12 rounded-2xl shadow-xl animate-pulse tracking-wide leading-snug">
+          আপনার নিজের ই-কমার্স ওয়েবসাইট দিয়ে <br className="hidden md:block" /> বিক্রি শুরু করুন এখনই
         </h1>
-        <div>
-          <h2 className="font-bold text-2xl md:text-4xl text-center my-10 line-through">
-            রেগুলার প্রাইস <span className="text-red-500 ">১৪৯০</span> টাকা
-          </h2>
-          <h2 className="font-bold text-3xl md:text-[50px] text-center my-10">
-            অফার প্রাইস{" "}
-            <div className="text-green-500 text-[50px] md:text-[90px] heartbeat inline-block px-2">
-              ২৪৯
-            </div>{" "}
-            টাকা
-          </h2>
-          <h2 className="font-bold text-2xl md:text-4xl text-center mt-10 px-4 md:px-28">
-            এক মাস একদম ফ্রি ই-কমার্স ওয়েবসাইট ব্যবহার করুন —🛒 মাত্র ২৪৯ টাকায়
-            রেজিস্ট্রেশন করে — আজই বিক্রি শুরু করুন আপনার নিজের ওয়েবসাইট থেকে!
-          </h2>
-        </div>
 
         <div className="flex justify-center pt-8 md:pt-24 mb-8 md:mb-16">
           <LandingButton
             onClick={handleScroll}
-            label="ওয়েবসাইট তৈরি করুন এখনই"
+            label="ওয়েবসাইট তৈরি করুন "
             heartbeat={true}
             className="mx-auto"
           />
