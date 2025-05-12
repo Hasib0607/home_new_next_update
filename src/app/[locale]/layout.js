@@ -10,7 +10,7 @@ import ThemeProvider from "@/providers/ThemeProvider";
 import { AnalyticsProvider } from "@/context/AnalyticsContext";
 import { dir } from "i18next";
 import i18nConfig from "../../../i18nConfig";
-import { GoogleAnalytics } from "@next/third-parties/google";
+// import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/components/StructuredData";
 import FacebookPixel from "@/utils/FacebookPixel";
 import GoogleTagManager from "@/utils/GoogleTagManager";
