@@ -2,7 +2,7 @@ import { Archivo } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
-import Footer from "@/components/common/Footer";
+// import Footer from "@/components/common/Footer";
 import ScrollToTop from "@/lib/ScrollToTop";
 import { AOSInit } from "./aos";
 import { ThemeContextProvider } from "@/context/ThemeContext";
@@ -125,7 +125,7 @@ export default async function RootLayout({ children, params: { locale } }) {
 
         <PopupWrapper /> 
         
-        {/* GTM noscript */}
+        {/* GTM noscript
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NNL4WP82"
@@ -134,8 +134,9 @@ export default async function RootLayout({ children, params: { locale } }) {
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
+        <GoogleAnalytics gaId="G-R1P19DNPR8" /> */}
       </body>
-      <GoogleAnalytics gaId="G-R1P19DNPR8" />
+      
     </html>
   );
 }
