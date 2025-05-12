@@ -14,6 +14,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/components/StructuredData";
 import FacebookPixel from "@/utils/FacebookPixel";
 import GoogleTagManager from "@/utils/GoogleTagManager";
+import GoogleAnalytics from "@/utils/GoogleAnalytics";
 import dynamic from "next/dynamic";
 const PopupWrapper = dynamic(() => import("@/components/PopupWrapper"), { ssr: false });
 
@@ -99,6 +100,7 @@ export default async function RootLayout({ children, params: { locale } }) {
         />
         <FacebookPixel />
         <GoogleTagManager />
+        <GoogleAnalytics/>
       </head>
       <body className={archivo.className}>
         <ScrollToTop />
