@@ -2,7 +2,7 @@ import { Archivo } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
-import Footer from "@/components/common/Footer";
+// import Footer from "@/components/common/Footer";
 import ScrollToTop from "@/lib/ScrollToTop";
 import { AOSInit } from "./aos";
 import { ThemeContextProvider } from "@/context/ThemeContext";
@@ -10,10 +10,11 @@ import ThemeProvider from "@/providers/ThemeProvider";
 import { AnalyticsProvider } from "@/context/AnalyticsContext";
 import { dir } from "i18next";
 import i18nConfig from "../../../i18nConfig";
-import { GoogleAnalytics } from "@next/third-parties/google";
+// import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/components/StructuredData";
 import FacebookPixel from "@/utils/FacebookPixel";
 import GoogleTagManager from "@/utils/GoogleTagManager";
+import GoogleAnalytics from "@/utils/GoogleAnalytics";
 import dynamic from "next/dynamic";
 const PopupWrapper = dynamic(() => import("@/components/PopupWrapper"), { ssr: false });
 
@@ -99,6 +100,7 @@ export default async function RootLayout({ children, params: { locale } }) {
         />
         <FacebookPixel />
         <GoogleTagManager />
+        <GoogleAnalytics/>
       </head>
       <body className={archivo.className}>
         <ScrollToTop />
@@ -123,7 +125,7 @@ export default async function RootLayout({ children, params: { locale } }) {
 
         <PopupWrapper /> 
         
-        {/* GTM noscript */}
+        {/* GTM noscript
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NNL4WP82"
@@ -132,8 +134,9 @@ export default async function RootLayout({ children, params: { locale } }) {
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
+        <GoogleAnalytics gaId="G-R1P19DNPR8" /> */}
       </body>
-      <GoogleAnalytics gaId="G-R1P19DNPR8" />
+      
     </html>
   );
 }
