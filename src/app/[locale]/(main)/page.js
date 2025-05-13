@@ -9,6 +9,7 @@ import Work from "@/components/home/Work";
 import Register from "@/components/home/Register";
 import RegisterMiddle from "@/components/home/RegisterMiddle";
 import ViewContentGtm from "./ViewContentGtm";
+import trackSubscriptionGtm from "@/helper/trackSubscriptionGtm";
 
 export const metadata = {
   title: {
@@ -20,6 +21,7 @@ const Home = async ({ params: { locale } }) => {
   return (
     <main className="">
       <ViewContentGtm title="Home Page" category="Landing" />
+      <trackSubscriptionGtm formType="submit" />
       <Hero locale={locale} />
       <CompanyLogo />
       <Dream locale={locale} />
