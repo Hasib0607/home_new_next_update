@@ -12,6 +12,8 @@ import {
   getFromSessionStorage,
   removeFromSessionStorage,
 } from "@/lib/sessionstorage";
+import { sendGTMEvent } from "@next/third-parties/google";
+import { ViewContent } from "@/helper/fbTracking";
 
 const OtpVerify = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -78,11 +80,32 @@ const OtpVerify = () => {
         })
         .then((res) => {
           if (res) {
+            // ✅ Send GTM and FB tracking event
+            const event_id = "evt_" + Math.random().toString(36).substr(2, 9);
+
+            // GTM Event
+            sendGTMEvent({
+              event: "subscription",
+              form_type: "OTP Verification",
+              page_path: window.location.pathname,
+              event_id,
+            });
+
+            // FB Event
+            ViewContent({
+              content_name: "Subscription Form",
+              content_category: "OTP Verification",
+              content_type: "subscription",
+              eventId: event_id,
+            });
+
             removeFromSessionStorage("random");
             removeFromSessionStorage("isUserReg");
             removeFromLocalStorage("time");
             removeFromLocalStorage("register");
-            router.replace(`https://admin.ebitans.com/login?token=${res?.data?.token}`);
+            router.replace(
+              `https://admin.ebitans.com/login?token=${res?.data?.token}`
+            );
           }
         })
         .catch((error) => {
@@ -102,8 +125,9 @@ const OtpVerify = () => {
         <div className="container px-5 lg:px-10 text-center rounded-lg relative z-[1] overflow-hidden py-16 h-screen">
           <div className="mb-10 md:mb-6 text-center">
             <h2 className="text-sm md:text-base text-[#5A5A5A] mt-12 mb-8 font-bold">
-              Check "<span className="text-[#f1593a]">{user?.email_or_phone}</span>" for
-              Verify Your OTP{" "}
+              Check "
+              <span className="text-[#f1593a]">{user?.email_or_phone}</span>"
+              for Verify Your OTP{" "}
             </h2>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
