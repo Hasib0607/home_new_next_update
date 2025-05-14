@@ -1,7 +1,7 @@
 
 import laptop from '@/assets/images/laptop.png';
 import review from '@/assets/images/review.png';
-import darkLogo from '@/assets/images/logo-dark.png';
+import darkLogo from '@/assets/images/logo-dark.webp';
 import darkBoldLogo from '@/assets/images/dark_bold.png';
 import plan from '@/assets/images/plan.png';
 import register from '@/assets/images/register.png';
@@ -22,7 +22,7 @@ import appleStore from '@/assets/images/appleStore.svg';
 import location from '@/assets/images/location.svg';
 import phone from '@/assets/images/phone.svg';
 import mail from '@/assets/images/mail.svg';
-import whiteLogo from '@/assets/images/whiteLogo.png';
+import whiteLogo from '@/assets/images/whiteLogo.webp';
 import watch from '@/assets/images/watch.png';
 import phone1 from '@/assets/images/phone.png';
 import brandImage from '@/assets/images/brand.png';
