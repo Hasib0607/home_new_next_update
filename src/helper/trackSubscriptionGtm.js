@@ -23,7 +23,6 @@
 //   });
 // };
 
-
 'use client';
 
 import { useCallback, useEffect, useRef } from 'react';
@@ -34,36 +33,37 @@ const generateEventId = () => {
   return 'evt_' + Math.random().toString(36).substr(2, 9);
 };
 
-const trackSubscriptionGtm = ({ formType }) => {
+const TrackSubscriptionGtm = ({ formType = 'Unknown Form', contentName = 'Subscription Form' }) => {
   const hasTracked = useRef(false);
 
   const sendSubscriptionEvent = useCallback(() => {
     const event_id = generateEventId();
+    const pagePath = window.location.pathname;
 
     sendGTMEvent({
       event: 'subscription',
       form_type: formType,
-      page_path: pagePath || window.location.pathname,
+      page_path: pagePath,
       event_id,
     });
 
     ViewContent({
-    content_name: contentName || 'Subscription Form',
-    content_category: formType,
-    content_type: 'subscription',
-    eventId: event_id,
-  });
+      content_name: contentName,
+      content_category: formType,
+      content_type: 'subscription',
+      eventId: event_id,
+    });
 
-  }, [formType]);
+  }, [formType, contentName]);
 
   useEffect(() => {
     if (!hasTracked.current) {
       hasTracked.current = true;
-      sendViewContentEvent();
+      sendSubscriptionEvent();
     }
-  }, [sendViewContentEvent]);
+  }, [sendSubscriptionEvent]);
 
   return null;
 };
 
-export default trackSubscriptionGtm;
+export default TrackSubscriptionGtm;

@@ -16,7 +16,7 @@ const LandingHeader = () => {
               <Image
                 width={600}
                 height={600}
-                src={images?.darkBoldLogo}
+                src={images?.darkLogo}
                 alt="ebitansLogo"
                 className="lg:h-auto h-8 w-48"
               />
