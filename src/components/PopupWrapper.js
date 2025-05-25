@@ -33,7 +33,7 @@ const PopupWrapper = () => {
     };
   }, []);
 
-  return showPopup ? <Popup onClose={handleClose} /> : null;
+  return process.env.NODE_ENV === "production" && showPopup ? <Popup onClose={handleClose} /> : null;
 };
 
 export default PopupWrapper;
