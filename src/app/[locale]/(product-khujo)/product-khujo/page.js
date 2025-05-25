@@ -41,7 +41,7 @@ const ProductKhujo = async () => {
                             <div>
                                 <h1 className='text-2xl sm:text-4xl font-bold tracking-widest text-center w-full'>Products Search Engine</h1>
                             </div>
-                            <ProductSearch />
+                            <ProductSearch category={category}/>
                         </div>
                     </div>
                 </div>
