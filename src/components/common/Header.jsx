@@ -501,7 +501,7 @@ const subMenu_solutions = [
   {
     name: "Product খুঁজো",
     nameBn: "Product খুঁজো",
-    link: "/product-khujo",
+    link: "/product-khujo/category",
   },
   {
     name: "Themes",

@@ -103,9 +103,9 @@ export const fetchPseCategory = async () => {
 };
 
 
-export const fetchPseSearch = async (searchTxt, allProductSlug) => {
+export const fetchPseSearch = async (searchTxt, categorySlug) => {
     try {
-        const response = await fetch(`${baseUrl}/pse/products/product-by-category?name=${searchTxt}&slug=${allProductSlug?.slug}`);
+        const response = await fetch(`${baseUrl}/pse/products/product-by-category?name=${searchTxt}&slug=${categorySlug}`);
         const data = await response.json();
         return data
     } catch (error) {

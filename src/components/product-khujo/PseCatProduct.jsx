@@ -110,7 +110,7 @@ const PseCatProduct = ({ category, ip }) => {
                     }
                     {topPick?.length > 0 &&
                         <Suspense fallback={<div className="py-1 text-xl text-gray-500">Loading</div>}>
-                            <TopPick item={item} topPick={topPick} ip={ip} />
+                            <TopPick key={item?.id} item={item} topPick={topPick} ip={ip} />
                         </Suspense>
                     }
                     {/* {flashSale?.length > 0 &&
