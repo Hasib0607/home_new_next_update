@@ -4,9 +4,11 @@ import PseImage from "./pse/PseImage";
 import PseSearch from "./pse/PseSearch";
 import images from "@/lib/images";
 import Image from "next/image";
+import { fetchPseCategory } from "@/helper/api";
 
-const Pse = ({ locale }) => {
-    const bangla = locale !== "en";
+const Pse = async ({ locale }) => {
+  const category = (await fetchPseCategory()) ?? [];
+  const bangla = locale !== "en";
   return (
     <section className="bg-gradient-to-t from-[#EED4CE] from-10% to-bg-[#F9F7F6] to-90%  rounded-b-[15px] lg:rounded-b-[45px] relative z-[1] pt-10 lg:pt-[120px] lg:pb-32 overflow-hidden">
       <div className="relative">
@@ -26,7 +28,7 @@ const Pse = ({ locale }) => {
             খুঁজো
           </p>
           <h2 className={`${styles.archivo} ${styles.headerTwo}`}>
-            {bangla? "প্রোডাক্ট সার্চ ইঞ্জিন" : "Products Search Engine"}
+            {bangla ? "প্রোডাক্ট সার্চ ইঞ্জিন" : "Products Search Engine"}
           </h2>
         </div>
         <Link href="/product-khujo">
@@ -67,7 +69,7 @@ const Pse = ({ locale }) => {
                     : "Tailored PSE solutions for eBitans, combining innovation and efficiency to drive growth and streamline processes. Empower your business with expert PSE strategies designed for success."}
                 </p>
               </div>
-              <PseSearch />
+              <PseSearch category={category} />
             </div>
           </div>
           <div className="justify-self-center lg:w-full w-[260px] mx-auto h-60 lg:h-full overflow-hidden mt-0 lg:mt-0">
