@@ -13,6 +13,8 @@ export const onSubmit = async ( data, setLoading, router, reset, pathname) => {
     saveToSessionStorage("random", otp)
     saveToSessionStorage("isUserReg", data)
 
+    console.log("data", data);
+
     const url = `${process.env.NEXT_PUBLIC_API_URL_V2}/user/registration/check`;
 
     const registerData = {
