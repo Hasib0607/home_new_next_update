@@ -10,6 +10,7 @@ import images from "@/lib/images";
 import Link from "next/link";
 
 const HeroRegister = () => {
+  
   const {
     register,
     handleSubmit,
