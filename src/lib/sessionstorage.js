@@ -7,7 +7,7 @@ export const saveToSessionStorage = (key, data) => {
 
 
 export const getFromSessionStorage = (key) => {
-  if(typeof window !== 'undefined') return null
+  if(typeof window === 'undefined') return null
     const data = sessionStorage.getItem(key);
     return data ? JSON.parse(data) : null; 
   

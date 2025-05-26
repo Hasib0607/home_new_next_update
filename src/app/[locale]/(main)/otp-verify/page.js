@@ -30,7 +30,7 @@ const OtpVerify = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-
+  
   useEffect(() => {
     if (!user?.email_or_phone) {
       router.push("/", { scroll: false });
