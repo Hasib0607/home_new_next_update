@@ -3,15 +3,59 @@
 import CardThree from "./CardThree";
 import { ThreeDots } from "react-loader-spinner";
 
-const SearchResult = ({ loading, currentState, searchTxt, data, total }) => {
+// const SearchView = ({ searchTxt, data, total },ref) => {
+//   console.log("🚀 ~ SearchView ~ ref:", ref)
+//   return (
+//     <div>
+//       {data?.length === 0 ? (
+//         <div className="mt-20">
+//           {searchTxt && (
+//             <h1 className="pb-5">
+//               {total?.totalProduct} results for{" "}
+//               <span className="font-bold text-red-400">"{searchTxt}"</span>
+//             </h1>
+//           )}
+//           <p className="text-center text-4xl font-bold text-gray-400 flex justify-center items-center">
+//             No Product Found
+//           </p>
+//         </div>
+//       ) : (
+//         <div className="grid lg:grid-cols-4 grid-cols-3 gap-5">
+//           <div className="col-span-3">
+//             {searchTxt && (
+//               <h1 className="pb-5">
+//                 {total?.totalProduct} results for{" "}
+//                 <span className="font-bold text-red-400">"{searchTxt}"</span>
+//               </h1>
+//             )}
+
+//             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 sm:gap-5 gap-1 h-max">
+//               {data?.map((product, index) => (
+//                 <CardThree key={index} item={product} />
+//               ))}
+//             </div>
+//             {currentState.current.isFetching && <InfifityLoader />}
+//             {!currentState.current.hasMore && data.length > 0 && (
+//               <p className="text-center py-4">No more products to load</p>
+//             )}
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+const SearchResult = (props) => {
   return (
     <div>
-      {data?.length === 0 ? (
+      {props?.data?.length === 0 ? (
         <div className="mt-20">
-          {searchTxt && (
+          {props.text.searchTxt && (
             <h1 className="pb-5">
-              {total?.totalProduct} results for{" "}
-              <span className="font-bold text-red-400">"{searchTxt}"</span>
+              {props.data.length} results for{" "}
+              <span className="font-bold text-red-400">
+                "{props.text.searchTxt}"
+              </span>
             </h1>
           )}
           <p className="text-center text-4xl font-bold text-gray-400 flex justify-center items-center">
@@ -21,20 +65,22 @@ const SearchResult = ({ loading, currentState, searchTxt, data, total }) => {
       ) : (
         <div className="grid lg:grid-cols-4 grid-cols-3 gap-5">
           <div className="col-span-3">
-            {searchTxt && (
+            {props.text.searchTxt && (
               <h1 className="pb-5">
-                {total?.totalProduct} results for{" "}
-                <span className="font-bold text-red-400">"{searchTxt}"</span>
+                {props.data.length} results for{" "}
+                <span className="font-bold text-red-400">
+                  "{props.text.searchTxt}"
+                </span>
               </h1>
             )}
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 sm:gap-5 gap-1 h-max">
-              {data?.map((product, index) => (
+              {props.data?.map((product, index) => (
                 <CardThree key={index} item={product} />
               ))}
             </div>
-            {loading && <InfifityLoader />}
-            {!currentState.current.hasMore && data.length > 0 && (
+            {props.loadState.loading && <InfifityLoader />}
+            {!props.loadState.hasMore && props.data.length > 0 && (
               <p className="text-center py-4">No more products to load</p>
             )}
           </div>
@@ -43,7 +89,6 @@ const SearchResult = ({ loading, currentState, searchTxt, data, total }) => {
     </div>
   );
 };
-
 export default SearchResult;
 
 const InfifityLoader = () => {
