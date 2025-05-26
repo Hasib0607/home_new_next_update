@@ -20,6 +20,7 @@ const Register = ({locale}) => {
   const [show, setShow] = useState(false);
 
   const router = useRouter();
+  
 
   const handleRegister = (data) => {
     onSubmit(data, setLoading, router);
