@@ -172,4 +172,5 @@ const OtpVerify = () => {
   );
 };
 
+
 export default OtpVerify;
