@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 const SearchBar = (props, ref) => {
   return (
     <div
-      className="flex justify-center lg:relative z-[1] h-max top-[50px] lg:top-0 left-0 w-full container sm:px-5 lg:px-10 px-2 bg-[#F9F7F6] py-1"
+      className="flex justify-center w-full container sm:px-5 lg:px-10 bg-[#F9F7F6]"
       ref={ref}
     >
       <div className="border border-gray-400 rounded lg:rounded-full xl:w-[50%] sm:w-[85%] w-full flex items-center justify-between overflow-hidden bg-[#D9D9D9]">
