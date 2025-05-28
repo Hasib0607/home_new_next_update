@@ -1,1 +1,0 @@
-export const themeImg = 'https://admin.ebitans.com/assets/images/template/'

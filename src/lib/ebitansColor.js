@@ -1,1 +1,0 @@
-export const ebitansColor = "#F1593A"
