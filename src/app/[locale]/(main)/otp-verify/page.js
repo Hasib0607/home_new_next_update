@@ -1,13 +1,19 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import { usePathname, useRouter } from 'next/navigation';
-import { baseUrl } from '@/constants/baseUrl';
-import { getFromLocalStorage, removeFromLocalStorage } from '@/lib/localstorage';
-import { getFromSessionStorage, removeFromSessionStorage } from '@/lib/sessionstorage';
-import { sendGTMEvent } from '@next/third-parties/google';
-import { ViewContent } from '@/helper/fbTracking';
+"use client";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { usePathname, useRouter } from "next/navigation";
+import { baseUrl } from "@/constants/baseUrl";
+import {
+  getFromLocalStorage,
+  removeFromLocalStorage,
+} from "@/lib/localstorage";
+import {
+  getFromSessionStorage,
+  removeFromSessionStorage,
+} from "@/lib/sessionstorage";
+import { sendGTMEvent } from "@next/third-parties/google";
+import { ViewContent } from "@/helper/fbTracking";
 
 const OtpVerify = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -16,7 +22,7 @@ const OtpVerify = () => {
 
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState(null);
-  const [user, setUser] = useState(getFromSessionStorage('isUserReg'));
+  const [user, setUser] = useState(getFromSessionStorage("isUserReg"));
   const [time, setTime] = useState(null);
   const [dis, setDis] = useState(null);
   const [isClient, setIsClient] = useState(false);
@@ -24,24 +30,24 @@ const OtpVerify = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-
+  
   useEffect(() => {
     if (!user?.email_or_phone) {
-      router.push('/', { scroll: false });
+      router.push("/", { scroll: false });
     }
   }, [user]);
 
   useEffect(() => {
-    setOtp(getFromSessionStorage('random'));
-    setUser(getFromSessionStorage('isUserReg'));
-    setTime(getFromLocalStorage('time'));
-    setDis(getFromLocalStorage('register'));
+    setOtp(getFromSessionStorage("random"));
+    setUser(getFromSessionStorage("isUserReg"));
+    setTime(getFromLocalStorage("time"));
+    setDis(getFromLocalStorage("register"));
 
     setTimeout(() => {
-      removeFromSessionStorage('random');
-      removeFromSessionStorage('isUserReg');
-      removeFromLocalStorage('time');
-      removeFromLocalStorage('register');
+      removeFromSessionStorage("random");
+      removeFromSessionStorage("isUserReg");
+      removeFromLocalStorage("time");
+      removeFromLocalStorage("register");
     }, 300000);
   }, [user?.phone]);
 
@@ -54,47 +60,52 @@ const OtpVerify = () => {
         password: user?.password,
         type: user?.type ?? null,
         time: dis === 1 ? time : null,
-        origin_domain: 'ebitans.com.bd',
+        origin_domain: "ebitans.com.bd",
       };
 
       const requestOptions = {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(registerData),
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       };
 
-      fetch(`${process.env.NEXT_PUBLIC_API_URL_V2}/user/registration`, requestOptions)
+      fetch(
+        `${process.env.NEXT_PUBLIC_API_URL_V2}/user/registration`,
+        requestOptions
+      )
         .then((response) => {
           return response.json();
         })
         .then((res) => {
           if (res) {
             // ✅ Send GTM and FB tracking event
-            const event_id = 'evt_' + Math.random().toString(36).substr(2, 9);
+            const event_id = "evt_" + Math.random().toString(36).substr(2, 9);
 
             // GTM Event
             sendGTMEvent({
-              event: 'subscription',
-              form_type: 'OTP Verification',
+              event: "subscription",
+              form_type: "OTP Verification",
               page_path: window.location.pathname,
               event_id,
             });
 
             // FB Event
             ViewContent({
-              content_name: 'Subscription Form',
-              content_category: 'OTP Verification',
-              content_type: 'subscription',
+              content_name: "Subscription Form",
+              content_category: "OTP Verification",
+              content_type: "subscription",
               eventId: event_id,
             });
 
-            removeFromSessionStorage('random');
-            removeFromSessionStorage('isUserReg');
-            removeFromLocalStorage('time');
-            removeFromLocalStorage('register');
-            router.replace(`https://admin.ebitans.com/login?token=${res?.data?.token}`);
+            removeFromSessionStorage("random");
+            removeFromSessionStorage("isUserReg");
+            removeFromLocalStorage("time");
+            removeFromLocalStorage("register");
+            router.replace(
+              `https://admin.ebitans.com/login?token=${res?.data?.token}`
+            );
           }
         })
         .catch((error) => {
@@ -103,7 +114,7 @@ const OtpVerify = () => {
         });
     }
     if (Number(atob(otp)) !== Number(data?.otp)) {
-      toast("OTP Doesn't Match", { type: 'error' });
+      toast("OTP Doesn't Match", { type: "error" });
       setLoading(false);
     }
   };
@@ -114,8 +125,9 @@ const OtpVerify = () => {
         <div className="container px-5 lg:px-10 text-center rounded-lg relative z-[1] overflow-hidden py-16 h-screen">
           <div className="mb-10 md:mb-6 text-center">
             <h2 className="text-sm md:text-base text-[#5A5A5A] mt-12 mb-8 font-bold">
-              Check "<span className="text-[#f1593a]">{user?.email_or_phone}</span>" for Verify Your
-              OTP{' '}
+              Check "
+              <span className="text-[#f1593a]">{user?.email_or_phone}</span>"
+              for Verify Your OTP{" "}
             </h2>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -128,10 +140,10 @@ const OtpVerify = () => {
               </label>
               <input
                 type="Number"
-                {...register('otp', { required: true })}
+                {...register("otp", { required: true })}
                 placeholder="Enter your OTP "
                 className={
-                  'py-2 px-4 md:px-5 sm:w-[300px] w-full appearance-none transition duration-150 ease-in-out border text-input text-xs lg:text-sm font-body rounded-md placeholder-body min-h-12 bg-white border-gray-300 focus:outline-none focus:border-heading h-11 md:h-12'
+                  "py-2 px-4 md:px-5 sm:w-[300px] w-full appearance-none transition duration-150 ease-in-out border text-input text-xs lg:text-sm font-body rounded-md placeholder-body min-h-12 bg-white border-gray-300 focus:outline-none focus:border-heading h-11 md:h-12"
                 }
               />
             </div>
@@ -159,5 +171,6 @@ const OtpVerify = () => {
     </>
   );
 };
+
 
 export default OtpVerify;

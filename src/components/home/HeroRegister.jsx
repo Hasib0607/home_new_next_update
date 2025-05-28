@@ -1,15 +1,16 @@
-'use client';
-import { useState } from 'react';
-import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { BsEye, BsEyeSlash } from 'react-icons/bs';
-import styles from './home.module.css';
-import { onSubmit } from '@/lib/registration';
-import images from '@/lib/images';
-import Link from 'next/link';
+"use client";
+import { useState } from "react";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
+import styles from "./home.module.css";
+import { onSubmit } from "@/lib/registration";
+import images from "@/lib/images";
+import Link from "next/link";
 
 const HeroRegister = () => {
+  
   const {
     register,
     handleSubmit,
@@ -35,32 +36,35 @@ const HeroRegister = () => {
               autoComplete=""
               placeholder="Enter Your Email or Phone"
               type="text"
-              {...register('email_or_phone', {
+              {...register("email_or_phone", {
                 required: true,
               })}
-              aria-invalid={errors.email_or_phone ? 'true' : 'false'}
+              aria-invalid={errors.email_or_phone ? "true" : "false"}
               className={`w-full ${styles.archivo} ${
-                errors?.email_or_phone?.type === 'required'
-                  ? 'border-red-500 focus:border-red-500'
-                  : 'border-[#a8a3a2] focus:border-[#D3CDCB]'
+                errors?.email_or_phone?.type === "required"
+                  ? "border-red-500 focus:border-red-500"
+                  : "border-[#a8a3a2] focus:border-[#D3CDCB]"
               } h-[40px] sm:h-[48px] drop-shadow-4xl text-xs lg:text-base border-[1.5px] placeholder:text-[#D3CDCB] focus:outline-none focus:ring-0 rounded-sm px-4`}
             />
-            {errors?.email_or_phone?.type === 'required' && (
-              <span className="text-xs text-red-500 block">Email or Phone is required</span>
+            {errors?.email_or_phone?.type === "required" && (
+              <span className="text-xs text-red-500 block">
+                Email or Phone is required
+              </span>
             )}
+       
           </div>
           <div className="w-full lg:mr-20 relative">
             <input
               autoComplete="pass"
               placeholder="Enter Your Password"
-              type={`${show ? 'text' : 'password'}`}
-              {...register('password', { required: true })}
+              type={`${show ? "text" : "password"}`}
+              {...register("password", { required: true })}
               className={`w-full ${
                 styles.archivo
               } h-[40px] sm:h-[48px] drop-shadow-4xl text-xs lg:text-base placeholder:text-[#D3CDCB] border-[1.5px] ${
-                errors?.password?.type === 'required'
-                  ? 'border-red-500 focus:border-red-500'
-                  : 'border-[#a8a3a2] focus:border-[#D3CDCB]'
+                errors?.password?.type === "required"
+                  ? "border-red-500 focus:border-red-500"
+                  : "border-[#a8a3a2] focus:border-[#D3CDCB]"
               } focus:outline-none focus:ring-0 rounded-sm px-4`}
             />
             <div className="absolute right-2 top-1/2 -translate-y-1/2 z-[2] lg:cursor-pointer">
@@ -70,24 +74,26 @@ const HeroRegister = () => {
                 <BsEyeSlash onClick={() => setShow(!show)} />
               )}
             </div>
-            {errors?.password?.type === 'required' && (
-              <span className="text-xs text-red-500 block">Password is required</span>
+            {errors?.password?.type === "required" && (
+              <span className="text-xs text-red-500 block">
+                Password is required
+              </span>
             )}
           </div>
         </div>
 
-        {/* Add this new checkbox section */}
-        <div className="flex items-center mt-4 mb-4">
+         {/* Add this new checkbox section */}
+         <div className="flex items-center mt-4 mb-4">
           <label className="flex items-center text-sm">
             <input
               type="checkbox"
-              {...register('terms_agreed', { required: true })}
+              {...register("terms_agreed", { required: true })}
               className={`mr-2 w-4 h-4 accent-[#F1593A] ${
-                errors.terms_agreed ? 'border-red-500' : 'border-gray-300'
+                errors.terms_agreed ? "border-red-500" : "border-gray-300"
               } rounded focus:ring-[#F1593A]`}
             />
             <span className={styles.archivo}>
-              I have read and agree to the{' '}
+              I have read and agree to the{" "}
               <Link href="/terms-and-conditions" className="text-[#F1593A] hover:underline">
                 Terms and Conditions
               </Link>
@@ -108,7 +114,9 @@ const HeroRegister = () => {
               <div
                 className={`absolute inset-0 w-0 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
               ></div>
-              <span className={`${styles.archivo} relative  text-white`}>Loading</span>
+              <span className={`${styles.archivo} relative  text-white`}>
+                Loading
+              </span>
             </button>
           ) : (
             <>
