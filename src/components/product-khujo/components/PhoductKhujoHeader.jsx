@@ -14,8 +14,7 @@ const PhoductKhujoHeader = ({
   locale,
 }) => {
   return (
-    <div className="shadow-lg fixed top-0 left-0 w-full bg-white z-10">
-      <div className="lg:h-[85px] h-[50px] flex justify-between items-center container px-5 lg:px-10">
+      <div className="container lg:h-[85px] h-[50px] flex justify-between items-center">
         <Link href={`/${locale}/product-khujo`}>
           <Image
             src={images?.darkPse}
@@ -66,7 +65,6 @@ const PhoductKhujoHeader = ({
           </button>
         </a>
       </div>
-    </div>
   );
 };
 

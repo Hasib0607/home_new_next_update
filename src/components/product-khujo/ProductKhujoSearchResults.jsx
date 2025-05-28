@@ -5,11 +5,12 @@ import { baseUrlV2 } from "@/constants/baseUrl";
 import { numberParser } from "@/helper/numberParser";
 import { useRouter } from "next/navigation";
 import { useScrollData } from "../../hooks/useScrollData";
-import SearchResult from "./SearchResult";
-import SlugTitle from './components/SlugTitle'
-import Banner from './components/Banner'
-import ProductKhujoSearchBar from './components/SearchBar'
-import PhoductKhujoHeader from './components/PhoductKhujoHeader'
+import SearchResult from "./components/SearchResult";
+import SlugTitle from "./components/SlugTitle";
+import Banner from "./components/Banner";
+import PseLayout from "./components/PseLayout";
+import ProductKhujoSearchBar from "./components/SearchBar";
+import PhoductKhujoHeader from "./components/PhoductKhujoHeader";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function ProductKhujoSearchResults({
@@ -32,7 +33,9 @@ export default function ProductKhujoSearchResults({
     };
   });
 
+  const [fetchedData, setFetchedData] = useState([]);
   const [data, setData] = useState([]);
+
   const [total, setTotal] = useState({
     currentPage: 1,
     totalPage: 1,
@@ -71,7 +74,7 @@ export default function ProductKhujoSearchResults({
     currentState.current.isFetching = true;
     currentState.current.page = 1;
     updateUrl(1);
-    setData([]);
+    setFetchedData([]);
   }, []);
 
   const handleSelect = (e) => {
@@ -105,31 +108,31 @@ export default function ProductKhujoSearchResults({
         res = await response.json();
 
         if (res?.data?.products?.length > 0) {
-          setData((prev) => {
+          setFetchedData((prev) => {
             const newProducts =
               currentState.current.page === 1
                 ? res.data.products
                 : [
                     ...prev,
-                    ...res.data.products.filter(
-                      (p) => !prev.some((ep) => ep.source_url === p.source_url)
+                    ...res?.data?.products?.filter(
+                      (p) => !prev?.some((ep) => ep?.source_url === p?.source_url)
                     ),
                   ];
             return newProducts;
           });
 
           setTotal({
-            currentPage: res.data?.page,
-            totalPage: res.data?.totalPage,
-            totalProduct: res.data?.totalProduct,
+            currentPage: res?.data?.page,
+            totalPage: res?.data?.totalPage,
+            totalProduct: res?.data?.totalProduct,
           });
           setLoadState({
             ...loadState,
-            hasMore: currentState.current.page < res.data.totalPage,
+            hasMore: currentState.current.page < res?.data?.totalPage,
           });
           increment
             ? (currentState.current.page += 1)
-            : (currentState.current.page = res.data?.page);
+            : (currentState.current.page = res?.data?.page);
         } else {
           setLoadState({ ...loadState, hasMore: false });
         }
@@ -139,7 +142,7 @@ export default function ProductKhujoSearchResults({
         currentState.current.isFetching = false;
         setLoadState({ ...loadState, loading: false });
         scrollLock.current = false;
-        updateUrl(res.data?.page);
+        updateUrl(res?.data?.page);
       }
     },
     [text]
@@ -193,8 +196,8 @@ export default function ProductKhujoSearchResults({
     //   text.catSlug !== searchParams.slug;
 
     // if (isNewSearch) {
-      resetSearch();
-      fetchData();
+    resetSearch();
+    fetchData();
     // }
   }, [text.debouncedSearchTxt]);
 
@@ -219,38 +222,48 @@ export default function ProductKhujoSearchResults({
       }}
       className="mt-12 md:mt-[85px]"
     >
-      <PhoductKhujoHeader
-        isIntersecting={isIntersecting}
-        text={text}
-        handleChange={handleChange}
-        handleSelect={handleSelect}
-        category={category}
-        locale={locale}
-      />
-
-      <div className="mb-10 min-h-screen z-10">
-        <Banner category={category} text={text} />
-        <ProductKhujoSearchBar
+      <div className="shadow-lg fixed top-0 left-0 w-full bg-white z-10">
+        <PhoductKhujoHeader
+          isIntersecting={isIntersecting}
           text={text}
           handleChange={handleChange}
           handleSelect={handleSelect}
           category={category}
-          ref={mySearchDiv}
+          locale={locale}
         />
-        <div className="container px-5 lg:px-10 py-10">
-          <SlugTitle text={text} category={category} />
-          {currentState.current.isFetching ? (
-            <div>
-              <Loading />
-            </div>
-          ) : (
-            <SearchResult
-              data={data}
-              loadState={loadState}
+      </div>
+      <div className="mb-5">
+        <Banner category={category} text={text} />
+      </div>
+      <div className="container min-w-9xl">
+        <div className="space-y-5">
+          <div className="sticky md:static top-0 z-10">
+            <ProductKhujoSearchBar
               text={text}
-              total={total}
+              handleChange={handleChange}
+              handleSelect={handleSelect}
+              category={category}
+              ref={mySearchDiv}
             />
-          )}
+          </div>
+          <div className="min-w-screen-2xl">
+            <PseLayout setData={setData} fetchedData={fetchedData}>
+              <SlugTitle text={text} category={category} />
+              {currentState.current.isFetching ? (
+                <div>
+                  <Loading />
+                </div>
+              ) : (
+                <SearchResult
+                  data={data}
+                  loadState={loadState}
+                  text={text}
+                  total={total}
+                />
+              )}
+            </PseLayout>
+          </div>
+          <div className="h-12 p-10"></div>
         </div>
       </div>
     </div>
