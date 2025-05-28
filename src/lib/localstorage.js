@@ -9,10 +9,8 @@ export const getFromLocalStorage = (key) => {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : null;
   }
-
 };
 
 export const removeFromLocalStorage = (key) => {
-  localStorage.removeItem(key)
+  localStorage.removeItem(key);
 };
-

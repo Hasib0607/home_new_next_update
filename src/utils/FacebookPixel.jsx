@@ -1,14 +1,14 @@
 import Script from 'next/script';
 
 const FacebookPixel = () => {
-    return (
-        <>
-            {/* Facebook Pixel Script */}
-            <Script
-                id="facebook-pixel"
-                strategy="afterInteractive"
-                dangerouslySetInnerHTML={{
-                    __html: `
+  return (
+    <>
+      {/* Facebook Pixel Script */}
+      <Script
+        id="facebook-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
                     !function(f,b,e,v,n,t,s)
                     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
                     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -21,10 +21,10 @@ const FacebookPixel = () => {
                     fbq('track', 'PageView');
                     
                 `,
-                }}
-            />
-        </>
-    );
+        }}
+      />
+    </>
+  );
 };
 
 export default FacebookPixel;

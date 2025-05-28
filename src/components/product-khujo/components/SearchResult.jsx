@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import CardThree from "./CardThree";
-import { ThreeDots } from "react-loader-spinner";
+import CardThree from './CardThree';
+import { ThreeDots } from 'react-loader-spinner';
 
 const SearchResult = (props) => {
   return (
@@ -10,10 +10,8 @@ const SearchResult = (props) => {
         <div className="mt-20">
           {props.text.searchTxt && (
             <h1 className="pb-5">
-              {props.data.length} results for{" "}
-              <span className="font-bold text-red-400">
-                "{props.text.searchTxt}"
-              </span>
+              {props.data.length} results for{' '}
+              <span className="font-bold text-red-400">"{props.text.searchTxt}"</span>
             </h1>
           )}
           <p className="text-center text-4xl font-bold text-gray-400 flex justify-center items-center">
@@ -25,10 +23,8 @@ const SearchResult = (props) => {
           <div className="col-span-3">
             {props.text.searchTxt && (
               <h1 className="pb-5">
-                {props.data.length} results for{" "}
-                <span className="font-bold text-red-400">
-                  "{props.text.searchTxt}"
-                </span>
+                {props.data.length} results for{' '}
+                <span className="font-bold text-red-400">"{props.text.searchTxt}"</span>
               </h1>
             )}
 

@@ -1,14 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 const PopularBlog = ({ blog }) => {
-  const permalink =
-    blog?.permalink && blog?.permalink !== "" ? blog?.permalink : blog?.slug;
+  const permalink = blog?.permalink && blog?.permalink !== '' ? blog?.permalink : blog?.slug;
 
-    if (blog?.website !== 1) {
-      return null; 
-    }
+  if (blog?.website !== 1) {
+    return null;
+  }
 
   return (
     <>

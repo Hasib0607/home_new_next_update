@@ -1,16 +1,16 @@
-"use client";
-import { useEffect } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+'use client';
+import { useEffect } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const VideoModal = ({ videoUrl, onClose }) => {
   useEffect(() => {
     const handleOutsideClick = (e) => {
-      if (e.target.id === "modal-backdrop") {
+      if (e.target.id === 'modal-backdrop') {
         onClose();
       }
     };
-    window.addEventListener("click", handleOutsideClick);
-    return () => window.removeEventListener("click", handleOutsideClick);
+    window.addEventListener('click', handleOutsideClick);
+    return () => window.removeEventListener('click', handleOutsideClick);
   }, [onClose]);
 
   return (

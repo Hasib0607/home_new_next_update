@@ -1,1 +1,1 @@
-export const ebitansColor = "#F1593A"
+export const ebitansColor = '#F1593A';

@@ -1,17 +1,17 @@
-import { useState, useEffect, useRef } from "react";
-import styles from "./Chat.module.css";
-import axios from "axios";
-import Image from "next/image";
-import moment from "moment";
-import ReactMarkdown from "react-markdown";
-import socket from "../../lib/socket";
+import { useState, useEffect, useRef } from 'react';
+import styles from './Chat.module.css';
+import axios from 'axios';
+import Image from 'next/image';
+import moment from 'moment';
+import ReactMarkdown from 'react-markdown';
+import socket from '../../lib/socket';
 
 const Chat = ({ onClose }) => {
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
+  const [newMessage, setNewMessage] = useState('');
   const [isSettingsVisible, setIsSettingsVisible] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState("0"); // Default: Sales
-  const [selectedLanguage, setSelectedLanguage] = useState("0"); // Default: English
+  const [selectedTopic, setSelectedTopic] = useState('0'); // Default: Sales
+  const [selectedLanguage, setSelectedLanguage] = useState('0'); // Default: English
   const [conversationID, setConversationID] = useState(null);
   const [conversation, setConversation] = useState(null);
   const [isFormVisible, setIsFormVisible] = useState(true);
@@ -21,9 +21,9 @@ const Chat = ({ onClose }) => {
   const [sessionEndMessage, setSessionEndMessage] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
+    name: '',
+    phone: '',
+    email: '',
   });
 
   const messagesEndRef = useRef(null);
@@ -34,10 +34,10 @@ const Chat = ({ onClose }) => {
   const sessionTimeoutRef = useRef(null);
 
   useEffect(() => {
-    const sessionId = sessionStorage.getItem("sessionID");
+    const sessionId = sessionStorage.getItem('sessionID');
 
     const messageListener = (data) => {
-      if (data?.sessionToken === sessionId && data?.senderType === "agent") {
+      if (data?.sessionToken === sessionId && data?.senderType === 'agent') {
         setMessages((prev) => [
           ...prev,
           {
@@ -49,17 +49,16 @@ const Chat = ({ onClose }) => {
       }
     };
 
-    socket.on("message", messageListener);
+    socket.on('message', messageListener);
 
     // Cleanup function to prevent duplicate event listeners
     return () => {
-      socket.off("message", messageListener);
+      socket.off('message', messageListener);
     };
   }, []);
 
-
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -68,13 +67,13 @@ const Chat = ({ onClose }) => {
 
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [newMessage]);
 
   const handleSend = async () => {
-    const sessionId = sessionStorage.getItem("sessionID");
+    const sessionId = sessionStorage.getItem('sessionID');
     const messageText = newMessage.trim();
     if (!messageText) return;
 
@@ -88,7 +87,7 @@ const Chat = ({ onClose }) => {
 
     // Optimistically add user's message to UI
     setMessages((prev) => [...prev, newMessageObj]);
-    setNewMessage("");
+    setNewMessage('');
     setIsTyping(false); // Reset typing state
 
     if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
@@ -96,16 +95,12 @@ const Chat = ({ onClose }) => {
 
     try {
       // Send message to API
-      const response = await axios.post(
-        "https://admin.ebitans.com/api/v1/chat-message/send",
-        {
-          conversation_id: conversationID,
-          agent_id: conversation?.agent_id,
-          sender_type: "visitor",
-          message: messageText,
-        }
-      );
-
+      const response = await axios.post('https://admin.ebitans.com/api/v1/chat-message/send', {
+        conversation_id: conversationID,
+        agent_id: conversation?.agent_id,
+        sender_type: 'visitor',
+        message: messageText,
+      });
 
       if (response?.data?.status) {
         const responseData = response.data.data;
@@ -115,16 +110,16 @@ const Chat = ({ onClose }) => {
           const socketMessage = {
             message: responseData,
             agentId: agentID,
-            senderType: "visitor",
+            senderType: 'visitor',
             sessionToken: sessionId,
-            visitorUserId: "null",
-          }
+            visitorUserId: 'null',
+          };
 
           if (socket.connected) {
             socket.emit('message', socketMessage);
           }
         } else {
-          console.log("sdrtg");
+          console.log('sdrtg');
 
           const responseMessage = {
             text: responseData?.response?.content,
@@ -145,7 +140,6 @@ const Chat = ({ onClose }) => {
         }
 
         startTimeout(responseData?.endSessionTime);
-
       }
     } catch (error) {
       // console.error("Error sending message:", error);
@@ -155,7 +149,7 @@ const Chat = ({ onClose }) => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -170,7 +164,7 @@ const Chat = ({ onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://admin.ebitans.com/api/v1/get-visitor/conversation",
+        'https://admin.ebitans.com/api/v1/get-visitor/conversation',
         {
           visitor_name: formData?.name,
           visitor_phone: formData?.phone,
@@ -180,30 +174,21 @@ const Chat = ({ onClose }) => {
       if (response?.data?.status) {
         const { visitor } = response.data;
         // Store session ID and conversation ID in sessionStorage
-        sessionStorage.setItem("sessionID", visitor?.session_token);
-        sessionStorage.setItem(
-          "conversationID",
-          response?.data?.conversation?.id
-        );
+        sessionStorage.setItem('sessionID', visitor?.session_token);
+        sessionStorage.setItem('conversationID', response?.data?.conversation?.id);
         setConversationID(response?.data?.conversation?.id);
         setConversation(response?.data?.conversation);
 
         // Store selected language and topic in localStorage
-        localStorage.setItem(
-          "selectedLanguage",
-          response?.data?.conversation?.lang
-        );
-        localStorage.setItem(
-          "selectedTopic",
-          response?.data?.conversation?.type
-        );
+        localStorage.setItem('selectedLanguage', response?.data?.conversation?.lang);
+        localStorage.setItem('selectedTopic', response?.data?.conversation?.type);
         setSelectedLanguage(String(response?.data?.conversation?.lang));
         setSelectedTopic(String(response?.data?.conversation?.type));
 
         // Hide the form after successful submission
         setIsFormVisible(false);
 
-        socket.emit('joined', { userID: "null", session_token: visitor?.session_token });
+        socket.emit('joined', { userID: 'null', session_token: visitor?.session_token });
 
         // Display bot's initial message
         // setMessages([
@@ -217,20 +202,20 @@ const Chat = ({ onClose }) => {
         // ]);
       }
     } catch (error) {
-      console.log("Error submitting form:", error);
-      alert("Something went wrong. Please, try again!");
+      console.log('Error submitting form:', error);
+      alert('Something went wrong. Please, try again!');
     }
   };
 
   // Retrieve stored values from session storage when the component loads
   useEffect(() => {
-    const sessionId = sessionStorage.getItem("sessionID");
-    const storedConversationID = sessionStorage.getItem("conversationID");
+    const sessionId = sessionStorage.getItem('sessionID');
+    const storedConversationID = sessionStorage.getItem('conversationID');
 
     const fetchExistingConversation = async () => {
       try {
         const response = await axios.post(
-          "https://admin.ebitans.com/api/v1/get-visitor/conversation",
+          'https://admin.ebitans.com/api/v1/get-visitor/conversation',
           {},
           {
             headers: {
@@ -244,24 +229,24 @@ const Chat = ({ onClose }) => {
 
           setConversationID(conversation?.id);
           setConversation(conversation);
-          localStorage.setItem("selectedTopic", conversation?.type);
-          localStorage.setItem("selectedLanguage", conversation?.lang);
+          localStorage.setItem('selectedTopic', conversation?.type);
+          localStorage.setItem('selectedLanguage', conversation?.lang);
           setSelectedTopic(String(conversation?.type));
           setSelectedLanguage(String(conversation?.lang));
 
           if (messages) {
             const formattedMessages = messages?.reverse().map((msg) => ({
               text: msg?.content,
-              isSelf: msg?.sender_type === "visitor",
+              isSelf: msg?.sender_type === 'visitor',
               createdAt: msg?.created_at,
             }));
             setMessages(formattedMessages);
           }
         }
       } catch (error) {
-        console.error("Error fetching conversation:", error);
-        sessionStorage.removeItem("sessionID");
-        sessionStorage.removeItem("conversationID");
+        console.error('Error fetching conversation:', error);
+        sessionStorage.removeItem('sessionID');
+        sessionStorage.removeItem('conversationID');
         setIsFormVisible(true);
       }
     };
@@ -269,7 +254,7 @@ const Chat = ({ onClose }) => {
     if (sessionId) {
       setIsFormVisible(false);
       fetchExistingConversation();
-      socket.emit('joined', { userID: "null", session_token: sessionId });
+      socket.emit('joined', { userID: 'null', session_token: sessionId });
     }
     if (storedConversationID) {
       setConversationID(storedConversationID);
@@ -282,24 +267,24 @@ const Chat = ({ onClose }) => {
 
     try {
       const updatedData = {
-        type: type === "topic" ? value : selectedTopic,
-        lang: type === "language" ? value : selectedLanguage,
+        type: type === 'topic' ? value : selectedTopic,
+        lang: type === 'language' ? value : selectedLanguage,
         conversation_id: conversationID,
       };
       await axios.post(
-        "https://admin.ebitans.com/api/v1/conversation/user-data-update",
+        'https://admin.ebitans.com/api/v1/conversation/user-data-update',
         updatedData
       );
 
-      if (type == "topic") {
+      if (type == 'topic') {
         setSelectedTopic(value);
-        localStorage.setItem("selectedTopic", value);
+        localStorage.setItem('selectedTopic', value);
       } else {
         setSelectedLanguage(value);
-        localStorage.setItem("selectedLanguage", value);
+        localStorage.setItem('selectedLanguage', value);
       }
     } catch (error) {
-      console.error("Error updating user data:", error);
+      console.error('Error updating user data:', error);
     }
   };
 
@@ -323,29 +308,25 @@ const Chat = ({ onClose }) => {
     sessionTimeoutRef.current = setTimeout(() => {
       setIsSessionModalOpen(true);
     }, endSessionTime);
-
-  }
+  };
 
   const handleEndSession = async () => {
     try {
-      const response = await axios.delete(
-        "https://admin.ebitans.com/api/v1/chat-session/delete",
-        {
-          data: {
-            conversation_id: conversationID,
-          },
-        }
-      );
+      const response = await axios.delete('https://admin.ebitans.com/api/v1/chat-session/delete', {
+        data: {
+          conversation_id: conversationID,
+        },
+      });
 
       if (response.data.status) {
         // Add sessionEndMessage to chat
         setSessionEndMessage(response.data?.message);
-        setNewMessage("");
+        setNewMessage('');
         // Close modal
         setIsSessionModalOpen(false);
       }
     } catch (error) {
-      console.error("Error ending session", error);
+      console.error('Error ending session', error);
       setIsSessionModalOpen(false);
     }
   };
@@ -355,9 +336,7 @@ const Chat = ({ onClose }) => {
     <div className={styles.sessionModal}>
       <div className={styles.modalContent}>
         <h3>Session Timeout Warning!!</h3>
-        <p>
-          Your session will expire due to inactivity. Do you want to continue?
-        </p>
+        <p>Your session will expire due to inactivity. Do you want to continue?</p>
         <div className={styles.modalActions}>
           <button className={styles.modalButton} onClick={handleEndSession}>
             End Session
@@ -386,8 +365,7 @@ const Chat = ({ onClose }) => {
             </div>
             <div className={styles.headerBottom}>
               <button
-                className={`${styles.toggleButton} ${isSettingsVisible ? styles.active : ""
-                  }`}
+                className={`${styles.toggleButton} ${isSettingsVisible ? styles.active : ''}`}
                 onClick={toggleSettings}
               >
                 ▼
@@ -450,8 +428,7 @@ const Chat = ({ onClose }) => {
             <>
               {/* Settings Section */}
               <div
-                className={`${styles.settingsContainer} ${isSettingsVisible ? styles.visible : ""
-                  }`}
+                className={`${styles.settingsContainer} ${isSettingsVisible ? styles.visible : ''}`}
               >
                 <div className={styles.settingsGroup}>
                   <label>Topic</label>
@@ -461,10 +438,8 @@ const Chat = ({ onClose }) => {
                         type="radio"
                         name="topic"
                         value="1"
-                        checked={selectedTopic === "1"}
-                        onChange={(e) =>
-                          handleRadioChange("topic", e.target.value)
-                        }
+                        checked={selectedTopic === '1'}
+                        onChange={(e) => handleRadioChange('topic', e.target.value)}
                       />
                       Tech
                     </label>
@@ -473,10 +448,8 @@ const Chat = ({ onClose }) => {
                         type="radio"
                         name="topic"
                         value="0"
-                        checked={selectedTopic === "0"}
-                        onChange={(e) =>
-                          handleRadioChange("topic", e.target.value)
-                        }
+                        checked={selectedTopic === '0'}
+                        onChange={(e) => handleRadioChange('topic', e.target.value)}
                       />
                       Sales
                     </label>
@@ -491,10 +464,8 @@ const Chat = ({ onClose }) => {
                         type="radio"
                         name="language"
                         value="1"
-                        checked={selectedLanguage === "1"}
-                        onChange={(e) =>
-                          handleRadioChange("language", e.target.value)
-                        }
+                        checked={selectedLanguage === '1'}
+                        onChange={(e) => handleRadioChange('language', e.target.value)}
                       />
                       Bangla
                     </label>
@@ -503,10 +474,8 @@ const Chat = ({ onClose }) => {
                         type="radio"
                         name="language"
                         value="0"
-                        checked={selectedLanguage === "0"}
-                        onChange={(e) =>
-                          handleRadioChange("language", e.target.value)
-                        }
+                        checked={selectedLanguage === '0'}
+                        onChange={(e) => handleRadioChange('language', e.target.value)}
                       />
                       English
                     </label>
@@ -517,22 +486,17 @@ const Chat = ({ onClose }) => {
               <ul className={styles.messages}>
                 {sessionEndMessage ? (
                   <div className={styles.sessionEndMessageOverlay}>
-                    <div className={styles.sessionEndMessageContent}>
-                      {sessionEndMessage}
-                    </div>
+                    <div className={styles.sessionEndMessageContent}>{sessionEndMessage}</div>
                   </div>
                 ) : messages.length === 0 ? (
-                  <p className="text-gray-500 text-center mt-4">
-                    No message found.
-                  </p>
+                  <p className="text-gray-500 text-center mt-4">No message found.</p>
                 ) : (
                   messages.map((msg, index) => (
                     <li
                       key={index}
-                      className={`${styles.messageContainer} ${msg.isSelf
-                        ? styles.selfContainer
-                        : styles.otherContainer
-                        }`}
+                      className={`${styles.messageContainer} ${
+                        msg.isSelf ? styles.selfContainer : styles.otherContainer
+                      }`}
                     >
                       <div className={styles.icon}>
                         {msg.isSelf ? (
@@ -553,23 +517,19 @@ const Chat = ({ onClose }) => {
                         )}
                       </div>
                       <div
-                        className={`${styles.message} ${msg.isSelf ? styles.self : styles.other
-                          }`}
+                        className={`${styles.message} ${msg.isSelf ? styles.self : styles.other}`}
                       >
                         <ReactMarkdown>{msg.text}</ReactMarkdown>
                       </div>
                       <div className={styles.timeStamp}>
-                        {getRelativeTime(msg.createdAt)}{" "}
-                        {/* Add time stamp here */}
+                        {getRelativeTime(msg.createdAt)} {/* Add time stamp here */}
                       </div>
                     </li>
                   ))
                 )}
 
                 {isTyping && (
-                  <li
-                    className={`${styles.messageContainer} ${styles.otherContainer}`}
-                  >
+                  <li className={`${styles.messageContainer} ${styles.otherContainer}`}>
                     <div className={styles.icon}>
                       <Image
                         src="/chat/ebitans-logo.png"
@@ -603,10 +563,7 @@ const Chat = ({ onClose }) => {
                 />
                 <button className={styles.sendButton} onClick={handleSend}>
                   <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path
-                      fill="currentColor"
-                      d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
-                    />
+                    <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                   </svg>
                 </button>
               </div>

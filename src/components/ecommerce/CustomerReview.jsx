@@ -1,55 +1,54 @@
-"use client";
+'use client';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay, Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import LandingButton from "./LandingButton";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay, Pagination } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import LandingButton from './LandingButton';
 // Activate autoplay
 SwiperCore.use([Autoplay, Pagination]);
 
 const CustomerReview = ({ scrollToRef }) => {
   const handleScroll = () => {
     if (scrollToRef?.current) {
-      const topOffset =
-        scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
       const offset = -200; // adjust this value to scroll a bit higher (try -80 to -150 as needed)
 
       window.scrollTo({
         top: topOffset + offset,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
 
   const reviewImages = [
     {
-      img: "/image/customer-review1.webp",
-      link: "https://watchtimebd.com",
+      img: '/image/customer-review1.webp',
+      link: 'https://watchtimebd.com',
     },
     {
-      img: "/image/customer-review2.webp",
-      link: "https://savantstylefashion.com",
+      img: '/image/customer-review2.webp',
+      link: 'https://savantstylefashion.com',
     },
     {
-      img: "/image/customer-review3.webp",
-      link: "https://nayeil.com",
+      img: '/image/customer-review3.webp',
+      link: 'https://nayeil.com',
     },
     {
-      img: "/image/customer-review4.webp",
-      link: "http://kc.design",
+      img: '/image/customer-review4.webp',
+      link: 'http://kc.design',
     },
     {
-      img: "/image/customer-review5.webp",
-      link: "https://blgbd.com",
+      img: '/image/customer-review5.webp',
+      link: 'https://blgbd.com',
     },
     {
-      img: "/image/customer-review6.webp",
-      link: "https://10starbd.com",
+      img: '/image/customer-review6.webp',
+      link: 'https://10starbd.com',
     },
     {
-      img: "/image/customer-review7.webp",
-      link: "https://uncleflix.com",
+      img: '/image/customer-review7.webp',
+      link: 'https://uncleflix.com',
     },
   ];
 

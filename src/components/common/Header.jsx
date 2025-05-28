@@ -1,15 +1,15 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-import { FaBars } from "react-icons/fa";
-import Link from "next/link";
-import Image from "next/image";
-import { IoCloseCircleOutline } from "react-icons/io5";
-import { IoIosArrowDown } from "react-icons/io";
-import styles from "@/components/home/home.module.css";
-import { ebitansColor } from "@/lib/ebitansColor";
-import images from "@/lib/images";
-import { usePathname } from "next/navigation";
-import LanguageChanger from "../LanguageChanger";
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import { FaBars } from 'react-icons/fa';
+import Link from 'next/link';
+import Image from 'next/image';
+import { IoCloseCircleOutline } from 'react-icons/io5';
+import { IoIosArrowDown } from 'react-icons/io';
+import styles from '@/components/home/home.module.css';
+import { ebitansColor } from '@/lib/ebitansColor';
+import images from '@/lib/images';
+import { usePathname } from 'next/navigation';
+import LanguageChanger from '../LanguageChanger';
 
 const Header = ({ locale }) => {
   const [open, setOpen] = useState(false);
@@ -20,7 +20,7 @@ const Header = ({ locale }) => {
   const navbarRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.innerWidth > 1024) {
+    if (typeof window !== 'undefined' && window.innerWidth > 1024) {
       const handleClickOutside = (event) => {
         if (
           navbarRef.current &&
@@ -33,15 +33,15 @@ const Header = ({ locale }) => {
         }
       };
       if (open || openSub) {
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutside);
       } else {
         // Remove event listener when dropdown is closed
-        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener('mousedown', handleClickOutside);
       }
 
       // Cleanup function to remove event listener on unmount
       return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener('mousedown', handleClickOutside);
       };
     }
     // Function to handle clicks outside of the dropdown
@@ -113,10 +113,10 @@ const Header = ({ locale }) => {
                       setOpen(false);
                     }}
                     className={`${styles.archivo} ${
-                      pathname === "/" || pathname === "/bn" ? "active" : ""
+                      pathname === '/' || pathname === '/bn' ? 'active' : ''
                     }`}
                   >
-                    {locale === "en" ? "Home" : "হোম"}
+                    {locale === 'en' ? 'Home' : 'হোম'}
                   </li>
                 </Link>
 
@@ -129,13 +129,11 @@ const Header = ({ locale }) => {
                     className={`${styles.archivo} nav-link flex items-center gap-2 lg:cursor-pointer duration-300`}
                   >
                     <span
-                      className={`${
-                        styles.archivo
-                      } hover:text-[#f1593a] duration-300 ${
-                        openSub ? "active" : ""
+                      className={`${styles.archivo} hover:text-[#f1593a] duration-300 ${
+                        openSub ? 'active' : ''
                       }`}
                     >
-                      {locale === "en" ? "Solutions" : "সমাধান"}
+                      {locale === 'en' ? 'Solutions' : 'সমাধান'}
                     </span>
                     <IoIosArrowDown className="hover:text-[#f1593a] duration-300 " />
                   </li>
@@ -153,13 +151,12 @@ const Header = ({ locale }) => {
                           >
                             <li
                               className={`${styles.archivo} ${
-                                pathname === `/bn${sub?.link}` ||
-                                pathname === `${sub?.link}`
-                                  ? "active"
-                                  : ""
+                                pathname === `/bn${sub?.link}` || pathname === `${sub?.link}`
+                                  ? 'active'
+                                  : ''
                               } py-5 list-disc`}
                             >
-                              {locale === "en" ? sub?.name : sub?.nameBn}
+                              {locale === 'en' ? sub?.name : sub?.nameBn}
                             </li>
                           </Link>
                         </div>
@@ -175,12 +172,10 @@ const Header = ({ locale }) => {
                       setOpen(false);
                     }}
                     className={`${styles.archivo} ${
-                      pathname === "/pricing" || pathname === "/bn/pricing"
-                        ? "active"
-                        : ""
+                      pathname === '/pricing' || pathname === '/bn/pricing' ? 'active' : ''
                     }`}
                   >
-                    {locale === "en" ? "Pricing" : "মূল্য তালিকা"}
+                    {locale === 'en' ? 'Pricing' : 'মূল্য তালিকা'}
                   </li>
                 </Link>
 
@@ -191,12 +186,10 @@ const Header = ({ locale }) => {
                       setOpen(false);
                     }}
                     className={`${styles.archivo} ${
-                      pathname === "/services" || pathname === "/bn/services"
-                        ? "active"
-                        : ""
+                      pathname === '/services' || pathname === '/bn/services' ? 'active' : ''
                     }`}
                   >
-                    {locale === "en" ? "Services" : "সার্ভিস সমূহ"}
+                    {locale === 'en' ? 'Services' : 'সার্ভিস সমূহ'}
                   </li>
                 </Link>
 
@@ -209,13 +202,11 @@ const Header = ({ locale }) => {
                     className={`${styles.archivo} nav-link flex items-center gap-2 lg:cursor-pointer duration-300`}
                   >
                     <span
-                      className={`${
-                        styles.archivo
-                      } hover:text-[#f1593a] duration-300 ${
-                        open ? "active" : ""
+                      className={`${styles.archivo} hover:text-[#f1593a] duration-300 ${
+                        open ? 'active' : ''
                       }`}
                     >
-                      {locale === "en" ? "Resources" : "রিসোর্স"}
+                      {locale === 'en' ? 'Resources' : 'রিসোর্স'}
                     </span>
                     <IoIosArrowDown className="hover:text-[#f1593a] duration-300 " />
                   </li>
@@ -224,10 +215,10 @@ const Header = ({ locale }) => {
                     <div className="hidden lg:flex items-center gap-3 absolute  -bottom-[95px] -left-[190px] drop-shadow-md w-max border-x border-y border-y-[#26161234]  border-x-[#694F49] bg-white px-10">
                       {subMenu_resource?.map((sub, id) => (
                         <div ref={dropdownRef} key={id} className="px-5">
-                          {sub?.name === "Video" ? (
+                          {sub?.name === 'Video' ? (
                             <a href={sub?.link} target="_blank">
                               <li className={`nav-link list-disc`}>
-                                {locale === "en" ? sub?.name : sub?.nameBn}
+                                {locale === 'en' ? sub?.name : sub?.nameBn}
                               </li>
                             </a>
                           ) : (
@@ -241,13 +232,12 @@ const Header = ({ locale }) => {
                             >
                               <li
                                 className={`${styles.archivo} ${
-                                  pathname === `/bn${sub?.link}` ||
-                                  pathname === `${sub?.link}`
-                                    ? "active"
-                                    : ""
+                                  pathname === `/bn${sub?.link}` || pathname === `${sub?.link}`
+                                    ? 'active'
+                                    : ''
                                 } py-5 list-disc`}
                               >
-                                {locale === "en" ? sub?.name : sub?.nameBn}
+                                {locale === 'en' ? sub?.name : sub?.nameBn}
                               </li>
                             </Link>
                           )}
@@ -257,22 +247,17 @@ const Header = ({ locale }) => {
                   )}
                 </div>
 
-                <Link
-                  href={`/contact`}
-                  className="nav-link hover:text-[#f1593a] duration-300 "
-                >
+                <Link href={`/contact`} className="nav-link hover:text-[#f1593a] duration-300 ">
                   <li
                     onClick={() => {
                       setOpenSub(false);
                       setOpen(false);
                     }}
                     className={`${styles.archivo} ${
-                      pathname === "/contact" || pathname === "/bn/contact"
-                        ? "active"
-                        : ""
+                      pathname === '/contact' || pathname === '/bn/contact' ? 'active' : ''
                     }`}
                   >
-                    {locale === "en" ? "Contact" : "যোগাযোগ করুন"}
+                    {locale === 'en' ? 'Contact' : 'যোগাযোগ করুন'}
                   </li>
                 </Link>
               </ul>
@@ -288,9 +273,7 @@ const Header = ({ locale }) => {
                 <div
                   className={`absolute inset-0 w-0 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
                 ></div>
-                <span className={`${styles.archivo} relative text-white`}>
-                  Login
-                </span>
+                <span className={`${styles.archivo} relative text-white`}>Login</span>
               </button>
             </a>
           </div>
@@ -300,7 +283,7 @@ const Header = ({ locale }) => {
       {/* mobile view menu  */}
       <div
         className={`fixed top-0 ${
-          openMenu ? "left-0" : "left-[100%]"
+          openMenu ? 'left-0' : 'left-[100%]'
         } duration-500 w-full bottom-0 z-50 p-2 `}
       >
         <div className="flex flex-col gap-10 bg-[#F5A797] bg-opacity-25 border border-[#F1593A] rounded backdrop-blur-lg mx-auto h-full overflow-y-auto">
@@ -329,23 +312,19 @@ const Header = ({ locale }) => {
                   onClick={() => setOpenMenu(!openMenu)}
                   className="nav-link hover:text-[#f1593a] duration-300 w-max"
                 >
-                  <li
-                    className={`${styles.archivo} ${
-                      pathname === "/" ? "active" : ""
-                    }`}
-                  >
-                    {locale === "en" ? "Home" : "হোম"}
+                  <li className={`${styles.archivo} ${pathname === '/' ? 'active' : ''}`}>
+                    {locale === 'en' ? 'Home' : 'হোম'}
                   </li>
                 </Link>
 
                 <li
                   onClick={() => setOpenSub(!openSub)}
                   className={`${styles.archivo} ${
-                    openSub && "text-[#f1593a] border-b border-[#f1593a]"
+                    openSub && 'text-[#f1593a] border-b border-[#f1593a]'
                   } group flex items-center gap-2 lg:cursor-pointer w-max`}
                 >
                   <span className={`${styles.archivo}`}>
-                    {locale === "en" ? "Solutions" : "সমাধান"}
+                    {locale === 'en' ? 'Solutions' : 'সমাধান'}
                   </span>
                   <IoIosArrowDown className={` `} />
                 </li>
@@ -354,12 +333,9 @@ const Header = ({ locale }) => {
                   <div className="flex flex-col gap-3 w-max pl-8">
                     {subMenu_solutions?.map((sub, id) => (
                       <ul ref={dropdownRef} key={id}>
-                        <Link
-                          href={sub?.link}
-                          onClick={() => setOpenMenu(!openMenu)}
-                        >
+                        <Link href={sub?.link} onClick={() => setOpenMenu(!openMenu)}>
                           <li className={`${styles.archivo} list-disc`}>
-                            {locale === "en" ? sub?.name : sub?.nameBn}
+                            {locale === 'en' ? sub?.name : sub?.nameBn}
                           </li>
                         </Link>
                       </ul>
@@ -373,7 +349,7 @@ const Header = ({ locale }) => {
                   className="nav-link hover:text-[#f1593a] duration-300 w-max"
                 >
                   <li className={`${styles.archivo} `}>
-                    {locale === "en" ? "Pricing" : "মূল্য তালিকা"}
+                    {locale === 'en' ? 'Pricing' : 'মূল্য তালিকা'}
                   </li>
                 </Link>
 
@@ -383,10 +359,9 @@ const Header = ({ locale }) => {
                   className="nav-link hover:text-[#f1593a] duration-300 w-max"
                 >
                   <li className={`${styles.archivo} `}>
-                    {locale === "en" ? "Services" : "সার্ভিস সমূহ"}
+                    {locale === 'en' ? 'Services' : 'সার্ভিস সমূহ'}
                   </li>
                 </Link>
-
 
                 <li
                   onClick={() => {
@@ -394,11 +369,11 @@ const Header = ({ locale }) => {
                     setOpen(!open);
                   }}
                   className={`${styles.archivo} ${
-                    open && "text-[#f1593a] border-b border-[#f1593a]"
+                    open && 'text-[#f1593a] border-b border-[#f1593a]'
                   } group flex items-center gap-2 lg:cursor-pointer w-max`}
                 >
                   <span className={`${styles.archivo}`}>
-                    {locale === "en" ? "Resources" : "রিসোর্সেস"}
+                    {locale === 'en' ? 'Resources' : 'রিসোর্সেস'}
                   </span>
                   <IoIosArrowDown className={` `} />
                 </li>
@@ -407,19 +382,16 @@ const Header = ({ locale }) => {
                   <div className="flex flex-col gap-3 w-max pl-8">
                     {subMenu_resource?.map((sub, id) => (
                       <ul key={id}>
-                        {sub?.name === "Video" ? (
+                        {sub?.name === 'Video' ? (
                           <a href={sub?.link} target="_blank">
                             <li className={`${styles.archivo} list-disc`}>
-                              {locale === "en" ? sub?.name : sub?.nameBn}
+                              {locale === 'en' ? sub?.name : sub?.nameBn}
                             </li>
                           </a>
                         ) : (
-                          <Link
-                            href={sub?.link}
-                            onClick={() => setOpenMenu(!openMenu)}
-                          >
+                          <Link href={sub?.link} onClick={() => setOpenMenu(!openMenu)}>
                             <li className={`${styles.archivo} list-disc`}>
-                              {locale === "en" ? sub?.name : sub?.nameBn}
+                              {locale === 'en' ? sub?.name : sub?.nameBn}
                             </li>
                           </Link>
                         )}
@@ -434,7 +406,7 @@ const Header = ({ locale }) => {
                   className="nav-link hover:text-[#f1593a] duration-300 w-max"
                 >
                   <li className={`${styles.archivo} `}>
-                    {locale === "en" ? "Contact" : "যোগাযোগ করুন"}
+                    {locale === 'en' ? 'Contact' : 'যোগাযোগ করুন'}
                   </li>
                 </Link>
 
@@ -459,9 +431,7 @@ const Header = ({ locale }) => {
                   <div
                     className={`absolute inset-0 w-0 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
                   ></div>
-                  <span className={`${styles.archivo} relative text-white`}>
-                    Login
-                  </span>
+                  <span className={`${styles.archivo} relative text-white`}>Login</span>
                 </button>
               </a>
             </div>
@@ -476,36 +446,36 @@ export default Header;
 
 const subMenu_resource = [
   {
-    name: "eBitans Learning",
-    nameBn: "নির্দেশনা",
-    link: "/resources/ebitans-learning",
+    name: 'eBitans Learning',
+    nameBn: 'নির্দেশনা',
+    link: '/resources/ebitans-learning',
   },
   {
-    name: "Video",
-    nameBn: "ভিডিও",
-    link: "https://www.youtube.com/@ebitans/videos",
+    name: 'Video',
+    nameBn: 'ভিডিও',
+    link: 'https://www.youtube.com/@ebitans/videos',
   },
   {
-    name: "Blog",
-    nameBn: "ব্লগ",
-    link: "/resources/blogs",
+    name: 'Blog',
+    nameBn: 'ব্লগ',
+    link: '/resources/blogs',
   },
   {
-    name: "FAQ",
-    nameBn: "জিজ্ঞাসা",
-    link: "/resources/faq",
+    name: 'FAQ',
+    nameBn: 'জিজ্ঞাসা',
+    link: '/resources/faq',
   },
 ];
 
 const subMenu_solutions = [
   {
-    name: "Product খুঁজো",
-    nameBn: "Product খুঁজো",
-    link: "/product-khujo/category",
+    name: 'Product খুঁজো',
+    nameBn: 'Product খুঁজো',
+    link: '/product-khujo/category',
   },
   {
-    name: "Themes",
-    nameBn: "থিম",
-    link: "/solutions/all-theme",
+    name: 'Themes',
+    nameBn: 'থিম',
+    link: '/solutions/all-theme',
   },
 ];

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import LandingButton from "./LandingButton";
+import LandingButton from './LandingButton';
 
 const Price = ({ scrollToRef }) => {
   const handleScroll = () => {
     if (scrollToRef?.current) {
       const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
       const offset = -200;
-  
+
       window.scrollTo({
         top: topOffset + offset,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -24,34 +24,18 @@ const Price = ({ scrollToRef }) => {
         <div className="flex gap-8 justify-center flex-col md:flex-row">
           <div className="">
             <div className="rounded-lg overflow-hidden shadow-md mb-10 border-4 border-[#f1593a]">
-              <img
-                src="/image/besic.webp"
-                alt=""
-                className="w-full h-full object-cover"
-              />
+              <img src="/image/besic.webp" alt="" className="w-full h-full object-cover" />
             </div>
             <div className="flex justify-center my-12">
-              <LandingButton
-                label="ওয়েবসাইট নিন"
-                onClick={handleScroll}
-                className="mx-auto"
-              />
+              <LandingButton label="ওয়েবসাইট নিন" onClick={handleScroll} className="mx-auto" />
             </div>
           </div>
           <div>
             <div className="rounded-lg overflow-hidden shadow-md mb-10 border-4 border-black">
-              <img
-                src="/image/standard.webp"
-                alt=""
-                className="w-full h-full object-cover"
-              />
+              <img src="/image/standard.webp" alt="" className="w-full h-full object-cover" />
             </div>
             <div className="flex justify-center my-12">
-              <LandingButton
-                label="ওয়েবসাইট নিন"
-                onClick={handleScroll}
-                className="mx-auto"
-              />
+              <LandingButton label="ওয়েবসাইট নিন" onClick={handleScroll} className="mx-auto" />
             </div>
           </div>
           <div>
@@ -63,27 +47,15 @@ const Price = ({ scrollToRef }) => {
               />
             </div>
             <div className="flex justify-center my-12">
-              <LandingButton
-                label="ওয়েবসাইট নিন"
-                onClick={handleScroll}
-                className="mx-auto"
-              />
+              <LandingButton label="ওয়েবসাইট নিন" onClick={handleScroll} className="mx-auto" />
             </div>
           </div>
           <div>
             <div className="rounded-lg overflow-hidden shadow-md mb-10 border-4 border-black">
-              <img
-                src="/image/premium plan.webp" 
-                alt=""
-                className="w-full h-full object-cover"
-              />
+              <img src="/image/premium plan.webp" alt="" className="w-full h-full object-cover" />
             </div>
             <div className="flex justify-center my-12">
-              <LandingButton
-                label="ওয়েবসাইট নিন"
-                onClick={handleScroll}
-                className="mx-auto"
-              />
+              <LandingButton label="ওয়েবসাইট নিন" onClick={handleScroll} className="mx-auto" />
             </div>
           </div>
         </div>

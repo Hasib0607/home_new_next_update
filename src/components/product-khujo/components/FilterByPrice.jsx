@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { filterByPrice } from "@/helper/filter";
-import { useEffect, useRef, useState } from "react";
+import { filterByPrice } from '@/helper/filter';
+import { useEffect, useRef, useState } from 'react';
 
 const FilterByPrice = ({ fetchedData, setData }) => {
   const minPrice = 0;
@@ -55,10 +55,8 @@ const FilterByPrice = ({ fetchedData, setData }) => {
   };
 
   useEffect(() => {
-    const percentMin =
-      ((priceRange.minPrice - minPrice) / (maxPrice - minPrice)) * 100;
-    const percentMax =
-      ((priceRange.maxPrice - minPrice) / (maxPrice - minPrice)) * 100;
+    const percentMin = ((priceRange.minPrice - minPrice) / (maxPrice - minPrice)) * 100;
+    const percentMax = ((priceRange.maxPrice - minPrice) / (maxPrice - minPrice)) * 100;
 
     if (rangeRef.current) {
       rangeRef.current.style.left = `${percentMin}%`;
@@ -67,13 +65,11 @@ const FilterByPrice = ({ fetchedData, setData }) => {
   }, [priceRange.minPrice, priceRange.maxPrice]);
 
   const inputStyle =
-    "range-thumb absolute mt-[6px] top-0 left-0 w-full appearance-none bg-transparent z-10 pointer-events-none cursor-grab hover:cursor-grabbing duration-150 transition-all";
+    'range-thumb absolute mt-[6px] top-0 left-0 w-full appearance-none bg-transparent z-10 pointer-events-none cursor-grab hover:cursor-grabbing duration-150 transition-all';
 
   return (
     <>
-      <h1 className="font-medium text-gray-500 text-md pb-3">
-        Filter by Price
-      </h1>
+      <h1 className="font-medium text-gray-500 text-md pb-3">Filter by Price</h1>
       <div className="flex justify-between items-center text-sm font-semibold">
         <label htmlFor="range">BDT {priceRange.minPrice}</label>
         <label htmlFor="range">BDT {priceRange.maxPrice}</label>
@@ -82,10 +78,7 @@ const FilterByPrice = ({ fetchedData, setData }) => {
       <div className="w-full max-w-md mx-auto mt-8 relative">
         {/* Track background */}
         <div className="relative h-2 bg-gray-300 rounded">
-          <div
-            ref={rangeRef}
-            className="absolute h-2 bg-[var(--primary-color)] rounded"
-          />
+          <div ref={rangeRef} className="absolute h-2 bg-[var(--primary-color)] rounded" />
         </div>
 
         {/* Min range */}
@@ -112,7 +105,7 @@ const FilterByPrice = ({ fetchedData, setData }) => {
 
         {/* Tailwind-compatible custom thumb styling */}
         <style jsx>{`
-          input[type="range"].range-thumb::-webkit-slider-thumb {
+          input[type='range'].range-thumb::-webkit-slider-thumb {
             appearance: none;
             pointer-events: all;
             height: 16px;
@@ -122,7 +115,7 @@ const FilterByPrice = ({ fetchedData, setData }) => {
             margin-top: -7px;
           }
 
-          input[type="range"].range-thumb::-moz-range-thumb {
+          input[type='range'].range-thumb::-moz-range-thumb {
             appearance: none;
             pointer-events: all;
             height: 16px;
@@ -131,7 +124,7 @@ const FilterByPrice = ({ fetchedData, setData }) => {
             border-radius: 9999px;
           }
 
-          input[type="range"].range-thumb {
+          input[type='range'].range-thumb {
             -webkit-appearance: none;
             height: 2px;
           }

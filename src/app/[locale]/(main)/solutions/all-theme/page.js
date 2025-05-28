@@ -1,22 +1,21 @@
-import Image from "next/image";
-import banner from "@/assets/images/webBanner/ebitans - eCommerce website builder platform - Theme.webp";
-import styles from "@/components/home/home.module.css";
-import { Suspense } from "react";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { fetchThemeData } from "@/helper/api";
-import { themeImg } from "@/constants/imageUrl";
-import Loading from "@/app/[locale]/loading";
-import Rate from "@/lib/Rate";
-import Registration from "@/components/pricing/Registration";
+import Image from 'next/image';
+import banner from '@/assets/images/webBanner/ebitans - eCommerce website builder platform - Theme.webp';
+import styles from '@/components/home/home.module.css';
+import { Suspense } from 'react';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import { fetchThemeData } from '@/helper/api';
+import { themeImg } from '@/constants/imageUrl';
+import Loading from '@/app/[locale]/loading';
+import Rate from '@/lib/Rate';
+import Registration from '@/components/pricing/Registration';
 
 export const metadata = {
-  title: "Themes",
-  description:
-    "No coding knowledge is required! Build a beautiful and user-friendly online store ",
+  title: 'Themes',
+  description: 'No coding knowledge is required! Build a beautiful and user-friendly online store ',
 };
 
 const AllTheme = async ({ params: { locale } }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   const data = (await fetchThemeData()) ?? [];
 
   return (
@@ -32,12 +31,12 @@ const AllTheme = async ({ params: { locale } }) => {
         <h1
           className={`${styles.archivo} absolute z-[1] text-gray-800 md:tracking-[15px] tracking-widest text-xl lg:text-4xl md:mt-[-120px] mt-[-40px] font-bold`}
         >
-          {bangla ? "eBitans সম্পর্কে কিছু কথা" : "THE ULTIMATE SOLUTION"}
+          {bangla ? 'eBitans সম্পর্কে কিছু কথা' : 'THE ULTIMATE SOLUTION'}
         </h1>
         <h1
           className={`  ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light   absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
         >
-          {bangla ? "টার্মস এবং কন্ডিশনস" : "With Unlimited Themes"}
+          {bangla ? 'টার্মস এবং কন্ডিশনস' : 'With Unlimited Themes'}
         </h1>
       </div>
 
@@ -95,7 +94,7 @@ const Template = ({ item }) => {
             </h1>
           </a>
           <h2 className=" bg-gray-100 mb-2 px-2 text-xs font-bold text-black">
-            {" "}
+            {' '}
             Category: <span className="font-normal">{item.category} </span>
           </h2>
         </div>
@@ -104,8 +103,8 @@ const Template = ({ item }) => {
           <div className="grid grid-cols-2 gap-2">
             <div>
               <h1 className=" bg-gray-100 mt-1 mb-1 px-2 sm:text-xl text-lg font-bold text-[#f1593a]">
-                {item?.is_premium === "Paid" ? "BDT:" : "FREE"}{" "}
-                {item.price === 0 ? "" : item.price}{" "}
+                {item?.is_premium === 'Paid' ? 'BDT:' : 'FREE'}{' '}
+                {item.price === 0 ? '' : item.price}{' '}
               </h1>
 
               <div className="flex items-center px-2">
@@ -116,8 +115,8 @@ const Template = ({ item }) => {
               </div>
 
               <h2 className=" bg-gray-100 mt-1 mb-2 px-2 text-xs font-normal text-gray-600 hover:text-orange-500 lg:cursor-pointer">
-                {" "}
-                {item.downlad} Downloded{" "}
+                {' '}
+                {item.downlad} Downloded{' '}
               </h2>
             </div>
             <div className="flex items-end justify-end pr-2 pb-2">

@@ -1,38 +1,31 @@
-import Image from "next/image";
-import banner from "@/assets/images/webBanner/ebitans - eCommerce website builder platform - Blog.webp";
-import styles from "@/components/home/home.module.css";
-import {
-  fetchBlogData,
-  fetchBlogPopularData,
-  fetchBlogTypeData,
-} from "@/helper/api";
-import SingleBlog from "@/components/blogs/SingleBlog";
-import PopularBlog from "@/components/blogs/PopularBlog";
-import { Suspense } from "react";
-import images from "@/lib/images";
-import BlogType from "@/components/blogs/BlogType";
-import AllBlog from "@/components/blogs/AllBlog";
-import Loading from "@/app/[locale]/loading";
-
+import Image from 'next/image';
+import banner from '@/assets/images/webBanner/ebitans - eCommerce website builder platform - Blog.webp';
+import styles from '@/components/home/home.module.css';
+import { fetchBlogData, fetchBlogPopularData, fetchBlogTypeData } from '@/helper/api';
+import SingleBlog from '@/components/blogs/SingleBlog';
+import PopularBlog from '@/components/blogs/PopularBlog';
+import { Suspense } from 'react';
+import images from '@/lib/images';
+import BlogType from '@/components/blogs/BlogType';
+import AllBlog from '@/components/blogs/AllBlog';
+import Loading from '@/app/[locale]/loading';
 
 export const metadata = {
-  title: "Blogs",
+  title: 'Blogs',
   description:
     "Ebitans Blog is your one-stop shop for valuable insights and practical tips to help you thrive in the exciting world of Bangladeshi e-commerce. Whether you're a seasoned seller or just starting your online business journey, we've got something for you.",
 };
 
-
 const Blogs = async ({ params: { locale } }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   const blogData = (await fetchBlogData()) ?? [];
   const blogPopularData = (await fetchBlogPopularData()) ?? [];
   const blogTypeData = (await fetchBlogTypeData()) ?? [];
-  
+
   const filterBlog = blogData?.filter(
     (blog) => blog?.type === details?.type && blog?.id !== details?.id
   );
 
- 
   return (
     <>
       <div className="container px-5 lg:px-10 sm:pt-[100px] pt-[65px] relative z-[1]">
@@ -47,12 +40,12 @@ const Blogs = async ({ params: { locale } }) => {
           <h1
             className={`${styles.archivo} absolute z-[1] text-gray-800 md:tracking-[15px] tracking-widest text-xl lg:text-4xl md:mt-[-120px] mt-[-40px] font-bold`}
           >
-            {bangla ? "সর্বশেষ সংবাদ ও আপডেট" : "Latest News & Updates"}
+            {bangla ? 'সর্বশেষ সংবাদ ও আপডেট' : 'Latest News & Updates'}
           </h1>
           <h1
             className={` ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
           >
-            {bangla ? "ব্লগ" : "Blogs"}
+            {bangla ? 'ব্লগ' : 'Blogs'}
           </h1>
         </div>
 
@@ -72,9 +65,7 @@ const Blogs = async ({ params: { locale } }) => {
 
             {/* popular blogs */}
             <div className="basis-2/5">
-              <h1 className="text-2xl pb-5">
-                {bangla ? "জনপ্রিয় ব্লগ" : "Popular Blogs"}
-              </h1>
+              <h1 className="text-2xl pb-5">{bangla ? 'জনপ্রিয় ব্লগ' : 'Popular Blogs'}</h1>
               <Suspense
                 fallback={
                   <div>
@@ -91,11 +82,7 @@ const Blogs = async ({ params: { locale } }) => {
         </div>
 
         {/* banner section  */}
-        <a
-          href="https://admin.ebitans.com/register"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://admin.ebitans.com/register" target="_blank" rel="noopener noreferrer">
           <div className="container px-5 lg:px-10 my-10">
             <Image
               width={500}
@@ -131,7 +118,7 @@ const Blogs = async ({ params: { locale } }) => {
               </div>
             }
           >
-            {filterBlog?.length > 0 ? <AllBlog /> : ""}
+            {filterBlog?.length > 0 ? <AllBlog /> : ''}
           </Suspense>
         </div>
       </div>

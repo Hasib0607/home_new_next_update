@@ -1,7 +1,7 @@
-import moment from "moment";
-import Image from "next/image";
-import Link from "next/link";
-import { fetchBlogData, fetchBlogDetailsData } from "@/helper/api";
+import moment from 'moment';
+import Image from 'next/image';
+import Link from 'next/link';
+import { fetchBlogData, fetchBlogDetailsData } from '@/helper/api';
 
 export async function generateMetadata({ params }) {
   const { details } = (await fetchBlogDetailsData(params)) ?? [];
@@ -37,13 +37,13 @@ const BlogDetails = async ({ params }) => {
 
     try {
       const cleanScript = details.custom_script
-        .replace(/<\/?script.*?>/g, "") // Remove script tags
-        .replace(/\\/g, "") // Remove escape characters
+        .replace(/<\/?script.*?>/g, '') // Remove script tags
+        .replace(/\\/g, '') // Remove escape characters
         .trim();
 
       return JSON.parse(cleanScript);
     } catch (error) {
-      console.error("Error parsing JSON-LD:", error);
+      console.error('Error parsing JSON-LD:', error);
       return null;
     }
   };
@@ -79,15 +79,10 @@ const BlogDetails = async ({ params }) => {
             />
           </div>
           <div className="bg-black bg-opacity-50 lg:absolute bottom-0 left-0 w-full md:p-10 p-5">
-            <h1 className="lg:text-4xl text-xl font-bold my-2 text-white">
-              {details?.title}
-            </h1>
-            <p className="xl:text-lg text-sm font-medium my-2 text-white">
-              {details?.sub_title}
-            </p>
+            <h1 className="lg:text-4xl text-xl font-bold my-2 text-white">{details?.title}</h1>
+            <p className="xl:text-lg text-sm font-medium my-2 text-white">{details?.sub_title}</p>
             <p className="text-white">
-              Date:{" "}
-              {moment(new Date(details?.created_at)).format("MMMM Do, YYYY")}
+              Date: {moment(new Date(details?.created_at)).format('MMMM Do, YYYY')}
             </p>
           </div>
         </div>
@@ -106,18 +101,10 @@ const BlogDetails = async ({ params }) => {
                 <div>
                   {filterBlog?.slice(0, 4).map((blog) => {
                     const permalink =
-                      blog?.permalink && blog?.permalink !== ""
-                        ? blog?.permalink
-                        : blog?.slug;
+                      blog?.permalink && blog?.permalink !== '' ? blog?.permalink : blog?.slug;
                     return (
-                      <Link
-                        href={`/resources/blogs/${permalink}`}
-                        key={blog?.id}
-                      >
-                        <div
-                          key={blog?.id}
-                          className="flex gap-2 border-b-2 py-5"
-                        >
+                      <Link href={`/resources/blogs/${permalink}`} key={blog?.id}>
+                        <div key={blog?.id} className="flex gap-2 border-b-2 py-5">
                           <div className="h-28 w-28">
                             <img
                               src={blog?.thumbnail}
@@ -129,9 +116,7 @@ const BlogDetails = async ({ params }) => {
                             <p className="text-lg text-[#f1593a] font-medium xl:mb-3">
                               {blog?.type}
                             </p>
-                            <h3 className="xl:text-base text-sm font-semibold">
-                              {blog?.title}
-                            </h3>
+                            <h3 className="xl:text-base text-sm font-semibold">{blog?.title}</h3>
                           </div>
                         </div>
                       </Link>

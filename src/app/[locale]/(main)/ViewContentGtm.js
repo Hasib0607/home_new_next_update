@@ -28,7 +28,6 @@ const ViewContentGtm = ({ title, category }) => {
       content_type: 'blog',
       eventId: event_id,
     });
-
   }, [title, category]);
 
   useEffect(() => {

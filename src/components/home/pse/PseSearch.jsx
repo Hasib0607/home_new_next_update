@@ -1,28 +1,26 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import styles from "../home.module.css";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import styles from '../home.module.css';
+import { useRouter } from 'next/navigation';
 
 const PseSearch = ({ category }) => {
-  const [searchTxt, setSearchTxt] = useState("");
+  const [searchTxt, setSearchTxt] = useState('');
 
   const router = useRouter();
 
   const cat = category?.find((item) => item?.id === 33829);
 
   function handleKeyPress(event) {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       searchHandle();
     }
   }
 
   const searchHandle = () => {
     if (searchTxt) {
-      router.push(
-        `/product-khujo/category?slug=${cat?.slug}&query=${searchTxt}&page=1`
-      );
-      setSearchTxt("");
+      router.push(`/product-khujo/category?slug=${cat?.slug}&query=${searchTxt}&page=1`);
+      setSearchTxt('');
     }
   };
 

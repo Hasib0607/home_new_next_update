@@ -1,13 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import { FiArrowUpRight } from "react-icons/fi";
+import Image from 'next/image';
+import Link from 'next/link';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 const BlogCard = ({ item }) => {
-  const permalink =
-  item?.permalink && item?.permalink !== "" ? item?.permalink : item?.slug;
+  const permalink = item?.permalink && item?.permalink !== '' ? item?.permalink : item?.slug;
 
   if (item?.website !== 1) {
-    return null; 
+    return null;
   }
 
   return (
@@ -28,16 +27,14 @@ const BlogCard = ({ item }) => {
         </div>
         <div className="px-5">
           <div className="flex justify-between items-center gap-2">
-            <h3 className="text-2xl font-semibold py-7 w-full">
-              {item?.title}
-            </h3>
+            <h3 className="text-2xl font-semibold py-7 w-full">{item?.title}</h3>
             <div className="w-max">
               <FiArrowUpRight className="text-4xl" />
             </div>
           </div>
           <p className="">
             {item?.sub_title?.slice(0, 200)}
-            {item?.sub_title?.length > 200 && "..."}
+            {item?.sub_title?.length > 200 && '...'}
           </p>
         </div>
       </Link>

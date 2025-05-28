@@ -1,14 +1,14 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import Marquee from "react-fast-marquee";
-import styles from "./home.module.css";
-import images from "@/lib/images";
-import { useEffect, useState } from "react";
-import { baseUrl } from "@/constants/baseUrl";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import Marquee from 'react-fast-marquee';
+import styles from './home.module.css';
+import images from '@/lib/images';
+import { useEffect, useState } from 'react';
+import { baseUrl } from '@/constants/baseUrl';
 
-const Theme = ({locale}) => {
-  const bangla = locale !== "en";
+const Theme = ({ locale }) => {
+  const bangla = locale !== 'en';
   const [templates, setTemplates] = useState([]);
   const [isMobile, setIsMobile] = useState(null);
 
@@ -19,7 +19,7 @@ const Theme = ({locale}) => {
         const data = await response.json();
         setTemplates(data.templates);
       } catch (error) {
-        console.error("There was an error fetching the data", error);
+        console.error('There was an error fetching the data', error);
       }
     };
 
@@ -29,7 +29,7 @@ const Theme = ({locale}) => {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 1024);
     }
   }, []);
@@ -45,16 +45,16 @@ const Theme = ({locale}) => {
               <p
                 className={`${styles.archivo} ${styles.paragraph} tracking-[5px] lg:tracking-[10px] uppercase`}
               >
-                {bangla ? "আলটিমেট সল্যুশন" : "The Ultimate Solution"}
+                {bangla ? 'আলটিমেট সল্যুশন' : 'The Ultimate Solution'}
               </p>
               <h2 className={`${styles.archivo} ${styles.headerTwo}`}>
-                {bangla ? "আনলিমিটেড থিমসের সাথে" : "With Unlimited Themes"}
+                {bangla ? 'আনলিমিটেড থিমসের সাথে' : 'With Unlimited Themes'}
               </h2>
             </div>
             <Link href="/solutions/all-theme">
               <div className="group relative h-[27px] lg:h-[45px] w-[75px] lg:w-[123px] border-[1.5px] border-[#f1593a] rounded flex justify-center items-center gap-3 bg-white text-[#f1593a] ">
                 <button className="relative z-[1] text-[10px] lg:text-base">
-                  {bangla ? "আরো দেখুন" : "See More"}
+                  {bangla ? 'আরো দেখুন' : 'See More'}
                 </button>
                 <Image
                   src={images?.arrow1}
@@ -69,24 +69,12 @@ const Theme = ({locale}) => {
           </div>
         </div>
         <div>
-          <Marquee
-            pauseOnHover={true}
-            speed={isMobile ? 30 : 60}
-            gradient={false}
-          >
+          <Marquee pauseOnHover={true} speed={isMobile ? 30 : 60} gradient={false}>
             {templates?.slice(0, 10).map((item, index) => (
-              <a
-                href={item?.liveurl}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={index}
-              >
+              <a href={item?.liveurl} target="_blank" rel="noopener noreferrer" key={index}>
                 <div className="relative group">
                   <Image
-                    src={
-                      "https://admin.ebitans.com/assets/images/template/" +
-                      item?.feature_image
-                    }
+                    src={'https://admin.ebitans.com/assets/images/template/' + item?.feature_image}
                     width={500}
                     height={500}
                     alt="theme"
@@ -96,7 +84,7 @@ const Theme = ({locale}) => {
                     <p
                       className={`${styles.archivo} ${styles.paragraph} text-white font-semibold hover:pr-4 pr-2 duration-500 hover:tracking-widest`}
                     >
-                      {bangla ? "ডেমো দেখুন" : "View Demo"}
+                      {bangla ? 'ডেমো দেখুন' : 'View Demo'}
                     </p>
                   </div>
                 </div>
@@ -110,18 +98,10 @@ const Theme = ({locale}) => {
             className="lg:mt-10 mt-3"
           >
             {templates?.slice(11, 20).map((item, index) => (
-              <a
-                href={item?.liveurl}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={index}
-              >
+              <a href={item?.liveurl} target="_blank" rel="noopener noreferrer" key={index}>
                 <div className="relative group">
                   <Image
-                    src={
-                      "https://admin.ebitans.com/assets/images/template/" +
-                      item?.feature_image
-                    }
+                    src={'https://admin.ebitans.com/assets/images/template/' + item?.feature_image}
                     width={500}
                     height={500}
                     alt="theme"
@@ -131,7 +111,7 @@ const Theme = ({locale}) => {
                     <p
                       className={`${styles.archivo} ${styles.paragraph} text-white font-semibold hover:pr-4 pr-2 duration-500 hover:tracking-widest`}
                     >
-                      {bangla ? "ডেমো দেখুন" : "View Demo"}
+                      {bangla ? 'ডেমো দেখুন' : 'View Demo'}
                     </p>
                   </div>
                 </div>

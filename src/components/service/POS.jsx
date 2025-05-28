@@ -1,21 +1,19 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const POS = ({ data, locale }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   return (
-    <div className={`py-2 px-5 lg:px-0 ${data ? "mt-20" : "mt-5"}`}>
+    <div className={`py-2 px-5 lg:px-0 ${data ? 'mt-20' : 'mt-5'}`}>
       <div
         className={`container px-5 lg:px-10 relative flex flex-col lg:flex-row gap-4 lg:gap-0  ${
-          data ? "max-w-7xl" : "max-w-5xl"
+          data ? 'max-w-7xl' : 'max-w-5xl'
         }`}
       >
         <div className="lg:pr-6 ">
           <div className="flex flex-col pr-4 space-y-2 pb-4 max-w-lg">
             <div className="bg-[#f1593a] rounded">
               <h3 className="sm:text-[28px] text-[22px] pl-2 py-1.5 font-extrabold text-white lg:text-left">
-                {!bangla
-                  ? "Best Point Of Sale (POS) System"
-                  : "সেরা পয়েন্ট অফ সেল (POS) সিস্টেম"}
+                {!bangla ? 'Best Point Of Sale (POS) System' : 'সেরা পয়েন্ট অফ সেল (POS) সিস্টেম'}
               </h3>
             </div>
             <p className="text-[14px]  text-[#8d8d8d] text-justify pt-2 pb-5">
@@ -49,10 +47,8 @@ const POS = ({ data, locale }) => {
             <Image
               width={500}
               height={500}
-              className={`h-full shadow-xl rounded ${
-                data ? "w-[600px]" : "w-[600px]"
-              }`}
-              src={"https://ebitans.com/Image/service/Pos-system.jpg"}
+              className={`h-full shadow-xl rounded ${data ? 'w-[600px]' : 'w-[600px]'}`}
+              src={'https://ebitans.com/Image/service/Pos-system.jpg'}
               alt="ebitans image"
             />
           </div>
@@ -66,7 +62,7 @@ const POS = ({ data, locale }) => {
             width={500}
             height={500}
             className="shadow-xl rounded-xl border-4 h-full w-full"
-            src={"https://ebitans.com/Image/Ebitans-POS-L.jpg"}
+            src={'https://ebitans.com/Image/Ebitans-POS-L.jpg'}
             alt="ebitans image"
           />
         </div>

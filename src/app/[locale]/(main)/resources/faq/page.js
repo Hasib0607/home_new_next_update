@@ -1,17 +1,17 @@
-import Image from "next/image";
-import banner from "@/assets/images/webBanner/ebitans - eCommerce website builder platform - FAQ.webp";
-import styles from "@/components/home/home.module.css";
-import FaqContent from "@/components/faq/FaqContent";
-import Registration from "@/components/pricing/Registration";
+import Image from 'next/image';
+import banner from '@/assets/images/webBanner/ebitans - eCommerce website builder platform - FAQ.webp';
+import styles from '@/components/home/home.module.css';
+import FaqContent from '@/components/faq/FaqContent';
+import Registration from '@/components/pricing/Registration';
 
 export const metadata = {
-  title: "FAQ",
+  title: 'FAQ',
   description:
     "Here, we aim to answer your most frequently asked questions about using the Ebitans platform and launching your e-commerce journey in Bangladesh. If you can't find your specific question here, feel free to contact our friendly support team.",
 };
 
 const Faq = ({ params: { locale } }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
 
   return (
     <div className="relative z-[1] bg-[#F9F7F6]">
@@ -27,12 +27,12 @@ const Faq = ({ params: { locale } }) => {
           <h1
             className={`${styles.archivo} absolute z-[1] text-gray-800 md:tracking-[15px] tracking-widest text-xl lg:text-4xl md:mt-[-120px] mt-[-40px] font-bold`}
           >
-            {bangla ? "eBitans সম্পর্কে কিছু কথা" : "Full Fill Your Curiosity"}
+            {bangla ? 'eBitans সম্পর্কে কিছু কথা' : 'Full Fill Your Curiosity'}
           </h1>
           <h1
             className={` ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light   absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
           >
-            {bangla ? "প্রশ্নোত্তর" : "FAQ"}
+            {bangla ? 'প্রশ্নোত্তর' : 'FAQ'}
           </h1>
         </div>
       </div>
@@ -43,6 +43,5 @@ const Faq = ({ params: { locale } }) => {
     </div>
   );
 };
-
 
 export default Faq;

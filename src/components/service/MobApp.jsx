@@ -1,19 +1,19 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const MobApp = ({ data, locale }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   return (
-    <div className={`py-2 px-5 lg:px-0 ${data ? "mt-20" : "mt-5"}`}>
+    <div className={`py-2 px-5 lg:px-0 ${data ? 'mt-20' : 'mt-5'}`}>
       <div
         className={`container px-5 lg:px-10 relative flex flex-col lg:flex-row gap-4 lg:gap-0 justify-end ${
-          data ? "max-w-7xl" : "max-w-5xl"
+          data ? 'max-w-7xl' : 'max-w-5xl'
         }`}
       >
         <div className="lg:pr-6">
           <div className="flex flex-col space-y-2 pr-4 pb-4 max-w-lg">
             <div className="bg-[#f1593a] rounded">
               <h3 className="sm:text-[28px] text-[22px] font-bold text-white pl-2 py-1.5 lg:text-left">
-                {!bangla ? "E-commerce Mobile App" : "ই-কমার্স মোবাইল অ্যাপ"}
+                {!bangla ? 'E-commerce Mobile App' : 'ই-কমার্স মোবাইল অ্যাপ'}
               </h3>
             </div>
             <p className="text-[14px]  text-[#8d8d8d] text-justify pt-2 pb-5">
@@ -41,9 +41,9 @@ const MobApp = ({ data, locale }) => {
               width={500}
               height={500}
               className={`h-full border-4 border-[#f1593a] shadow-xl rounded-xl ${
-                data ? "w-[600px]" : " w-[600px]"
+                data ? 'w-[600px]' : ' w-[600px]'
               }`}
-              src={"https://ebitans.com/Image/Ebitans_Mobile App.jpg"}
+              src={'https://ebitans.com/Image/Ebitans_Mobile App.jpg'}
               alt="ebitans image"
             />
           </div>
@@ -56,7 +56,7 @@ const MobApp = ({ data, locale }) => {
             width={500}
             height={500}
             className="h-full w-full shadow-xl border-4 border-[#000] rounded"
-            src={"https://ebitans.com/Image/EbitansMobile-Application1-L.jpg"}
+            src={'https://ebitans.com/Image/EbitansMobile-Application1-L.jpg'}
             alt="ebitans image"
           />
         </div>

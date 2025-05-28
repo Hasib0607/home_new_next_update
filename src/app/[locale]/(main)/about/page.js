@@ -1,123 +1,123 @@
-import banner from "@/assets/images/webBanner/ebitans - eCommerce website builder platform - About.webp";
-import styles from "@/components/home/home.module.css";
-import { BsInstagram } from "react-icons/bs";
-import { RiFacebookBoxLine, RiLinkedinBoxLine } from "react-icons/ri";
-import images from "@/lib/images";
-import Image from "next/image";
-import CircleProgress from "@/components/about/CircleProgress";
-import Registration from "@/components/pricing/Registration";
-import TradeImg from "@/assets/trade/eBitans-trade-licence.jpg";
-import DBIDImg from "@/assets/trade/DBID_eBitans.jpg";
+import banner from '@/assets/images/webBanner/ebitans - eCommerce website builder platform - About.webp';
+import styles from '@/components/home/home.module.css';
+import { BsInstagram } from 'react-icons/bs';
+import { RiFacebookBoxLine, RiLinkedinBoxLine } from 'react-icons/ri';
+import images from '@/lib/images';
+import Image from 'next/image';
+import CircleProgress from '@/components/about/CircleProgress';
+import Registration from '@/components/pricing/Registration';
+import TradeImg from '@/assets/trade/eBitans-trade-licence.jpg';
+import DBIDImg from '@/assets/trade/DBID_eBitans.jpg';
 
 export const metadata = {
-  title: "About Us",
+  title: 'About Us',
   description:
-    "eBitans provides Entrepreneurs an excellent solution to build sustainable stores online to sell their products online and also from physical stores.",
+    'eBitans provides Entrepreneurs an excellent solution to build sustainable stores online to sell their products online and also from physical stores.',
 };
 
 const featuresData = [
   {
     icon: images?.react,
     progress: 90,
-    title: "Full-Feature React.js and Next.js E-Commerce Website",
-    titleBd: "ফুল-ফিচার React.js এবং Next.js ই-কমার্স ওয়েবসাইট",
+    title: 'Full-Feature React.js and Next.js E-Commerce Website',
+    titleBd: 'ফুল-ফিচার React.js এবং Next.js ই-কমার্স ওয়েবসাইট',
     subTitle:
-      "Enjoy unlimited bandwidth and lightning-fast web hosting for seamless and speedy performance to power your online store.",
+      'Enjoy unlimited bandwidth and lightning-fast web hosting for seamless and speedy performance to power your online store.',
     subTitleBd:
-      "আনলিমিটেড ব্যান্ডউইথ এবং দ্রুত ওয়েব হোস্টিং উপভোগ করুন, যা আপনার অনলাইন স্টোরের জন্য স্লিম এবং দ্রুত পারফরম্যান্স নিশ্চিত করে।",
+      'আনলিমিটেড ব্যান্ডউইথ এবং দ্রুত ওয়েব হোস্টিং উপভোগ করুন, যা আপনার অনলাইন স্টোরের জন্য স্লিম এবং দ্রুত পারফরম্যান্স নিশ্চিত করে।',
   },
 
   {
     icon: images?.hosting,
     progress: 70,
-    title: "Super-Fast NVMe Web Hosting",
-    titleBd: "সুপার-ফাস্ট NVMe ওয়েব হোস্টিং",
+    title: 'Super-Fast NVMe Web Hosting',
+    titleBd: 'সুপার-ফাস্ট NVMe ওয়েব হোস্টিং',
     subTitle:
-      "Experience unlimited bandwidth and ultra-fast hosting for smooth and uninterrupted performance of your online store.",
+      'Experience unlimited bandwidth and ultra-fast hosting for smooth and uninterrupted performance of your online store.',
     subTitleBd:
-      "আনলিমিটেড ব্যান্ডউইথ এবং অতি দ্রুত হোস্টিং উপভোগ করুন, যাতে আপনার অনলাইন স্টোরের পারফরম্যান্স মসৃণ এবং বিরামহীন হয়।",
+      'আনলিমিটেড ব্যান্ডউইথ এবং অতি দ্রুত হোস্টিং উপভোগ করুন, যাতে আপনার অনলাইন স্টোরের পারফরম্যান্স মসৃণ এবং বিরামহীন হয়।',
   },
 
   {
     icon: images?.inventory,
     progress: 80,
-    title: "All-in-One Inventory Management System",
-    titleBd: "অল-ইন-ওয়ান ইনভেন্টরি ম্যানেজমেন্ট সিস্টেম",
+    title: 'All-in-One Inventory Management System',
+    titleBd: 'অল-ইন-ওয়ান ইনভেন্টরি ম্যানেজমেন্ট সিস্টেম',
     subTitle:
-      "Easily manage your product inventory, track sales, and handle accounts-all in one powerful software.",
+      'Easily manage your product inventory, track sales, and handle accounts-all in one powerful software.',
     subTitleBd:
-      "সহজেই আপনার পণ্য ইনভেন্টরি পরিচালনা করুন, বিক্রয় ট্র্যাক করুন এবং অ্যাকাউন্ট পরিচালনা করুন – সব একটিমাত্র শক্তিশালী সফটওয়্যারে।",
+      'সহজেই আপনার পণ্য ইনভেন্টরি পরিচালনা করুন, বিক্রয় ট্র্যাক করুন এবং অ্যাকাউন্ট পরিচালনা করুন – সব একটিমাত্র শক্তিশালী সফটওয়্যারে।',
   },
 
   {
     icon: images?.http,
     progress: 100,
-    title: "Free Subdomain",
-    titleBd: "ফ্রি সাবডোমেইন",
+    title: 'Free Subdomain',
+    titleBd: 'ফ্রি সাবডোমেইন',
     subTitle:
-      "Get a subdomain at no extra cost and build your website hassle-free—no fees, no hidden charges!",
+      'Get a subdomain at no extra cost and build your website hassle-free—no fees, no hidden charges!',
     subTitleBd:
-      "কোনো অতিরিক্ত খরচ ছাড়াই একটি সাবডোমেইন পান এবং আপনার ওয়েবসাইটটি ঝামেলাহীনভাবে তৈরি করুন—কোনো ফি, কোনো গোপন চার্জ নেই!",
+      'কোনো অতিরিক্ত খরচ ছাড়াই একটি সাবডোমেইন পান এবং আপনার ওয়েবসাইটটি ঝামেলাহীনভাবে তৈরি করুন—কোনো ফি, কোনো গোপন চার্জ নেই!',
   },
 
   {
     icon: images?.subscription,
     progress: 85,
-    title: "Budget-Friendly Monthly Subscription",
-    titleBd: "বাজেট-ফ্রেন্ডলি মাসিক সাবস্ক্রিপশন",
+    title: 'Budget-Friendly Monthly Subscription',
+    titleBd: 'বাজেট-ফ্রেন্ডলি মাসিক সাবস্ক্রিপশন',
     subTitle:
-      "Worried about the cost of building an e-commerce website? Relax—our plans start at an amazingly low price!",
+      'Worried about the cost of building an e-commerce website? Relax—our plans start at an amazingly low price!',
     subTitleBd:
-      "ই-কমার্স ওয়েবসাইট তৈরির খরচ নিয়ে চিন্তা করছেন? চিন্তা করবেন না—আমাদের প্ল্যানগুলি অল্প খরচে শুরু হয়!",
+      'ই-কমার্স ওয়েবসাইট তৈরির খরচ নিয়ে চিন্তা করছেন? চিন্তা করবেন না—আমাদের প্ল্যানগুলি অল্প খরচে শুরু হয়!',
   },
 
   {
     icon: images?.easy,
     progress: 90,
-    title: "Easy Installation Process",
-    titleBd: "সহজ ইনস্টলেশন প্রক্রিয়া",
+    title: 'Easy Installation Process',
+    titleBd: 'সহজ ইনস্টলেশন প্রক্রিয়া',
     subTitle:
-      "Creating your website is now a breeze! With eBitans, you can build your dream site in just a few clicks.",
+      'Creating your website is now a breeze! With eBitans, you can build your dream site in just a few clicks.',
     subTitleBd:
-      "এখন একটি ওয়েবসাইট তৈরি করা অনেক বেশি সহজ। আমাদের eBitans প্ল্যাটফর্ম ব্যবহার করে আপনি মাত্র কয়েকটি ক্লিকের মধ্যে আপনার স্বপ্নের ওয়েবসাইট টি তৈরি করে ফেলতে পারেন ।",
+      'এখন একটি ওয়েবসাইট তৈরি করা অনেক বেশি সহজ। আমাদের eBitans প্ল্যাটফর্ম ব্যবহার করে আপনি মাত্র কয়েকটি ক্লিকের মধ্যে আপনার স্বপ্নের ওয়েবসাইট টি তৈরি করে ফেলতে পারেন ।',
   },
 ];
 
 const team = [
   {
-    name: "Hasib Ahmed Soyad",
-    nameBd: "হাসিব আহমেদ সোয়াদ",
-    image: "https://ebitans.com/Image/cover/Hasib_Ahmed.jpg",
-    title: "Founder & CEO",
-    titleBd: "প্রতিষ্ঠাতা ও সি.ই.ও",
-    facebook: "https://www.facebook.com/nansjejhggfggghjjjtrrfgggghhhj",
-    instagram: "https://ebitans.com/Image/cover/Hasib_Ahmed.jpg",
-    linkedin: "https://www.linkedin.com/feed/?trk=404_page",
+    name: 'Hasib Ahmed Soyad',
+    nameBd: 'হাসিব আহমেদ সোয়াদ',
+    image: 'https://ebitans.com/Image/cover/Hasib_Ahmed.jpg',
+    title: 'Founder & CEO',
+    titleBd: 'প্রতিষ্ঠাতা ও সি.ই.ও',
+    facebook: 'https://www.facebook.com/nansjejhggfggghjjjtrrfgggghhhj',
+    instagram: 'https://ebitans.com/Image/cover/Hasib_Ahmed.jpg',
+    linkedin: 'https://www.linkedin.com/feed/?trk=404_page',
   },
   {
-    name: "Hasina Parvin",
-    nameBd: "হাসিনা পারভিন",
-    image: "https://ebitans.com/Image/cover/hasina_parvin.jpg",
-    title: "Head Of Business Development",
-    titleBd: "বিজনেস ডেভেলপমেন্ট প্রধান",
-    facebook: "https://www.facebook.com/hasina.deepa",
-    instagram: "https://www.instagram.com/hasinadeepa/",
-    linkedin: "https://www.linkedin.com/in/hasina-parvin-0614552b/",
+    name: 'Hasina Parvin',
+    nameBd: 'হাসিনা পারভিন',
+    image: 'https://ebitans.com/Image/cover/hasina_parvin.jpg',
+    title: 'Head Of Business Development',
+    titleBd: 'বিজনেস ডেভেলপমেন্ট প্রধান',
+    facebook: 'https://www.facebook.com/hasina.deepa',
+    instagram: 'https://www.instagram.com/hasinadeepa/',
+    linkedin: 'https://www.linkedin.com/in/hasina-parvin-0614552b/',
   },
   {
-    name: "Tamanna Lina",
-    nameBd: "তামান্না লিনা",
-    image: "https://ebitans.com/Image/cover/1659417332510.jpg",
-    title: "Head Of Digital Marketing",
-    titleBd: "হেড অফ ডিজিটাল মার্কেটিং",
-    facebook: "https://www.facebook.com/tamannaparin.lina",
-    instagram: "https://www.instagram.com/lina.tamanna/",
-    linkedin: "https://www.linkedin.com/in/tamanna-parvin-lina-008b8915a/",
+    name: 'Tamanna Lina',
+    nameBd: 'তামান্না লিনা',
+    image: 'https://ebitans.com/Image/cover/1659417332510.jpg',
+    title: 'Head Of Digital Marketing',
+    titleBd: 'হেড অফ ডিজিটাল মার্কেটিং',
+    facebook: 'https://www.facebook.com/tamannaparin.lina',
+    instagram: 'https://www.instagram.com/lina.tamanna/',
+    linkedin: 'https://www.linkedin.com/in/tamanna-parvin-lina-008b8915a/',
   },
 ];
 
 const About = ({ params: { locale } }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   return (
     <div className="container px-5 lg:px-10 sm:pt-[100px] pt-[65px] relative z-[1]">
       <div className="relative flex justify-center items-center">
@@ -131,18 +131,18 @@ const About = ({ params: { locale } }) => {
         <h1
           className={`${styles.archivo} absolute z-[1] text-gray-800 md:tracking-[15px] tracking-widest text-xl lg:text-4xl md:mt-[-120px] mt-[-40px] font-bold`}
         >
-          {bangla ? "eBitans সম্পর্কে কিছু কথা" : "Who We Are"}
+          {bangla ? 'eBitans সম্পর্কে কিছু কথা' : 'Who We Are'}
         </h1>
         <h1
           className={`${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light   absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
         >
-          {bangla ? "টার্মস এবং কন্ডিশনস" : "Know More About Us"}
+          {bangla ? 'টার্মস এবং কন্ডিশনস' : 'Know More About Us'}
         </h1>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-20 container px-5 lg:px-10">
         <div className="pt-16 gap-y-10">
           <h1 className="text-3xl text-[#333] font-semibold font-Railway tracking-widest py-10 ">
-            {bangla ? "eBitans সম্পর্কে" : "About eBitans"}
+            {bangla ? 'eBitans সম্পর্কে' : 'About eBitans'}
           </h1>
           <h3 className="text-xl text-[#333] font-semibold font-Railway tracking-widest">
             {bangla
@@ -173,7 +173,7 @@ Choose eBitans – the best eCommerce website builder in Bangladesh – and take
         </div>
         <div className="lg:-mr-16  lg:-mb-20 w-full">
           <Image
-            src={"https://ebitans.com/Image/ebitans_website_about.png"}
+            src={'https://ebitans.com/Image/ebitans_website_about.png'}
             width={500}
             height={500}
             className="lg:mt-40 h-auto w-auto"
@@ -184,9 +184,11 @@ Choose eBitans – the best eCommerce website builder in Bangladesh – and take
 
       <div className="bg-white container px-5 lg:px-10">
         <h1 className="lg:mt-20 lg:px-0 text-xl text-[#f1593a] text-center pt-20 pb-3">
-          {bangla? "ফিচারসমূহ" : "Features"}
+          {bangla ? 'ফিচারসমূহ' : 'Features'}
         </h1>
-        <h1 className="text-5xl text-center pb-16">{bangla? "eBitans কেন অনন্য" : "Why eBitans Is Unique"}</h1>
+        <h1 className="text-5xl text-center pb-16">
+          {bangla ? 'eBitans কেন অনন্য' : 'Why eBitans Is Unique'}
+        </h1>
         <div className="container lg:block flex justify-center pb-6">
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center lg:grid-cols-3 gap-3">
             {featuresData?.map((data, id) => (
@@ -197,8 +199,10 @@ Choose eBitans – the best eCommerce website builder in Bangladesh – and take
       </div>
 
       <div className="bg-white ">
-        <h1 className="text-xl text-[#f1593a] text-center pt-40 pb-3">{bangla? "টিম" : "Team"}</h1>
-        <h1 className="text-5xl text-center pb-16">{bangla? "হার্ট অফ eBitans" : "Heart Of eBitans"}</h1>
+        <h1 className="text-xl text-[#f1593a] text-center pt-40 pb-3">{bangla ? 'টিম' : 'Team'}</h1>
+        <h1 className="text-5xl text-center pb-16">
+          {bangla ? 'হার্ট অফ eBitans' : 'Heart Of eBitans'}
+        </h1>
         <div className="py-14 flex justify-center container px-5 lg:px-10">
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center gap-40 ">
             {team?.map((item, id) => (
@@ -255,12 +259,12 @@ Choose eBitans – the best eCommerce website builder in Bangladesh – and take
 
       <div>
         <h2 className="text-5xl text-center pb-7">
-          {bangla ? "ট্রেড লাইসেন্স এবং ডিবিআইডি" : "Trade License and DBID"}
+          {bangla ? 'ট্রেড লাইসেন্স এবং ডিবিআইডি' : 'Trade License and DBID'}
         </h2>
         <p className="text-center pb-7">
           {bangla
-            ? "আমরা আমাদের ক্লায়েন্ট এবং পার্টনারদের সঙ্গে স্বচ্ছতা ও বিশ্বাস বজায় রাখতে গর্বিত। আমাদের ব্যবসা একটি বৈধ ট্রেড লাইসেন্সের অধীনে পরিচালিত হয়, যা সকল আইনি এবং পেশাগত মানদণ্ড নিশ্চিত করে। এছাড়াও, আমরা একটি ইউনিক ডিবিআইডি (ডান অ্যান্ড ব্র্যাডস্ট্রিট আইডেন্টিফায়ার) সহ নিবন্ধিত, যা আমাদের বিশ্বাসযোগ্যতা এবং মানসম্পন্ন সেবার প্রতিশ্রুতির প্রতীক।"
-            : "We take pride in maintaining transparency and trust with our clients and partners. Our business operates under a valid Trade License, ensuring compliance with all legal and professional standards. Additionally, we are registered with a unique DBID (Dun & Bradstreet Identifier), signifying our credibility and commitment to quality."}
+            ? 'আমরা আমাদের ক্লায়েন্ট এবং পার্টনারদের সঙ্গে স্বচ্ছতা ও বিশ্বাস বজায় রাখতে গর্বিত। আমাদের ব্যবসা একটি বৈধ ট্রেড লাইসেন্সের অধীনে পরিচালিত হয়, যা সকল আইনি এবং পেশাগত মানদণ্ড নিশ্চিত করে। এছাড়াও, আমরা একটি ইউনিক ডিবিআইডি (ডান অ্যান্ড ব্র্যাডস্ট্রিট আইডেন্টিফায়ার) সহ নিবন্ধিত, যা আমাদের বিশ্বাসযোগ্যতা এবং মানসম্পন্ন সেবার প্রতিশ্রুতির প্রতীক।'
+            : 'We take pride in maintaining transparency and trust with our clients and partners. Our business operates under a valid Trade License, ensuring compliance with all legal and professional standards. Additionally, we are registered with a unique DBID (Dun & Bradstreet Identifier), signifying our credibility and commitment to quality.'}
         </p>
         <div className="flex flex-col md:flex-row gap-10 md:gap-48 items-center justify-center mb-8">
           <Image
@@ -296,7 +300,7 @@ const SingleCircular = ({ data, bangla }) => {
           <h4 className="text-center text-[17px] text-[#333333] font-semibold">
             {bangla ? data?.titleBd : data?.title}
           </h4>
-          <p className={" text-center text-gray-400 text-sm"}>
+          <p className={' text-center text-gray-400 text-sm'}>
             {bangla ? data?.subTitleBd : data?.subTitle}
           </p>
         </div>

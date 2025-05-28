@@ -1,9 +1,9 @@
-import Rectangle2 from "@/assets/images/affiliate/Rectangle2.png";
-import desk from "@/assets/images/affiliate/desk.png";
-import Image from "next/image";
+import Rectangle2 from '@/assets/images/affiliate/Rectangle2.png';
+import desk from '@/assets/images/affiliate/desk.png';
+import Image from 'next/image';
 
 const Earn = ({ locale }) => {
-  const bangla = locale != "en";
+  const bangla = locale != 'en';
   return (
     <div className="bg-white relative z-[1]">
       <div className="grid lg:grid-cols-2 gap-x-14 gap-y-10 lg:place-items-center lg:pt-20 lg:pb-32 pb-10 container px-5 lg:px-10">
@@ -27,9 +27,7 @@ const Earn = ({ locale }) => {
         </div>
         <div className="lg:justify-self-end justify-self-center space-y-4">
           <h1 className="text-3xl font-semibold max-w-[500px]">
-            {!bangla
-              ? "Free to start, easy to earn!"
-              : "বিনামূল্যে শুরু করুন, সহজে উপার্জন করুন!"}
+            {!bangla ? 'Free to start, easy to earn!' : 'বিনামূল্যে শুরু করুন, সহজে উপার্জন করুন!'}
           </h1>
           <p className="max-w-[500px]">
             {!bangla

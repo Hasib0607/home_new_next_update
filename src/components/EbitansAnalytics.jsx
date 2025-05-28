@@ -1,18 +1,17 @@
-"use client";
+'use client';
 
-import { useContext, useEffect, useRef, useState } from "react";
-import { ANALYTICS_PREV_PERSIST, TRIGGER_E_TRACK } from "@/consts";
-import useBrowserInfo from "@/hooks/useBrowserInfo";
-import useGeoLocation from "@/hooks/useGeoLocation";
-import { usePathname } from "next/navigation";
-import { getFromLocalStorage, saveToLocalStorage } from "@/helper/localStorage";
-import { formattedDateTime } from "@/helper/getTime";
-import { removeFbclid } from "@/helper/urlCleaner";
-import { getUserDataFromCookies } from "@/app/[locale]/actions";
-import { AnalyticsContext } from "@/context/AnalyticsContext";
+import { useContext, useEffect, useRef, useState } from 'react';
+import { ANALYTICS_PREV_PERSIST, TRIGGER_E_TRACK } from '@/consts';
+import useBrowserInfo from '@/hooks/useBrowserInfo';
+import useGeoLocation from '@/hooks/useGeoLocation';
+import { usePathname } from 'next/navigation';
+import { getFromLocalStorage, saveToLocalStorage } from '@/helper/localStorage';
+import { formattedDateTime } from '@/helper/getTime';
+import { removeFbclid } from '@/helper/urlCleaner';
+import { getUserDataFromCookies } from '@/app/[locale]/actions';
+import { AnalyticsContext } from '@/context/AnalyticsContext';
 
-const EbitansAnalytics = ({locale}) => {
-  
+const EbitansAnalytics = ({ locale }) => {
   const { address, fetchAddress } = useGeoLocation();
   const { browser } = useBrowserInfo();
   const pathname = usePathname();
@@ -26,16 +25,16 @@ const EbitansAnalytics = ({locale}) => {
   const updateVisitorData = async (visitorData) => {
     try {
       const response = await fetch(`/api/${locale}/track-visitor`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(visitorData),
       });
       const data = await response.json(); // Parse JSON response
       return data; // Return data for further processing if needed
     } catch (error) {
-      console.error("Error sending visitor data:", error);
+      console.error('Error sending visitor data:', error);
       return null; // Return null or handle the error gracefully
     }
   };
@@ -43,8 +42,7 @@ const EbitansAnalytics = ({locale}) => {
   if (previousPath.current !== pathname) {
     const exitTime = formattedDateTime();
 
-    const previousAnalyticsData =
-      getFromLocalStorage(ANALYTICS_PREV_PERSIST) ?? {};
+    const previousAnalyticsData = getFromLocalStorage(ANALYTICS_PREV_PERSIST) ?? {};
 
     const updatedAnalyticsData = {
       id: previousAnalyticsData?.id,
@@ -89,9 +87,9 @@ const EbitansAnalytics = ({locale}) => {
     const sendVisitorData = async (visitorData) => {
       try {
         const response = await fetch(`/api/${locale}/track-visitor`, {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(visitorData),
         });
@@ -99,19 +97,13 @@ const EbitansAnalytics = ({locale}) => {
         // console.log('Server Response:', data);
         return data; // Return data for further processing if needed
       } catch (error) {
-        console.error("Error sending visitor data:", error);
+        console.error('Error sending visitor data:', error);
         return null; // Return null or handle the error gracefully
       }
     };
 
-    const cleanedCurrentUrl = removeFbclid(
-      userData?.currentUrl,
-      userData?.domain
-    );
-    const cleanedPreviousUrl = removeFbclid(
-      userData?.previousUrl,
-      userData?.domain
-    );
+    const cleanedCurrentUrl = removeFbclid(userData?.currentUrl, userData?.domain);
+    const cleanedPreviousUrl = removeFbclid(userData?.previousUrl, userData?.domain);
 
     const analyticsData = {
       store_url: userData?.domain,

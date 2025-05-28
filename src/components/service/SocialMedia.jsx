@@ -1,14 +1,14 @@
-import images from "@/lib/images";
-import Image from "next/image";
-import Link from "next/link";
+import images from '@/lib/images';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const SocialMedia = ({ data, locale }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   return (
-    <div className={`py-2 px-5 lg:px-0 ${data ? "mt-20" : "mt-5"}`}>
+    <div className={`py-2 px-5 lg:px-0 ${data ? 'mt-20' : 'mt-5'}`}>
       <div
         className={`container px-5 lg:px-10 relative flex flex-col lg:flex-row gap-4 lg:gap-0 justify-between ${
-          data ? "max-w-7xl" : "max-w-5xl"
+          data ? 'max-w-7xl' : 'max-w-5xl'
         }`}
       >
         <div className="lg:pl-6 lg:order-last">
@@ -16,9 +16,7 @@ const SocialMedia = ({ data, locale }) => {
             <div className="bg-[#f1593a] rounded">
               <Link href="/social-media-marketing">
                 <h3 className="sm:text-[28px] text-[22px] font-bold text-white pl-2 pr-2 py-1.5 lg:text-right lg:cursor-pointer">
-                  {!bangla
-                    ? "Social Media Marketing"
-                    : "সোশ্যাল মিডিয়া মার্কেটিং"}
+                  {!bangla ? 'Social Media Marketing' : 'সোশ্যাল মিডিয়া মার্কেটিং'}
                 </h3>
               </Link>
             </div>
@@ -49,7 +47,7 @@ const SocialMedia = ({ data, locale }) => {
               width={500}
               height={500}
               className={`h-full shadow-xl border-4 border-black rounded-xl ${
-                data ? "w-[600px]" : "w-[600px]"
+                data ? 'w-[600px]' : 'w-[600px]'
               }`}
               src={images?.social2}
               alt="ebitans image"

@@ -1,13 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Website = ({ data, locale }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   return (
-    <div className={`py-2 px-5 lg:px-0 ${data ? "mt-20" : "mt-5"}`}>
+    <div className={`py-2 px-5 lg:px-0 ${data ? 'mt-20' : 'mt-5'}`}>
       <div
         className={`container px-5 lg:px-10 relative flex flex-col lg:flex-row gap-4 lg:gap-0 justify-end ${
-          data ? "max-w-7xl" : "max-w-5xl"
+          data ? 'max-w-7xl' : 'max-w-5xl'
         }`}
       >
         <div
@@ -19,7 +19,7 @@ const Website = ({ data, locale }) => {
             width={500}
             height={500}
             className="rounded border-2 border-black h-full w-full"
-            src={"https://ebitans.com/Image/service/ecommerce_01.jpg"}
+            src={'https://ebitans.com/Image/service/ecommerce_01.jpg'}
             alt="ebitans image"
           />
         </div>
@@ -28,8 +28,8 @@ const Website = ({ data, locale }) => {
             <div className="bg-[#f1593a] rounded">
               <h3 className="sm:text-[28px] text-[22px] font-bold text-white px-2 py-1.5 lg:text-right">
                 {!bangla
-                  ? "Best eCommerce website with Next.js"
-                  : "Next.js দিয়ে তৈরি সেরা ই-কমার্স ওয়েবসাইট"}
+                  ? 'Best eCommerce website with Next.js'
+                  : 'Next.js দিয়ে তৈরি সেরা ই-কমার্স ওয়েবসাইট'}
               </h3>
             </div>
             <p className="text-[14px]  text-[#8d8d8d] text-justify pt-2 pb-5">
@@ -63,9 +63,9 @@ const Website = ({ data, locale }) => {
               width={500}
               height={500}
               className={`h-full shadow-xl rounded-xl border-4 border-[#f1593a]  ${
-                data ? "w-[600px]" : "w-[600px]"
+                data ? 'w-[600px]' : 'w-[600px]'
               }`}
-              src={"https://ebitans.com/Image/service/ecommerce_02.jpg"}
+              src={'https://ebitans.com/Image/service/ecommerce_02.jpg'}
               alt="ebitans image"
             />
           </div>

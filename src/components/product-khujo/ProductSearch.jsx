@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { fetchPseSearch } from "@/helper/api";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import { fetchPseSearch } from '@/helper/api';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const ProductSearch = ({ category }) => {
   const searchParams = useSearchParams();
-  const queryCat = searchParams.get("slug") || "all-products";
-  const queryText = searchParams.get("query") || "";
-  const queryPage =  searchParams.get("page") || 1
+  const queryCat = searchParams.get('slug') || 'all-products';
+  const queryText = searchParams.get('query') || '';
+  const queryPage = searchParams.get('page') || 1;
 
   const [data, setData] = useState([]);
   const [searchTxt, setSearchTxt] = useState(queryText);
@@ -23,11 +23,11 @@ const ProductSearch = ({ category }) => {
   useEffect(() => {
     fetchPseSearch(searchTxt, categorySlug)
       .then((data) => {
-        setPage(1)
+        setPage(1);
         setData(data?.results);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       });
   }, [searchTxt]);
 
@@ -38,7 +38,7 @@ const ProductSearch = ({ category }) => {
   // });
 
   function handleKeyPress(event) {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       setSelectedCat(event.target.value);
       searchHandle();
     }
@@ -46,9 +46,7 @@ const ProductSearch = ({ category }) => {
 
   const searchHandle = () => {
     if (searchTxt) {
-      router.push(
-        `/product-khujo/category?slug=${selectedCat}&query=${searchTxt}&page=${page}`
-      );
+      router.push(`/product-khujo/category?slug=${selectedCat}&query=${searchTxt}&page=${page}`);
     }
   };
 
@@ -58,10 +56,10 @@ const ProductSearch = ({ category }) => {
     // Slice the array to get the specified number of words
     const limitedWords = wordsArray?.slice(0, maxWords);
     // Join the array back into a string
-    const resultString = limitedWords?.join(" ");
+    const resultString = limitedWords?.join(' ');
     // If there are more words in the original string, append "..."
     if (wordsArray?.length > maxWords) {
-      return resultString + "...";
+      return resultString + '...';
     }
     return resultString;
   }
@@ -81,7 +79,7 @@ const ProductSearch = ({ category }) => {
       {searchTxt && (
         <div
           className={`absolute top-12 flex flex-col gap-1 bg-white w-full left-0 p-5 rounded-xl ${
-            (!data || data?.length === 0) && "hidden"
+            (!data || data?.length === 0) && 'hidden'
           }`}
         >
           {data?.map((item) => (

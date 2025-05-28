@@ -1,15 +1,15 @@
-import Image from "next/image";
-import banner from "@/assets/images/webBanner/ebitans - eCommerce website builder platform - terms and conditions.webp";
-import styles from "@/components/home/home.module.css";
+import Image from 'next/image';
+import banner from '@/assets/images/webBanner/ebitans - eCommerce website builder platform - terms and conditions.webp';
+import styles from '@/components/home/home.module.css';
 
 export const metadata = {
-  title: "Terms and Conditions",
+  title: 'Terms and Conditions',
   description:
-    "By accessing or using the Platform or Services, you agree to be bound by these Terms. If you do not agree to all the terms and conditions of this agreement, you may not access or use the Platform or Services.",
+    'By accessing or using the Platform or Services, you agree to be bound by these Terms. If you do not agree to all the terms and conditions of this agreement, you may not access or use the Platform or Services.',
 };
 
 const TermsAndConditions = async ({ params: { locale } }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   return (
     <div className="container px-5 lg:px-10 sm:pt-[100px] pt-[65px] relative z-[1]">
       <div className="relative flex justify-center items-center">
@@ -23,12 +23,12 @@ const TermsAndConditions = async ({ params: { locale } }) => {
         <h1
           className={`${styles.archivo} absolute z-[1] text-gray-800 md:tracking-[15px] tracking-widest text-xl lg:text-4xl md:mt-[-120px] mt-[-40px] font-bold`}
         >
-          {bangla ? "eBitans সম্পর্কে কিছু কথা" : "eBitans"}
+          {bangla ? 'eBitans সম্পর্কে কিছু কথা' : 'eBitans'}
         </h1>
         <h1
           className={` ${styles.wordSpacingOne} ${styles.archivo} mt-9 font-light   absolute z-[1] text-gray-200 md:font-bold md:tracking-[15px] tracking-widest  text-2xl lg:text-6xl`}
         >
-          {bangla ? "টার্মস এবং কন্ডিশনস" : "Terms & Conditions"}
+          {bangla ? 'টার্মস এবং কন্ডিশনস' : 'Terms & Conditions'}
         </h1>
       </div>
 
@@ -56,9 +56,7 @@ const TermsAndConditions = async ({ params: { locale } }) => {
                     আপনি যদি চুক্তির সাথে একমত না হন (বা মেনে চলতে না পারেন) তবে আপনি পরিষেবাটি ব্যবহার নাও করতে পারেন, তবে অনুগ্রহ করে info@ebitans.com-এ ইমেল করে আমাদের জানান, যাতে আমরা একটি সমাধান খোঁজার চেষ্টা করতে পারি। এই শর্তাবলী সমস্ত দর্শক, ব্যবহারকারী এবং অন্যদের জন্য প্রযোজ্য যারা পরিষেবাটি অ্যাক্সেস করতে বা ব্যবহার করতে চান৷`}
         </p>
 
-        <h3 className="text-2xl font-bold py-6">
-          {!bangla ? "Introduction" : "ভূমিকা"}
-        </h3>
+        <h3 className="text-2xl font-bold py-6">{!bangla ? 'Introduction' : 'ভূমিকা'}</h3>
 
         <p>
           {!bangla
@@ -76,9 +74,7 @@ const TermsAndConditions = async ({ params: { locale } }) => {
                     `}
         </p>
 
-        <h3 className="text-2xl font-bold py-6">
-          {!bangla ? "General Terms" : "সাধারণ শর্তাবলী"}
-        </h3>
+        <h3 className="text-2xl font-bold py-6">{!bangla ? 'General Terms' : 'সাধারণ শর্তাবলী'}</h3>
 
         <div>
           <p>
@@ -89,7 +85,7 @@ const TermsAndConditions = async ({ params: { locale } }) => {
           </p>
           <p className="pt-2">
             <span className="text-lg font-bold">
-              {!bangla ? "1. Age restrictions: " : "১. বয়স সীমাবদ্ধতা: "}
+              {!bangla ? '1. Age restrictions: ' : '১. বয়স সীমাবদ্ধতা: '}
             </span>
             {!bangla
               ? `All merchants and customers using eBitans have to confirm that they are at least 18 years of age or are accessing the Site under the supervision of a parent or legal guardian. Without prejudice to any other rights and remedies of eBitans under these Terms and Conditions or at law, eBitans reserves the right to limit or withdraw access to the Site or can terminate any store of a merchant if eBitans at its sole discretion reasonably believes or comes to the knowledge that the person is under the age of 18 years.
@@ -101,8 +97,8 @@ const TermsAndConditions = async ({ params: { locale } }) => {
           <p className="pt-2">
             <span className="text-lg font-bold">
               {!bangla
-                ? "2. Using eBitans for commercial purposes: "
-                : "২. বাণিজ্যিক উদ্দেশ্যে eBitans ব্যবহার করা: "}
+                ? '2. Using eBitans for commercial purposes: '
+                : '২. বাণিজ্যিক উদ্দেশ্যে eBitans ব্যবহার করা: '}
             </span>
             {!bangla
               ? `This platform, website, or any portion of this platform, or website (including but not limited to any copyrighted material, trademarks, or other proprietary information) may not be reproduced, duplicated, copied, sold, resold, visited, distributed or otherwise exploited for any commercial purpose without express written consent of eBitans and/or its merchants (for individual merchants store contents owned by them only), as may be applicable. You may not frame or use framing techniques to enclose any of eBitans and/or its affiliates trademark, logo, or other proprietary information (including images, text, page layout, or form) without its/their express written consent. You may not use any meta tags or any other "hidden text" utilizing eBitans and/or its affiliate's names, designs, get-ups, or trademarks without the express written consent of eBitans and/or its affiliates, as applicable. Any unauthorized use terminates the permission or license granted by eBitans and/or its affiliates, as applicable.
@@ -114,8 +110,8 @@ const TermsAndConditions = async ({ params: { locale } }) => {
           <p className="pt-2">
             <span className="text-lg font-bold">
               {!bangla
-                ? "3. Using eBitans by business entities: "
-                : "৩. ব্যবসায়িক সত্তা দ্বারা eBitans ব্যবহার করা: "}
+                ? '3. Using eBitans by business entities: '
+                : '৩. ব্যবসায়িক সত্তা দ্বারা eBitans ব্যবহার করা: '}
             </span>
             {!bangla
               ? `Business entities creating an e-commerce website in eBitans, you agree that you have the requisite up-to-date licenses to run your business, that you have the authority to bind that entity to these Terms and Conditions and that you and the business entity will comply with all applicable laws relating to the scope of activity undertaken. No person or business entity may register as a member of the Site more than once, liability under these Terms and Conditions is to the specific individual, directly or indirectly related to the email address given by the users.
@@ -127,8 +123,8 @@ const TermsAndConditions = async ({ params: { locale } }) => {
           <p className="pt-2">
             <span className="text-lg font-bold">
               {!bangla
-                ? "4. Contents uploaded by merchants: "
-                : "৪. বণিকদের দ্বারা আপলোড করা বিষয়বস্তু: "}
+                ? '4. Contents uploaded by merchants: '
+                : '৪. বণিকদের দ্বারা আপলোড করা বিষয়বস্তু: '}
             </span>
             {!bangla
               ? `Product representations expressed on individual merchant websites are those of the merchants. Submissions or opinions expressed on those sites' informative pages, descriptions on product details pages, and any other information available within those stores are those of the individual merchants, such contents do not necessarily reflect our opinions. Certain services and related features that may be made available on those individual merchant sites may require registration or the creation of a site by using the e-commerce registration form. Should you choose to register and create your store for any such services or related features, you agree to provide accurate and current information about yourself and your business and to promptly update such information if there are any changes.
@@ -139,7 +135,7 @@ const TermsAndConditions = async ({ params: { locale } }) => {
           </p>
           <p className="pt-2">
             <span className="text-lg font-bold">
-              {!bangla ? "5. User information: " : "৫. ব্যবহারকারীর তথ্য: "}
+              {!bangla ? '5. User information: ' : '৫. ব্যবহারকারীর তথ্য: '}
             </span>
             {!bangla
               ? `Every user of the Site is solely responsible for keeping passwords and other account identifiers safe and secure and for restricting access to his/her computer to prevent unauthorized access to his/her account. The account owner is entirely responsible for all activities that occur under such password or account. Furthermore, you must notify us of any unauthorized use of your password or account. The Site / Platform shall not be responsible or liable, directly or indirectly, in any way for any loss or damage of any kind incurred as a result of, or in connection with, your failure to comply with this section. During the registration process, you agree to receive direct and promotional emails, SMS and push notifications from the Site, and all of its divisions, subsidiaries, and affiliates operated on the Internet. You can subsequently opt out of receiving such direct and promotional communications by clicking on the link at the bottom of any promotional email but please note that some communication is necessary to complete a purchase/sell of order and that this communication cannot be opted out of if you are purchasing from any merchants store or selling as a merchant.
@@ -152,7 +148,7 @@ const TermsAndConditions = async ({ params: { locale } }) => {
 
         <div>
           <h3 className="text-2xl font-bold py-6">
-            {!bangla ? "Limitation of Liability" : "দায়বদ্ধতা/ সীমাবদ্ধতা"}
+            {!bangla ? 'Limitation of Liability' : 'দায়বদ্ধতা/ সীমাবদ্ধতা'}
           </h3>
           <p>
             {!bangla
@@ -207,18 +203,14 @@ const TermsAndConditions = async ({ params: { locale } }) => {
 
         <div>
           <h3 className="text-2xl font-bold py-6">
-            {!bangla
-              ? "Terms of the User Account"
-              : "ব্যবহারকারীর অ্যাকাউন্টের শর্তাবলী"}
+            {!bangla ? 'Terms of the User Account' : 'ব্যবহারকারীর অ্যাকাউন্টের শর্তাবলী'}
           </h3>
 
           <div>
             <p>
               <span className="text-lg font-bold">
-                {!bangla
-                  ? "End Users: "
-                  : "ব্যবহারকারীর অ্যাকাউন্টের শর্তাবলী: "}
-              </span>{" "}
+                {!bangla ? 'End Users: ' : 'ব্যবহারকারীর অ্যাকাউন্টের শর্তাবলী: '}
+              </span>{' '}
               <span>
                 {!bangla
                   ? `End Users while browsing through the site can view products and information, request information and engage in certain Services on the Site. Users agree to the following terms and conditions: `
@@ -244,8 +236,8 @@ const TermsAndConditions = async ({ params: { locale } }) => {
 
             <p className="pt-2">
               <span className="text-lg font-bold">
-                {!bangla ? "Users: " : "ব্যবহারকারীর অ্যাকাউন্টের শর্তাবলী: "}
-              </span>{" "}
+                {!bangla ? 'Users: ' : 'ব্যবহারকারীর অ্যাকাউন্টের শর্তাবলী: '}
+              </span>{' '}
               <span>
                 {!bangla
                   ? `The users who create a separate account at eBitans with the sole purpose of operating and maintaining an online store are to enter into a separate "Merchant User Agreement" and the terms specified in the "Merchant User Agreement" applies to such account users. You are requested to refer to the "Merchant User Agreement" for more details in this regard.`
@@ -258,8 +250,8 @@ const TermsAndConditions = async ({ params: { locale } }) => {
         <div>
           <h3 className="text-2xl font-bold py-6">
             {!bangla
-              ? "Intellectual Property and Customer Content"
-              : "মেধা সম্পত্তি এবং গ্রাহক বিষয়বস্তু"}
+              ? 'Intellectual Property and Customer Content'
+              : 'মেধা সম্পত্তি এবং গ্রাহক বিষয়বস্তু'}
           </h3>
           <p>
             {!bangla
@@ -290,12 +282,12 @@ const TermsAndConditions = async ({ params: { locale } }) => {
 
         <div>
           <h3 className="text-2xl font-bold py-6">
-            {!bangla ? "Reserved Rights" : "সংরক্ষিত অধিকার"}
+            {!bangla ? 'Reserved Rights' : 'সংরক্ষিত অধিকার'}
           </h3>
           <p>
             {!bangla
-              ? "eBitans reserves the following rights:"
-              : "eBitans নিম্নলিখিত অধিকার সংরক্ষণ করে:"}
+              ? 'eBitans reserves the following rights:'
+              : 'eBitans নিম্নলিখিত অধিকার সংরক্ষণ করে:'}
           </p>
           <p>
             {!bangla
@@ -338,20 +330,18 @@ const TermsAndConditions = async ({ params: { locale } }) => {
 
         <div>
           <h3 className="text-2xl font-bold py-6">
-            {!bangla
-              ? "Governing Law & Jurisdiction"
-              : "গভর্নিং আইন ও এখতিয়ার"}
+            {!bangla ? 'Governing Law & Jurisdiction' : 'গভর্নিং আইন ও এখতিয়ার'}
           </h3>
           <p>
             {!bangla
-              ? "This Agreement and its interpretation hereunder and all suits and special proceedings hereunder shall be construed in accordance with the applicable Bangladesh Government laws and any dispute arising shall be governed by the same."
-              : "এই চুক্তি এবং এর ব্যাখ্যা এখানে এবং এর অধীনে সমস্ত মামলা এবং বিশেষ কার্যধারা প্রযোজ্য বাংলাদেশ সরকারের আইন অনুসারে নির্ণয় করা হবে এবং উদ্ভূত যেকোন বিরোধ একই দ্বারা পরিচালিত হবে।"}
+              ? 'This Agreement and its interpretation hereunder and all suits and special proceedings hereunder shall be construed in accordance with the applicable Bangladesh Government laws and any dispute arising shall be governed by the same.'
+              : 'এই চুক্তি এবং এর ব্যাখ্যা এখানে এবং এর অধীনে সমস্ত মামলা এবং বিশেষ কার্যধারা প্রযোজ্য বাংলাদেশ সরকারের আইন অনুসারে নির্ণয় করা হবে এবং উদ্ভূত যেকোন বিরোধ একই দ্বারা পরিচালিত হবে।'}
           </p>
         </div>
 
         <div>
           <h3 className="text-2xl font-bold py-6">
-            {!bangla ? "Governing Law & Jurisdiction" : "কিছু অন্যান্য পয়েন্ট"}
+            {!bangla ? 'Governing Law & Jurisdiction' : 'কিছু অন্যান্য পয়েন্ট'}
           </h3>
           <p>
             {!bangla
@@ -411,9 +401,7 @@ const TermsAndConditions = async ({ params: { locale } }) => {
         </div>
 
         <h3 className="text-3xl font-bold pt-8 pb-4">
-          {!bangla
-            ? `Changes to This Terms and Conditions`
-            : `এই শর্তাবলী পরিবর্তন`}
+          {!bangla ? `Changes to This Terms and Conditions` : `এই শর্তাবলী পরিবর্তন`}
         </h3>
         <p>
           {!bangla
@@ -423,9 +411,7 @@ const TermsAndConditions = async ({ params: { locale } }) => {
                 এই শর্তাবলী ০৬ জুলাই ২০২২ থেকে কার্যকর হবে।`}
         </p>
 
-        <h3 className="text-3xl font-bold pt-8 pb-4">
-          {!bangla ? `Contact Us` : `যোগাযোগ করুন`}
-        </h3>
+        <h3 className="text-3xl font-bold pt-8 pb-4">{!bangla ? `Contact Us` : `যোগাযোগ করুন`}</h3>
         <p>
           {!bangla
             ? `If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at info@ebitans.com .

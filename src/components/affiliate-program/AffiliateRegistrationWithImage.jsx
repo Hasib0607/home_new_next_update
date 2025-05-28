@@ -1,12 +1,12 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { useForm } from "react-hook-form";
-import { onSubmit } from "@/lib/registration";
-import styles from "@/components/home/home.module.css";
-import images from "@/lib/images";
-import Link from "next/link";
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { useForm } from 'react-hook-form';
+import { onSubmit } from '@/lib/registration';
+import styles from '@/components/home/home.module.css';
+import images from '@/lib/images';
+import Link from 'next/link';
 
 const AffiliateRegistrationWithImage = () => {
   const {
@@ -20,7 +20,7 @@ const AffiliateRegistrationWithImage = () => {
   const router = useRouter();
 
   const handleRegister = (data) => {
-    const affiliateData = { ...data, type: "affiliate" };
+    const affiliateData = { ...data, type: 'affiliate' };
     onSubmit(affiliateData, setLoading, router, reset);
   };
 
@@ -33,9 +33,7 @@ const AffiliateRegistrationWithImage = () => {
           >
             Build your complete e-Commerce website
           </p>
-          <h2 className={`${styles.archivo} ${styles.headerTwo}`}>
-            Registration Now
-          </h2>
+          <h2 className={`${styles.archivo} ${styles.headerTwo}`}>Registration Now</h2>
           <form onSubmit={handleSubmit(handleRegister)}>
             <div className="flex gap-2 w-full mt-10 lg:mt-[70px] px-4 lg:px-0">
               <div className="lg:w-[260px] w-full">
@@ -43,43 +41,39 @@ const AffiliateRegistrationWithImage = () => {
                   autoComplete="tel"
                   type="text"
                   placeholder="Enter Your Email or Phone"
-                  {...register("email_or_phone", {
+                  {...register('email_or_phone', {
                     required: true,
                   })}
-                  aria-invalid={errors.email_or_phone ? "true" : "false"}
+                  aria-invalid={errors.email_or_phone ? 'true' : 'false'}
                   className={`lg:w-[260px] w-full px-2 h-10 lg:h-12 text-sm ${
                     styles.archivo
                   } bg-[#F8F3F1] border-[1.5px] placeholder:text-[#D3CDCB] ${
-                    errors?.email_or_phone?.type === "required"
-                      ? "border-red-500 focus:border-red-500"
-                      : "border-[#a8a3a2] focus:border-[#D3CDCB]"
+                    errors?.email_or_phone?.type === 'required'
+                      ? 'border-red-500 focus:border-red-500'
+                      : 'border-[#a8a3a2] focus:border-[#D3CDCB]'
                   } focus:outline-none focus:ring-0 rounded`}
                 />
-                {errors?.email_or_phone?.type === "required" && (
-                  <span className="text-xs text-red-500 block">
-                    This field is required
-                  </span>
+                {errors?.email_or_phone?.type === 'required' && (
+                  <span className="text-xs text-red-500 block">This field is required</span>
                 )}
               </div>
               <div className="lg:w-[260px] w-full">
                 <input
                   type="password"
-                  {...register("password", { required: true })}
+                  {...register('password', { required: true })}
                   placeholder="Enter your password"
                   className={`lg:w-[260px] w-full px-2 h-10 lg:h-12 text-sm ${
                     styles.archivo
                   } bg-[#F8F3F1] placeholder:text-[#D3CDCB] border-[1.5px] ${
-                    errors.password?.type === "minLength" ||
-                    errors.password?.type === "maxLength" ||
-                    errors?.password?.type === "required"
-                      ? "border-red-500 focus:border-red-500"
-                      : "border-[#a8a3a2] focus:border-[#D3CDCB]"
+                    errors.password?.type === 'minLength' ||
+                    errors.password?.type === 'maxLength' ||
+                    errors?.password?.type === 'required'
+                      ? 'border-red-500 focus:border-red-500'
+                      : 'border-[#a8a3a2] focus:border-[#D3CDCB]'
                   } focus:outline-none focus:ring-0 rounded`}
                 />
-                {errors?.password?.type === "required" && (
-                  <span className="text-xs text-red-500 block">
-                    This field is required
-                  </span>
+                {errors?.password?.type === 'required' && (
+                  <span className="text-xs text-red-500 block">This field is required</span>
                 )}
               </div>
             </div>
@@ -89,17 +83,14 @@ const AffiliateRegistrationWithImage = () => {
               <label className="flex items-center text-sm">
                 <input
                   type="checkbox"
-                  {...register("terms_agreed", { required: true })}
+                  {...register('terms_agreed', { required: true })}
                   className={`mr-2 w-4 h-4 accent-[#F1593A] ${
-                    errors.terms_agreed ? "border-red-500" : "border-gray-300"
+                    errors.terms_agreed ? 'border-red-500' : 'border-gray-300'
                   } rounded focus:ring-[#F1593A]`}
                 />
                 <span className={styles.archivo}>
-                  I have read and agree to the{" "}
-                  <Link
-                    href="/terms-and-conditions"
-                    className="text-[#F1593A] hover:underline"
-                  >
+                  I have read and agree to the{' '}
+                  <Link href="/terms-and-conditions" className="text-[#F1593A] hover:underline">
                     Terms and Conditions
                   </Link>
                 </span>
@@ -119,9 +110,7 @@ const AffiliateRegistrationWithImage = () => {
                   <div
                     className={`absolute inset-0 w-0 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
                   ></div>
-                  <span className={`${styles.archivo} relative  text-white`}>
-                    Loading
-                  </span>
+                  <span className={`${styles.archivo} relative  text-white`}>Loading</span>
                 </button>
               </div>
             ) : (
@@ -133,9 +122,7 @@ const AffiliateRegistrationWithImage = () => {
                   <div
                     className={`absolute inset-0 w-1 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
                   ></div>
-                  <span className={`${styles.archivo} relative  text-white`}>
-                    Registration Now
-                  </span>
+                  <span className={`${styles.archivo} relative  text-white`}>Registration Now</span>
                 </button>
               </div>
             )}

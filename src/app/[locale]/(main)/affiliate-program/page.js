@@ -1,15 +1,15 @@
-import AffiliateRegistrationWithImage from "@/components/affiliate-program/AffiliateRegistrationWithImage";
-import Earn from "@/components/affiliate-program/Earn";
-import Help from "@/components/affiliate-program/Help";
-import Partner from "@/components/affiliate-program/Partner";
-import Pay from "@/components/affiliate-program/Pay";
-import Review from "@/components/affiliate-program/Review";
-import Why from "@/components/affiliate-program/Why";
+import AffiliateRegistrationWithImage from '@/components/affiliate-program/AffiliateRegistrationWithImage';
+import Earn from '@/components/affiliate-program/Earn';
+import Help from '@/components/affiliate-program/Help';
+import Partner from '@/components/affiliate-program/Partner';
+import Pay from '@/components/affiliate-program/Pay';
+import Review from '@/components/affiliate-program/Review';
+import Why from '@/components/affiliate-program/Why';
 
 export const metadata = {
-  title: "Affiliate Program",
+  title: 'Affiliate Program',
   description:
-    "Let’s work together to help startup business entrepreneur around us to sell online. Join eBitans Affiliates learning program where we can teach you how to build an amazing businesse online with eBitans E-commerce website builder platform.",
+    'Let’s work together to help startup business entrepreneur around us to sell online. Join eBitans Affiliates learning program where we can teach you how to build an amazing businesse online with eBitans E-commerce website builder platform.',
 };
 
 const AffiliateProgram = ({ params: { locale } }) => {

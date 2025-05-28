@@ -1,13 +1,13 @@
-"use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { BsEye, BsEyeSlash } from "react-icons/bs";
-import styles from "../home/home.module.css";
-import { onSubmit } from "@/lib/registration";
-import images from "@/lib/images";
-import Link from "next/link";
+'use client';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import styles from '../home/home.module.css';
+import { onSubmit } from '@/lib/registration';
+import images from '@/lib/images';
+import Link from 'next/link';
 
 const LandingRegistration = () => {
   const {
@@ -26,7 +26,7 @@ const LandingRegistration = () => {
     let currentAudio = null;
 
     const speak = (text, fallbackAudio) => {
-      if (!("speechSynthesis" in window)) {
+      if (!('speechSynthesis' in window)) {
         if (fallbackAudio) {
           fallbackAudio.play().catch(() => {});
         }
@@ -35,10 +35,10 @@ const LandingRegistration = () => {
 
       const synth = window.speechSynthesis;
       const voices = synth.getVoices();
-      const banglaVoice = voices.find((voice) => voice.lang === "bn-BD");
+      const banglaVoice = voices.find((voice) => voice.lang === 'bn-BD');
 
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "bn-BD";
+      utterance.lang = 'bn-BD';
       if (banglaVoice) {
         utterance.voice = banglaVoice;
       }
@@ -49,9 +49,8 @@ const LandingRegistration = () => {
 
     const handleClick = (e) => {
       const target = e.currentTarget;
-      const audioSrc = target.getAttribute("data-audio");
-      const speechText =
-        target.getAttribute("data-speech") || "অনুগ্রহ করে তথ্য দিন";
+      const audioSrc = target.getAttribute('data-audio');
+      const speechText = target.getAttribute('data-speech') || 'অনুগ্রহ করে তথ্য দিন';
 
       if (currentAudio) {
         currentAudio.pause();
@@ -66,14 +65,14 @@ const LandingRegistration = () => {
       }
     };
 
-    const triggers = document.querySelectorAll(".audio-trigger");
+    const triggers = document.querySelectorAll('.audio-trigger');
     triggers.forEach((trigger) => {
-      trigger.addEventListener("click", handleClick);
+      trigger.addEventListener('click', handleClick);
     });
 
     return () => {
       triggers.forEach((trigger) => {
-        trigger.removeEventListener("click", handleClick);
+        trigger.removeEventListener('click', handleClick);
       });
     };
   }, []);
@@ -84,13 +83,10 @@ const LandingRegistration = () => {
 
   return (
     <div className="border-black border-4 shadow-lg shadow-black">
-      <form
-        onSubmit={handleSubmit(handleRegister)}
-        className="mx-2 md:mx-20 py-20"
-      >
+      <form onSubmit={handleSubmit(handleRegister)} className="mx-2 md:mx-20 py-20">
         <h1 className="text-2xl md:text-3xl font-bold text-center py-4 mt-12 mb-28 bg-[#f1593a] text-white mx-4 px-2 md:mx-40 rounded-md shadow-xl shadow-slate-600">
-          ই-কমার্স ওয়েবসাইট তৈরির জন্য আপনার মোবাইল নাম্বার এবং পাসওয়ার্ড দিয়ে
-          এখনই রেজিস্ট্রেশন করুন
+          ই-কমার্স ওয়েবসাইট তৈরির জন্য আপনার মোবাইল নাম্বার এবং পাসওয়ার্ড দিয়ে এখনই রেজিস্ট্রেশন
+          করুন
         </h1>
         <div className="flex gap-2 w-full">
           <div className="w-full">
@@ -98,44 +94,40 @@ const LandingRegistration = () => {
               autoComplete=""
               placeholder="আপনার ফোন নম্বর লিখুন"
               type="number"
-              {...register("email_or_phone", {
-                required: "ফোন নম্বর আবশ্যক",
+              {...register('email_or_phone', {
+                required: 'ফোন নম্বর আবশ্যক',
                 validate: (value) => {
                   const bdMobileRegex = /^(?:\+?88)?01[3-9]\d{8}$/;
-                  return (
-                    bdMobileRegex.test(value.trim()) || "ভ্যালিড ফোন নম্বর দিন"
-                  );
+                  return bdMobileRegex.test(value.trim()) || 'ভ্যালিড ফোন নম্বর দিন';
                 },
               })}
-              aria-invalid={errors.email_or_phone ? "true" : "false"}
+              aria-invalid={errors.email_or_phone ? 'true' : 'false'}
               data-audio="/audio/mobile_number.mp3"
               data-speech="আপনার ইমেইল অথবা ফোন নম্বর লিখুন"
               className={`audio-trigger w-full ${styles.archivo} ${
-                errors?.email_or_phone?.type === "required"
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-[#f1593a] focus:border-[#f1593a]"
+                errors?.email_or_phone?.type === 'required'
+                  ? 'border-red-500 focus:border-red-500'
+                  : 'border-[#f1593a] focus:border-[#f1593a]'
               } h-[40px] sm:h-[48px] drop-shadow-4xl text-xs lg:text-base border-[2px] placeholder:text-[#a39f9e] focus:outline-none focus:ring-0 rounded-sm px-2`}
             />
             {errors?.email_or_phone && (
-              <span className="text-xs text-red-500 block">
-                {errors.email_or_phone.message}
-              </span>
+              <span className="text-xs text-red-500 block">{errors.email_or_phone.message}</span>
             )}
           </div>
           <div className="w-full relative">
             <input
               autoComplete="pass"
               placeholder="আপনার পছন্দমতো পাসওয়ার্ড লিখুন"
-              type={`${show ? "text" : "password"}`}
-              {...register("password", { required: true })}
+              type={`${show ? 'text' : 'password'}`}
+              {...register('password', { required: true })}
               data-audio="/audio/password.mp3"
               data-speech="আপনার পছন্দমতো পাসওয়ার্ড লিখুন"
               className={`audio-trigger w-full ${
                 styles.archivo
               } h-[40px] sm:h-[48px] drop-shadow-4xl text-xs lg:text-base placeholder:text-[#a39f9e] border-[2px] ${
-                errors?.password?.type === "required"
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-[#f1593a] focus:border-[#f1593a]"
+                errors?.password?.type === 'required'
+                  ? 'border-red-500 focus:border-red-500'
+                  : 'border-[#f1593a] focus:border-[#f1593a]'
               } focus:outline-none focus:ring-0 rounded-sm px-2`}
             />
             <div className="absolute right-2 top-[40%] -translate-y-1/2 z-[2] lg:cursor-pointer">
@@ -145,10 +137,8 @@ const LandingRegistration = () => {
                 <BsEyeSlash onClick={() => setShow(!show)} />
               )}
             </div>
-            {errors?.password?.type === "required" && (
-              <span className="text-xs text-red-500 block">
-                পাসওয়ার্ড আবশ্যক
-              </span>
+            {errors?.password?.type === 'required' && (
+              <span className="text-xs text-red-500 block">পাসওয়ার্ড আবশ্যক</span>
             )}
           </div>
         </div>
@@ -158,19 +148,16 @@ const LandingRegistration = () => {
           <label className="flex items-center text-sm">
             <input
               type="checkbox"
-              {...register("terms_agreed", { required: true })}
+              {...register('terms_agreed', { required: true })}
               className={`mr-2 w-4 h-4 accent-[#F1593A] ${
-                errors.terms_agreed ? "border-red-500" : "border-gray-300"
+                errors.terms_agreed ? 'border-red-500' : 'border-gray-300'
               } rounded focus:ring-[#F1593A]`}
             />
             <span className={styles.archivo}>
-              আমি{" "}
-              <Link
-                href="/terms-and-conditions"
-                className="text-[#F1593A] hover:underline"
-              >
+              আমি{' '}
+              <Link href="/terms-and-conditions" className="text-[#F1593A] hover:underline">
                 শর্তাবলী ও নীতিমালা
-              </Link>{" "}
+              </Link>{' '}
               পড়েছি এবং সম্মত
             </span>
           </label>
@@ -189,9 +176,7 @@ const LandingRegistration = () => {
               <div
                 className={`absolute inset-0 w-0 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
               ></div>
-              <span className={`${styles.archivo} relative text-white`}>
-                লোড হচ্ছে
-              </span>
+              <span className={`${styles.archivo} relative text-white`}>লোড হচ্ছে</span>
             </button>
           ) : (
             <>

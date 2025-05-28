@@ -1,7 +1,6 @@
-const { default: Image } = require("next/image");
+const { default: Image } = require('next/image');
 
 const Banner = ({ category, text }) => {
-
   return (
     <>
       {category?.map((item) => (
@@ -21,5 +20,4 @@ const Banner = ({ category, text }) => {
   );
 };
 
-
-export default Banner
+export default Banner;

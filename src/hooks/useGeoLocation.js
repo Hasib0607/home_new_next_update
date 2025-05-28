@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useGeoLocation = () => {
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
 
   const fetchAddress = async (lat, lng) => {
     try {
@@ -14,9 +14,9 @@ const useGeoLocation = () => {
       );
 
       const data = await response.json();
-      setAddress(data.display_name || "Address not available");
+      setAddress(data.display_name || 'Address not available');
     } catch (error) {
-      console.error("Error fetching address:", error);
+      console.error('Error fetching address:', error);
     }
   };
 

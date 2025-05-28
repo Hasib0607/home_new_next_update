@@ -1,23 +1,19 @@
-"use client";
+'use client';
 
-import Loading from "@/app/[locale]/loading";
-import { baseUrlV2 } from "@/constants/baseUrl";
-import { numberParser } from "@/helper/numberParser";
-import { useRouter } from "next/navigation";
-import { useScrollData } from "../../hooks/useScrollData";
-import SearchResult from "./components/SearchResult";
-import SlugTitle from "./components/SlugTitle";
-import Banner from "./components/Banner";
-import PseLayout from "./components/PseLayout";
-import ProductKhujoSearchBar from "./components/SearchBar";
-import PhoductKhujoHeader from "./components/PhoductKhujoHeader";
-import { useCallback, useEffect, useRef, useState } from "react";
+import Loading from '@/app/[locale]/loading';
+import { baseUrlV2 } from '@/constants/baseUrl';
+import { numberParser } from '@/helper/numberParser';
+import { useRouter } from 'next/navigation';
+import { useScrollData } from '../../hooks/useScrollData';
+import SearchResult from './components/SearchResult';
+import SlugTitle from './components/SlugTitle';
+import Banner from './components/Banner';
+import PseLayout from './components/PseLayout';
+import ProductKhujoSearchBar from './components/SearchBar';
+import PhoductKhujoHeader from './components/PhoductKhujoHeader';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-export default function ProductKhujoSearchResults({
-  category,
-  searchParams,
-  locale,
-}) {
+export default function ProductKhujoSearchResults({ category, searchParams, locale }) {
   const router = useRouter();
   const scrollRef = useRef(null);
   const mySearchDiv = useRef(null);
@@ -25,11 +21,11 @@ export default function ProductKhujoSearchResults({
 
   // State initialization
   const [text, setText] = useState(() => {
-    const currentQuery = searchParams.query || "";
+    const currentQuery = searchParams.query || '';
     return {
       searchTxt: currentQuery,
       debouncedSearchTxt: currentQuery,
-      catSlug: searchParams.slug || "",
+      catSlug: searchParams.slug || '',
     };
   });
 
@@ -53,19 +49,15 @@ export default function ProductKhujoSearchResults({
 
   const { isIntersecting } = useScrollData(mySearchDiv);
 
-  useEffect(() => {
-    const timeoutID = setTimeout(() => {
-      setText({
-        ...text,
-        debouncedSearchTxt: text.searchTxt,
-      });
-    }, 500);
-    return function () {
-      if (timeoutID) {
-        clearTimeout(timeoutID);
-      }
-    };
-  }, [text.searchTxt]);
+  // Update URL
+  const updateUrl = useCallback(
+    (page) => {
+      router.push(
+        `/product-khujo/category?slug=${text.catSlug}&query=${text.debouncedSearchTxt}&page=${page}`
+      );
+    },
+    [text, router]
+  );
 
   // Reset state for new searches
   const resetSearch = useCallback(() => {
@@ -75,7 +67,7 @@ export default function ProductKhujoSearchResults({
     currentState.current.page = 1;
     updateUrl(1);
     setFetchedData([]);
-  }, []);
+  }, [updateUrl]);
 
   const handleSelect = (e) => {
     currentState.current.isFetching = true;
@@ -111,10 +103,10 @@ export default function ProductKhujoSearchResults({
           setFetchedData((prev) => {
             const newProducts =
               currentState.current.page === 1
-                ? res.data.products
+                ? res?.data?.products || []
                 : [
                     ...prev,
-                    ...res?.data?.products?.filter(
+                    ...(res?.data?.products || []).filter(
                       (p) => !prev?.some((ep) => ep?.source_url === p?.source_url)
                     ),
                   ];
@@ -137,7 +129,7 @@ export default function ProductKhujoSearchResults({
           setLoadState({ ...loadState, hasMore: false });
         }
       } catch (err) {
-        console.error("Fetch error:", err);
+        console.error('Fetch error:', err);
       } finally {
         currentState.current.isFetching = false;
         setLoadState({ ...loadState, loading: false });
@@ -145,18 +137,12 @@ export default function ProductKhujoSearchResults({
         updateUrl(res?.data?.page);
       }
     },
-    [text]
+    [text, loadState, updateUrl]
   );
 
   // Scroll handler with proper debouncing
   const handleScroll = useCallback(() => {
-    if (
-      !scrollRef.current ||
-      loadState.loading ||
-      !loadState.hasMore ||
-      scrollLock.current
-    )
-      return;
+    if (!scrollRef.current || loadState.loading || !loadState.hasMore || scrollLock.current) return;
 
     const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
     const bottomPos = scrollTop + clientHeight;
@@ -166,7 +152,7 @@ export default function ProductKhujoSearchResults({
       currentState.current.prevScrollHeight = bottomPos;
       fetchData(true);
     }
-  }, [fetchData]);
+  }, [fetchData, loadState]);
 
   useEffect(() => {
     if (currentState.current.shouldAdjustScroll && scrollRef.current) {
@@ -174,15 +160,13 @@ export default function ProductKhujoSearchResults({
       const newScrollHeight = container.scrollHeight;
 
       // Calculate scroll position to maintain scroll
-      const scrollDifference =
-        newScrollHeight - currentState.current.prevScrollHeight;
-      const targetPosition =
-        container.scrollTop + scrollDifference - container.clientHeight * 0.5;
+      const scrollDifference = newScrollHeight - currentState.current.prevScrollHeight;
+      const targetPosition = container.scrollTop + scrollDifference - container.clientHeight * 0.5;
 
       // Smooth scroll to adjusted position
       container.scrollTo({
         top: targetPosition,
-        behavior: "auto",
+        behavior: 'auto',
       });
 
       currentState.current.shouldAdjustScroll = false;
@@ -199,26 +183,30 @@ export default function ProductKhujoSearchResults({
     resetSearch();
     fetchData();
     // }
-  }, [text.debouncedSearchTxt]);
+  }, [text.debouncedSearchTxt, fetchData, resetSearch]);
 
-  // Update URL
-  const updateUrl = useCallback(
-    (page) => {
-      router.push(
-        `/product-khujo/category?slug=${text.catSlug}&query=${text.debouncedSearchTxt}&page=${page}`
-      );
-    },
-    [text]
-  );
+  useEffect(() => {
+    const timeoutID = setTimeout(() => {
+      setText({
+        ...text,
+        debouncedSearchTxt: text.searchTxt,
+      });
+    }, 500);
+    return function () {
+      if (timeoutID) {
+        clearTimeout(timeoutID);
+      }
+    };
+  }, [text]);
 
   return (
     <div
       ref={scrollRef}
       onScroll={handleScroll}
       style={{
-        height: "calc(100vh - 85px)",
-        overflowY: "auto",
-        position: "relative",
+        height: 'calc(100vh - 85px)',
+        overflowY: 'auto',
+        position: 'relative',
       }}
       className="mt-12 md:mt-[85px]"
     >
@@ -254,12 +242,7 @@ export default function ProductKhujoSearchResults({
                   <Loading />
                 </div>
               ) : (
-                <SearchResult
-                  data={data}
-                  loadState={loadState}
-                  text={text}
-                  total={total}
-                />
+                <SearchResult data={data} loadState={loadState} text={text} total={total} />
               )}
             </PseLayout>
           </div>

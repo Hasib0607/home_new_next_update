@@ -1,27 +1,25 @@
-import Image from "next/image";
-import team from "@/assets/images/affiliate/team.png";
-import commission from "@/assets/images/affiliate/comission.png";
-import graph from "@/assets/images/affiliate/graph.png";
-import design2 from "@/assets/images/affiliate/design2.png";
-import AffiliateRegistrationWithImage from "./AffiliateRegistrationWithImage";
-import AffiliateRegistration from "./AffiliateRegistration";
+import Image from 'next/image';
+import team from '@/assets/images/affiliate/team.png';
+import commission from '@/assets/images/affiliate/comission.png';
+import graph from '@/assets/images/affiliate/graph.png';
+import design2 from '@/assets/images/affiliate/design2.png';
+import AffiliateRegistrationWithImage from './AffiliateRegistrationWithImage';
+import AffiliateRegistration from './AffiliateRegistration';
 
 const Help = ({ locale }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   return (
     <div className="bg-[#FBD8D1] relative z-[1]">
       <div className="grid lg:grid-cols-2 gap-x-14 gap-y-10 lg:place-items-center lg:py-20 py-10 container px-5 lg:px-10">
         <div className="lg:justify-self-start justify-self-center space-y-4">
           <h1 className="text-3xl font-semibold max-w-[500px]">
-            {!bangla
-              ? "Join the eBitans Partner Program!"
-              : "eBitans পার্টনার প্রোগ্রামে যোগ দিন!"}
+            {!bangla ? 'Join the eBitans Partner Program!' : 'eBitans পার্টনার প্রোগ্রামে যোগ দিন!'}
           </h1>
           <p className="max-w-[500px]">
             {!bangla ? (
               <>
                 <p>
-                  Are you looking for the best{" "}
+                  Are you looking for the best{' '}
                   <a
                     href="https://www.ebitans.com.bd/"
                     target="_blank"
@@ -29,37 +27,33 @@ const Help = ({ locale }) => {
                     className="text-[#f1593a] underline"
                   >
                     e-commerce website builder
-                  </a>{" "}
+                  </a>{' '}
                   in Bangladesh?
                   <br />
-                  Join the eBitans Partner Program and earn money while
-                  empowering entrepreneurs to sell online.
+                  Join the eBitans Partner Program and earn money while empowering entrepreneurs to
+                  sell online.
                   <br />
                   With eBitans, you’ll learn:
                 </p>
                 <ul className="list-disc pl-6">
-                  <li>
-                    How to create and sell professional e-commerce websites.
-                  </li>
+                  <li>How to create and sell professional e-commerce websites.</li>
                   <li>Step-by-step strategies to help startups succeed.</li>
-                  <li>
-                    Proven techniques to grow your online business skills.
-                  </li>
+                  <li>Proven techniques to grow your online business skills.</li>
                 </ul>
                 <p>
-                  Whether you're a beginner or an expert, eBitans makes it easy
-                  to build amazing e-commerce websites.
+                  Whether you're a beginner or an expert, eBitans makes it easy to build amazing
+                  e-commerce websites.
                   <br />
                   Help others succeed while earning a steady income.
                   <br />
-                  Join the eBitans Partner Program today and become a part of
-                  Bangladesh’s top e-commerce website builder community!
+                  Join the eBitans Partner Program today and become a part of Bangladesh’s top
+                  e-commerce website builder community!
                 </p>
               </>
             ) : (
               <>
                 <p>
-                  আপনি কি বাংলাদেশের সেরা{" "}
+                  আপনি কি বাংলাদেশের সেরা{' '}
                   <a
                     href="https://www.ebitans.com.bd/"
                     target="_blank"
@@ -67,11 +61,11 @@ const Help = ({ locale }) => {
                     className="text-[#f1593a] underline"
                   >
                     ই-কমার্স ওয়েবসাইট নির্মাণ প্ল্যাটফর্ম
-                  </a>{" "}
+                  </a>{' '}
                   খুঁজছেন?
                   <br />
-                  eBitans পার্টনার প্রোগ্রামে যোগদান করুন এবং উদ্যোক্তাদের
-                  অনলাইনে পণ্য বিক্রি করতে সাহায্য করার মাধ্যমে আয় করুন।
+                  eBitans পার্টনার প্রোগ্রামে যোগদান করুন এবং উদ্যোক্তাদের অনলাইনে পণ্য বিক্রি করতে
+                  সাহায্য করার মাধ্যমে আয় করুন।
                   <br />
                   eBitans থেকে আপনি শিখবেন:
                 </p>
@@ -81,14 +75,13 @@ const Help = ({ locale }) => {
                   <li>আপনার অনলাইন ব্যবসার দক্ষতা বাড়ানোর পরীক্ষিত পদ্ধতি।</li>
                 </ul>
                 <p>
-                  আপনি নতুন হন বা বিশেষজ্ঞ, eBitans এর মাধ্যমে চমৎকার ই-কমার্স
-                  ওয়েবসাইট তৈরি করা সহজ।
+                  আপনি নতুন হন বা বিশেষজ্ঞ, eBitans এর মাধ্যমে চমৎকার ই-কমার্স ওয়েবসাইট তৈরি করা
+                  সহজ।
                   <br />
-                  অন্যদের সাফল্যের পথে সাহায্য করুন এবং একটি স্থির আয় উপার্জন
-                  করুন।
+                  অন্যদের সাফল্যের পথে সাহায্য করুন এবং একটি স্থির আয় উপার্জন করুন।
                   <br />
-                  আজই eBitans পার্টনার প্রোগ্রামে যোগদান করুন এবং বাংলাদেশের
-                  সেরা ই-কমার্স ওয়েবসাইট নির্মাণ সম্প্রদায়ের অংশ হন!
+                  আজই eBitans পার্টনার প্রোগ্রামে যোগদান করুন এবং বাংলাদেশের সেরা ই-কমার্স ওয়েবসাইট
+                  নির্মাণ সম্প্রদায়ের অংশ হন!
                 </p>
               </>
             )}

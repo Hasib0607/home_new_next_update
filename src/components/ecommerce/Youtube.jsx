@@ -1,16 +1,15 @@
-"use client";
-import LandingButton from "./LandingButton";
+'use client';
+import LandingButton from './LandingButton';
 
 const Youtube = ({ scrollToRef }) => {
   const handleScroll = () => {
     if (scrollToRef?.current) {
-      const topOffset =
-        scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
       const offset = -160;
 
       window.scrollTo({
         top: topOffset + offset,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -19,7 +18,7 @@ const Youtube = ({ scrollToRef }) => {
     <div className="">
       <div className="container pb-5 lg:pb-10 pt-20">
         <h1 className="text-2xl md:text-3xl font-bold text-center px-2 md:px-10 py-4  bg-[#f1593a] text-white rounded-md shadow-lg shadow-slate-600">
-          'Admin Panel'-এর ডেমো দেখুন 
+          'Admin Panel'-এর ডেমো দেখুন
         </h1>
         <div>
           <h2 className="font-bold text-2xl md:text-4xl text-center my-10"></h2>

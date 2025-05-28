@@ -1,6 +1,6 @@
-import ProductKhujoSearchResults from "@/components/product-khujo/ProductKhujoSearchResults";
-import { fetchPseCategory } from "@/helper/api";
-import ScrollToTop from "@/lib/ScrollToTop";
+import ProductKhujoSearchResults from '@/components/product-khujo/ProductKhujoSearchResults';
+import { fetchPseCategory } from '@/helper/api';
+import ScrollToTop from '@/lib/ScrollToTop';
 
 export async function generateMetadata({ searchParams }) {
   const category = (await fetchPseCategory()) ?? [];
@@ -22,13 +22,13 @@ export async function generateMetadata({ searchParams }) {
   };
 }
 
-const ProductKhujoSearch = async ({ params: { locale },searchParams }) => {
+const ProductKhujoSearch = async ({ params: { locale }, searchParams }) => {
   const category = (await fetchPseCategory()) ?? [];
 
   return (
     <div className="relative z-[1] overflow-hidden">
       <ScrollToTop />
-      <ProductKhujoSearchResults category={category} searchParams={searchParams} locale={locale}  />
+      <ProductKhujoSearchResults category={category} searchParams={searchParams} locale={locale} />
     </div>
   );
 };

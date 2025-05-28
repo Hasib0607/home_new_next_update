@@ -1,10 +1,10 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import styles from "@/components/home/home.module.css";
-import images from "@/lib/images";
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import styles from '@/components/home/home.module.css';
+import images from '@/lib/images';
 // import { BsFillTelephoneFill } from "react-icons/bs";
-import Marquee from "react-fast-marquee";
+import Marquee from 'react-fast-marquee';
 
 const LandingHeader = () => {
   return (
@@ -30,7 +30,8 @@ const LandingHeader = () => {
                 01886515579 
               </a> */}
               <a className="px-20 tracking-wide">
-               শুধু রেজিস্ট্রেশন করেই ব্যবহার করুন   🛒   নিজের পূর্ণাঙ্গ ই-কমার্স ওয়েবসাইট আর, বিক্রি শুরু করুন আজই   🛒 
+                শুধু রেজিস্ট্রেশন করেই ব্যবহার করুন 🛒 নিজের পূর্ণাঙ্গ ই-কমার্স ওয়েবসাইট আর, বিক্রি
+                শুরু করুন আজই 🛒
               </a>
             </div>
           </Marquee>
@@ -43,9 +44,7 @@ const LandingHeader = () => {
                 <div
                   className={`absolute inset-0 w-0 bg-[#000] transition-all duration-[250ms] ease-out group-hover:w-full`}
                 ></div>
-                <span className={`${styles.archivo} relative text-white`}>
-                  Login
-                </span>
+                <span className={`${styles.archivo} relative text-white`}>Login</span>
               </button>
             </a>
           </div>

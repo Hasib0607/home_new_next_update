@@ -53,7 +53,6 @@ const TrackSubscriptionGtm = ({ formType = 'Unknown Form', contentName = 'Subscr
       content_type: 'subscription',
       eventId: event_id,
     });
-
   }, [formType, contentName]);
 
   useEffect(() => {

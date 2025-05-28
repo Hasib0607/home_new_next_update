@@ -1,26 +1,23 @@
-"use client";
-import { fetchIp } from "@/helper/api";
-import Image from "next/image";
-import Link from "next/link";
-import PseCatProduct from "./PseCatProduct";
-import { useEffect, useState } from "react";
-import {
-  getFromSessionStorage,
-  saveToSessionStorage,
-} from "@/lib/sessionstorage";
-import { useRouter } from "next/navigation";
+'use client';
+import { fetchIp } from '@/helper/api';
+import Image from 'next/image';
+import Link from 'next/link';
+import PseCatProduct from './PseCatProduct';
+import { useEffect, useState } from 'react';
+import { getFromSessionStorage, saveToSessionStorage } from '@/lib/sessionstorage';
+import { useRouter } from 'next/navigation';
 
 const PseCategory = async ({ category }) => {
-  const [ip, setIp] = useState(getFromSessionStorage("ip"));
+  const [ip, setIp] = useState(getFromSessionStorage('ip'));
   const router = useRouter();
   useEffect(() => {
     fetchIp()
       .then((data) => {
         setIp(data);
-        saveToSessionStorage("ip", data);
+        saveToSessionStorage('ip', data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       });
   }, []);
 
@@ -55,9 +52,7 @@ const PseCategory = async ({ category }) => {
                     />
                     <div>
                       <h1 className="font-semibold text-lg">{item?.name}</h1>
-                      <p className="text-sm font-medium">
-                        {item?.total_products} Products
-                      </p>
+                      <p className="text-sm font-medium">{item?.total_products} Products</p>
                     </div>
                   </div>
                 </div>

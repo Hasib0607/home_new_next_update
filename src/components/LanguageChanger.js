@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
-import { useTranslation } from "react-i18next";
-import i18nConfig from "../../i18nConfig";
+import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
+import i18nConfig from '../../i18nConfig';
 
 export default function LanguageChanger({ locale }) {
   const { i18n } = useTranslation();
@@ -22,15 +22,10 @@ export default function LanguageChanger({ locale }) {
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
     // redirect to the new locale path
-    if (
-      currentLocale === i18nConfig.defaultLocale &&
-      !i18nConfig.prefixDefault
-    ) {
-      router.push("/" + newLocale + currentPathname);
+    if (currentLocale === i18nConfig.defaultLocale && !i18nConfig.prefixDefault) {
+      router.push('/' + newLocale + currentPathname);
     } else {
-      router.push(
-        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
-      );
+      router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`));
     }
 
     router.refresh();
@@ -46,21 +41,17 @@ export default function LanguageChanger({ locale }) {
         className={`w-[73px] h-[37px] border rounded border-[#f1593a] flex items-center justify-center gap-2`}
       >
         <span
-          onClick={() => handleChange("bn")}
+          onClick={() => handleChange('bn')}
           className={`${
-            language === "bn"
-              ? "text-[#f1593a] font-semibold"
-              : "text-[#726865]"
+            language === 'bn' ? 'text-[#f1593a] font-semibold' : 'text-[#726865]'
           } lg:cursor-pointer `}
         >
           BN
         </span>
         <span
-          onClick={() => handleChange("en")}
+          onClick={() => handleChange('en')}
           className={`${
-            language === "en"
-              ? "text-[#f1593a] font-semibold"
-              : "text-[#726865]"
+            language === 'en' ? 'text-[#f1593a] font-semibold' : 'text-[#726865]'
           } lg:cursor-pointer`}
         >
           EN

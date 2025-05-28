@@ -1,14 +1,8 @@
-"use client";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-} from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
-import user1 from "@/assets/images/affiliate/user1.png";
-import Image from "next/image";
+'use client';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import user1 from '@/assets/images/affiliate/user1.png';
+import Image from 'next/image';
 
 const Testimonal = () => {
   return (
@@ -38,9 +32,7 @@ const Testimonal = () => {
                       <p className="text-sm text-gray-600">{review.desc}</p>
 
                       <div className="md:mt-0 mt-8">
-                        <p className="text-base font-bold leading-4 text-gray-900">
-                          {review.name}
-                        </p>
+                        <p className="text-base font-bold leading-4 text-gray-900">{review.name}</p>
                         <p className="text-base leading-4 mt-2 mb-4 text-gray-600">
                           {review.occupation}
                         </p>
@@ -51,11 +43,7 @@ const Testimonal = () => {
               ))}
             </Slider>
             <div className="flex items-center mt-8 lg:absolute right-20 bottom-3">
-              <ButtonBack
-                className="lg:cursor-pointer "
-                role="button"
-                aria-label="previous slide"
-              >
+              <ButtonBack className="lg:cursor-pointer " role="button" aria-label="previous slide">
                 <Image
                   width={500}
                   height={500}
@@ -65,11 +53,7 @@ const Testimonal = () => {
                 />
               </ButtonBack>
 
-              <ButtonNext
-                role="button"
-                aria-label="next slide"
-                className="lg:cursor-pointer ml-2"
-              >
+              <ButtonNext role="button" aria-label="next slide" className="lg:cursor-pointer ml-2">
                 <Image
                   width={500}
                   height={500}
@@ -90,15 +74,15 @@ export default Testimonal;
 
 const sliderData = [
   {
-    desc: "Ebitans is our preferred e-commerce website builder. We have used the platform to create coffee vendor stores, to sell downloads, and even to take payments for a local private investigator. The flexibility and great e-commerce features of the solution, combined with how easy it is to use for us and our customers, makes the Web Partner program perfect for our business.",
-    name: "Ashiqur Rahman",
-    occupation: "Product Designer",
+    desc: 'Ebitans is our preferred e-commerce website builder. We have used the platform to create coffee vendor stores, to sell downloads, and even to take payments for a local private investigator. The flexibility and great e-commerce features of the solution, combined with how easy it is to use for us and our customers, makes the Web Partner program perfect for our business.',
+    name: 'Ashiqur Rahman',
+    occupation: 'Product Designer',
     image: user1,
   },
   {
-    desc: "Ebitans is our preferred e-commerce website builder. We have used the platform to create coffee vendor stores, to sell downloads, and even to take payments for a local private investigator.",
-    name: "Humayon Kabir",
-    occupation: "Web Developer",
+    desc: 'Ebitans is our preferred e-commerce website builder. We have used the platform to create coffee vendor stores, to sell downloads, and even to take payments for a local private investigator.',
+    name: 'Humayon Kabir',
+    occupation: 'Web Developer',
     image: user1,
   },
 ];

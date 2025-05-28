@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import FilterByPrice from "./FilterByPrice";
+import FilterByPrice from './FilterByPrice';
 
 const PseLayout = ({ children, setData, fetchedData }) => {
   return (
@@ -11,9 +11,7 @@ const PseLayout = ({ children, setData, fetchedData }) => {
             <FilterByPrice fetchedData={fetchedData} setData={setData} />
           </div>
         </div>
-        <div className="col-span-1 md:col-span-10 flex flex-col h-full">
-          {children}
-        </div>
+        <div className="col-span-1 md:col-span-10 flex flex-col h-full">{children}</div>
       </div>
     </div>
   );

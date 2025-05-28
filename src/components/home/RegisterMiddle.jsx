@@ -1,17 +1,17 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import banner from "@/assets/images/Phn.webp";
-import { useForm } from "react-hook-form";
-import { onSubmit } from "@/lib/registration";
-import styles from "@/components/home/home.module.css";
-import images from "@/lib/images";
-import whiteWand from "@/assets/images/icons/white-wand.svg";
-import HeroRegister from "./HeroRegister";
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import banner from '@/assets/images/Phn.webp';
+import { useForm } from 'react-hook-form';
+import { onSubmit } from '@/lib/registration';
+import styles from '@/components/home/home.module.css';
+import images from '@/lib/images';
+import whiteWand from '@/assets/images/icons/white-wand.svg';
+import HeroRegister from './HeroRegister';
 
 const RegisterMiddle = ({ locale }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   const {
     register,
     handleSubmit,
@@ -38,14 +38,14 @@ const RegisterMiddle = ({ locale }) => {
           <div className=" lg:basis-3/4 text-center lg:text-left">
             <div className="">
               <h2 className={`${styles.archivo} ${styles.headerTwo}`}>
-                {bangla ? "আজই বিক্রি শুরু করুন" : "Start Selling Today"}
+                {bangla ? 'আজই বিক্রি শুরু করুন' : 'Start Selling Today'}
               </h2>
               <h4
                 className={`${styles.archivo} text-[12px] lg:text-[22px] font-normal lg:font-medium`}
               >
                 {bangla
-                  ? "এখনই আপনার ই-কমার্স ওয়েবসাইট তৈরি করুন। ক্রেডিট কার্ডের প্রয়োজন নেই।"
-                  : "Build your e-commerce website now. No credit card needed."}
+                  ? 'এখনই আপনার ই-কমার্স ওয়েবসাইট তৈরি করুন। ক্রেডিট কার্ডের প্রয়োজন নেই।'
+                  : 'Build your e-commerce website now. No credit card needed.'}
               </h4>
             </div>
             <div className="flex gap-2 w-full mt-10 lg:mt-[70px] px-4 lg:px-0">

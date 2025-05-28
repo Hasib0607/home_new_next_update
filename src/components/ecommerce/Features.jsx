@@ -1,19 +1,19 @@
-"use client";
-import { useState } from "react";
-import LandingButton from "./LandingButton";
-import VideoModal from "./VideoModal";
+'use client';
+import { useState } from 'react';
+import LandingButton from './LandingButton';
+import VideoModal from './VideoModal';
 
 const videoData = [
-  { src: "/image/payment-getway.webp", videoUrl: "https://www.youtube.com/embed/EFPk-Cyb-bo" },
-  { src: "/image/pixel.webp", videoUrl: "https://www.youtube.com/embed/udxpwATYASQ" },
-  { src: "/image/order.webp", videoUrl: "https://www.youtube.com/embed/aXtCpdwvmuo" },
-  { src: "/image/order-manegement.webp", videoUrl: "https://www.youtube.com/embed/DKh49y0B8BQ" },
-  { src: "/image/gtm.webp", videoUrl: "https://www.youtube.com/embed/6adBh9ZfIBQ" },
-  { src: "/image/mobile-app.webp", videoUrl: "https://www.youtube.com/embed/0JbCpG85UjA" },
-  { src: "/image/after-sales.webp", videoUrl: "" },
-  { src: "/image/courier.webp", videoUrl: "" },
-  { src: "/image/pos.webp", videoUrl: "https://www.youtube.com/embed/jyxU4qGTntM" },
-  { src: "/image/customer.webp", videoUrl: "" },
+  { src: '/image/payment-getway.webp', videoUrl: 'https://www.youtube.com/embed/EFPk-Cyb-bo' },
+  { src: '/image/pixel.webp', videoUrl: 'https://www.youtube.com/embed/udxpwATYASQ' },
+  { src: '/image/order.webp', videoUrl: 'https://www.youtube.com/embed/aXtCpdwvmuo' },
+  { src: '/image/order-manegement.webp', videoUrl: 'https://www.youtube.com/embed/DKh49y0B8BQ' },
+  { src: '/image/gtm.webp', videoUrl: 'https://www.youtube.com/embed/6adBh9ZfIBQ' },
+  { src: '/image/mobile-app.webp', videoUrl: 'https://www.youtube.com/embed/0JbCpG85UjA' },
+  { src: '/image/after-sales.webp', videoUrl: '' },
+  { src: '/image/courier.webp', videoUrl: '' },
+  { src: '/image/pos.webp', videoUrl: 'https://www.youtube.com/embed/jyxU4qGTntM' },
+  { src: '/image/customer.webp', videoUrl: '' },
 ];
 
 const Features = ({ scrollToRef }) => {
@@ -26,7 +26,7 @@ const Features = ({ scrollToRef }) => {
 
       window.scrollTo({
         top: topOffset + offset,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };

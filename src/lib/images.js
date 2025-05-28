@@ -1,4 +1,3 @@
-
 import laptop from '@/assets/images/laptop.png';
 import review from '@/assets/images/review.png';
 import darkLogo from '@/assets/images/logo-dark.webp';
@@ -54,126 +53,126 @@ import website_element from '@/assets/images/website_element.png';
 import arrow1 from '@/assets/images/arrow.svg';
 import arrowUp from '@/assets/images/arrow-up.svg';
 import arrow from '@/assets/images/arrow.gif';
-import tick from "@/assets/images/tick.svg"
-import close from "@/assets/images/close.svg"
-import businessman from "@/assets/images/businessman.png"
-import email from "@/assets/images/contact/email.png"
-import phone2 from "@/assets/images/contact/phone1.png"
-import contactLocation from "@/assets/images/contact/location.png"
-import react from "@/assets/images/icons/react.png"
-import hosting from "@/assets/images/icons/hosting.png"
-import inventory2 from "@/assets/images/icons/inventory.png"
-import http from "@/assets/images/icons/http.png"
-import subscription from "@/assets/images/icons/subscription-2.png"
-import easy from "@/assets/images/icons/easy-installation.png"
-import social1 from "@/assets/images/social1.jpg"
-import social2 from "@/assets/images/social2.jpg"
-import ecommerce from "@/assets/images/videoWebsite.png"
-import business from "@/assets/images/business.png"
-import pc from "@/assets/images/pc.png"
-import blogBanner from "@/assets/images/blog-banner.webp"
-import darkPse from "@/assets/images/dark-pse.png"
-import PseImgBanner from "@/assets/images/PseBanner.webp"
-import bkash from "@/assets/images/partners/BKASH.svg"
-import nagad from "@/assets/images/partners/NOGOD.svg"
-import amarpay from "@/assets/images/partners/AAMAR PAY.svg"
-import ecourier from "@/assets/images/partners/ECOURIER.svg"
-import bigBd from "@/assets/images/partners/BIG BANGLADESH.svg"
-import bylc from "@/assets/images/partners/BYLC.svg"
-import pathao from "@/assets/images/partners/PATHAO.svg"
-import redx from "@/assets/images/partners/REDX.svg"
-import ssl from "@/assets/images/partners/SSLCOMMERZ.svg"
-import registerBanner from "@/assets/images/registerBanner.png"
-import phoneEbitans from "@/assets/images/phone ebitans.png"
+import tick from '@/assets/images/tick.svg';
+import close from '@/assets/images/close.svg';
+import businessman from '@/assets/images/businessman.png';
+import email from '@/assets/images/contact/email.png';
+import phone2 from '@/assets/images/contact/phone1.png';
+import contactLocation from '@/assets/images/contact/location.png';
+import react from '@/assets/images/icons/react.png';
+import hosting from '@/assets/images/icons/hosting.png';
+import inventory2 from '@/assets/images/icons/inventory.png';
+import http from '@/assets/images/icons/http.png';
+import subscription from '@/assets/images/icons/subscription-2.png';
+import easy from '@/assets/images/icons/easy-installation.png';
+import social1 from '@/assets/images/social1.jpg';
+import social2 from '@/assets/images/social2.jpg';
+import ecommerce from '@/assets/images/videoWebsite.png';
+import business from '@/assets/images/business.png';
+import pc from '@/assets/images/pc.png';
+import blogBanner from '@/assets/images/blog-banner.webp';
+import darkPse from '@/assets/images/dark-pse.png';
+import PseImgBanner from '@/assets/images/PseBanner.webp';
+import bkash from '@/assets/images/partners/BKASH.svg';
+import nagad from '@/assets/images/partners/NOGOD.svg';
+import amarpay from '@/assets/images/partners/AAMAR PAY.svg';
+import ecourier from '@/assets/images/partners/ECOURIER.svg';
+import bigBd from '@/assets/images/partners/BIG BANGLADESH.svg';
+import bylc from '@/assets/images/partners/BYLC.svg';
+import pathao from '@/assets/images/partners/PATHAO.svg';
+import redx from '@/assets/images/partners/REDX.svg';
+import ssl from '@/assets/images/partners/SSLCOMMERZ.svg';
+import registerBanner from '@/assets/images/registerBanner.png';
+import phoneEbitans from '@/assets/images/phone ebitans.png';
 
 const images = {
-    darkLogo: darkLogo,
-    darkBoldLogo: darkBoldLogo,
-    laptop: laptop,
-    review: review,
-    plan: plan,
-    register: register,
-    world: world,
-    website: website,
-    store: store,
-    user4: user4,
-    user3: user3,
-    user2: user2,
-    user1: user1,
-    fb: fb,
-    insta: insta,
-    whatsapp: whatsapp,
-    youtube: youtube,
-    fbGroup: fbGroup,
-    googlePlay: googlePlay,
-    appleStore: appleStore,
-    location: location,
-    phone: phone,
-    mail: mail,
-    whiteLogo: whiteLogo,
-    watch: watch,
-    phone1: phone1,
-    brandImage: brandImage,
-    Layer_1: Layer_1,
-    Layer_2: Layer_2,
-    Layer_3: Layer_3,
-    Layer_4: Layer_4,
-    Layer_5: Layer_5,
-    Bayezid: Bayezid,
-    Kidz_Craze: Kidz_Craze,
-    comfy: comfy,
-    gurushop: gurushop,
-    stylekit: stylekit,
-    tas_logo: tas_logo,
-    wafashion: wafashion,
-    inventory: inventory,
-    mobile_app: mobile_app,
-    point: point,
-    social_media: social_media,
-    website_mobile: website_mobile,
-    round: round,
-    line: line,
-    web: web,
-    triangle: triangle,
-    line_white: line_white,
-    web_white: web_white,
-    triangle_white: triangle_white,
-    website_element: website_element,
-    arrow1: arrow1,
-    arrowUp: arrowUp,
-    arrow: arrow,
-    close: close,
-    tick: tick,
-    businessman: businessman,
-    email: email,
-    phone2: phone2,
-    contactLocation: contactLocation,
-    react: react,
-    hosting: hosting,
-    inventory2: inventory2,
-    http: http,
-    subscription: subscription,
-    easy: easy,
-    social1: social1,
-    social2: social2,
-    ecommerce: ecommerce,
-    business: business,
-    pc: pc,
-    blogBanner: blogBanner,
-    darkPse: darkPse,
-    PseImgBanner: PseImgBanner,
-    ecourier: ecourier,
-    bkash: bkash,
-    nagad: nagad,
-    amarpay: amarpay,
-    ssl: ssl,
-    redx: redx,
-    pathao: pathao,
-    bylc: bylc,
-    bigBd: bigBd,
-    registerBanner: registerBanner,
-    phoneEbitans: phoneEbitans,
-    // Add other images here...
+  darkLogo: darkLogo,
+  darkBoldLogo: darkBoldLogo,
+  laptop: laptop,
+  review: review,
+  plan: plan,
+  register: register,
+  world: world,
+  website: website,
+  store: store,
+  user4: user4,
+  user3: user3,
+  user2: user2,
+  user1: user1,
+  fb: fb,
+  insta: insta,
+  whatsapp: whatsapp,
+  youtube: youtube,
+  fbGroup: fbGroup,
+  googlePlay: googlePlay,
+  appleStore: appleStore,
+  location: location,
+  phone: phone,
+  mail: mail,
+  whiteLogo: whiteLogo,
+  watch: watch,
+  phone1: phone1,
+  brandImage: brandImage,
+  Layer_1: Layer_1,
+  Layer_2: Layer_2,
+  Layer_3: Layer_3,
+  Layer_4: Layer_4,
+  Layer_5: Layer_5,
+  Bayezid: Bayezid,
+  Kidz_Craze: Kidz_Craze,
+  comfy: comfy,
+  gurushop: gurushop,
+  stylekit: stylekit,
+  tas_logo: tas_logo,
+  wafashion: wafashion,
+  inventory: inventory,
+  mobile_app: mobile_app,
+  point: point,
+  social_media: social_media,
+  website_mobile: website_mobile,
+  round: round,
+  line: line,
+  web: web,
+  triangle: triangle,
+  line_white: line_white,
+  web_white: web_white,
+  triangle_white: triangle_white,
+  website_element: website_element,
+  arrow1: arrow1,
+  arrowUp: arrowUp,
+  arrow: arrow,
+  close: close,
+  tick: tick,
+  businessman: businessman,
+  email: email,
+  phone2: phone2,
+  contactLocation: contactLocation,
+  react: react,
+  hosting: hosting,
+  inventory2: inventory2,
+  http: http,
+  subscription: subscription,
+  easy: easy,
+  social1: social1,
+  social2: social2,
+  ecommerce: ecommerce,
+  business: business,
+  pc: pc,
+  blogBanner: blogBanner,
+  darkPse: darkPse,
+  PseImgBanner: PseImgBanner,
+  ecourier: ecourier,
+  bkash: bkash,
+  nagad: nagad,
+  amarpay: amarpay,
+  ssl: ssl,
+  redx: redx,
+  pathao: pathao,
+  bylc: bylc,
+  bigBd: bigBd,
+  registerBanner: registerBanner,
+  phoneEbitans: phoneEbitans,
+  // Add other images here...
 };
 
 export default images;

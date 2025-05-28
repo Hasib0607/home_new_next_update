@@ -1,13 +1,12 @@
-@import "keep-react/css";
+@import 'keep-react/css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   overflow-x: hidden;
   margin: 0;
-  background: #F9F7F6;
+  background: #f9f7f6;
   position: relative;
 }
 
@@ -18,7 +17,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -37,7 +36,7 @@ input[type=number] {
 }
 
 /* for ragister bottom btn */
-.register-bottom .btn-register{
+.register-bottom .btn-register {
   justify-content: center;
 }
 
@@ -66,7 +65,7 @@ input[type=number] {
   --blog-h6-margin: 12px;
 
   --blog-link-color: #f1593a;
-  --primary-color: #F1593A;
+  --primary-color: #f1593a;
 }
 
 .blog h1,
@@ -86,11 +85,31 @@ h6.blog {
   margin: var(--blog-h1-margin) 0;
 }
 
-.blog h2 { font-size: var(--blog-h2-size); line-height: var(--blog-h2-line-height); margin: var(--blog-h2-margin) 0; }
-.blog h3 { font-size: var(--blog-h3-size); line-height: var(--blog-h3-line-height); margin: var(--blog-h3-margin) 0; }
-.blog h4 { font-size: var(--blog-h4-size); line-height: var(--blog-h4-line-height); margin: var(--blog-h4-margin) 0; }
-.blog h5 { font-size: var(--blog-h5-size); line-height: var(--blog-h5-line-height); margin: var(--blog-h5-margin) 0; }
-.blog h6 { font-size: var(--blog-h6-size); line-height: var(--blog-h6-line-height); margin: var(--blog-h6-margin) 0; }
+.blog h2 {
+  font-size: var(--blog-h2-size);
+  line-height: var(--blog-h2-line-height);
+  margin: var(--blog-h2-margin) 0;
+}
+.blog h3 {
+  font-size: var(--blog-h3-size);
+  line-height: var(--blog-h3-line-height);
+  margin: var(--blog-h3-margin) 0;
+}
+.blog h4 {
+  font-size: var(--blog-h4-size);
+  line-height: var(--blog-h4-line-height);
+  margin: var(--blog-h4-margin) 0;
+}
+.blog h5 {
+  font-size: var(--blog-h5-size);
+  line-height: var(--blog-h5-line-height);
+  margin: var(--blog-h5-margin) 0;
+}
+.blog h6 {
+  font-size: var(--blog-h6-size);
+  line-height: var(--blog-h6-line-height);
+  margin: var(--blog-h6-margin) 0;
+}
 
 /* Styling links inside blog headings and paragraphs */
 .blog h1 a,
@@ -103,7 +122,6 @@ h6.blog {
   color: var(--blog-link-color);
   text-decoration: underline;
 }
-
 
 /* General table styling */
 .table {
@@ -142,7 +160,7 @@ h6.blog {
   position: fixed !important;
   bottom: 20px !important;
   right: 20px !important;
-  background-color: #25D366 !important;
+  background-color: #25d366 !important;
   color: white !important;
   border-radius: 50% !important;
   width: 50px !important;
@@ -157,7 +175,7 @@ h6.blog {
 }
 
 .fixed-button.whatsapp:hover {
-  color: #999796  !important;
+  color: #999796 !important;
 }
 
 .fixed-button.whatsapp:hover::after {
@@ -169,4 +187,3 @@ h6.blog {
 .fixed-button.whatsapp:active {
   top: 2px !important;
 }
-

@@ -1,119 +1,111 @@
 import { TRACK_DEVIATION } from '@/consts';
 import { TRIGGER_E_TRACK } from '@/consts';
 import {
-    getFromLocalStorage,
-    removeFromLocalStorage,
-    saveToLocalStorage,
+  getFromLocalStorage,
+  removeFromLocalStorage,
+  saveToLocalStorage,
 } from '@/helper/localStorage';
 import { numberParser } from '@/helper/numberParser';
 import moment from 'moment';
 
 // lib/tracking.ts
 export const initializeVisitorTracking = async () => {
-    if (typeof window === 'undefined') return;
-    
-    saveToLocalStorage(TRIGGER_E_TRACK, true);
+  if (typeof window === 'undefined') return;
 
-    // Get existing session or create new one
-    const session = getFromLocalStorage('visitorSession');
-    const currentPath = window.location.pathname;
+  saveToLocalStorage(TRIGGER_E_TRACK, true);
 
-    if (!session) {
-        // New visitor
-        const session = {
-            startTime: new Date().getTime(),
-            formatedStartTime: moment(new Date().getTime()).format('hh:mm:ss'),
-            visitedPages: [
-                { path: currentPath, firstTime: true, trackingSent: false },
-            ],
-        };
-        saveToLocalStorage('visitorSession', session);
+  // Get existing session or create new one
+  const session = getFromLocalStorage('visitorSession');
+  const currentPath = window.location.pathname;
 
-        // Set timeout for 10 minutes
-        const timerId = setTimeout(() => {
-            sendTrackingData(currentPath, false, false);
-        }, TRACK_DEVIATION); // 10 minutes
+  if (!session) {
+    // New visitor
+    const session = {
+      startTime: new Date().getTime(),
+      formatedStartTime: moment(new Date().getTime()).format('hh:mm:ss'),
+      visitedPages: [{ path: currentPath, firstTime: true, trackingSent: false }],
+    };
+    saveToLocalStorage('visitorSession', session);
 
-        const trackingTimer = timerId.toString();
+    // Set timeout for 10 minutes
+    const timerId = setTimeout(() => {
+      sendTrackingData(currentPath, false, false);
+    }, TRACK_DEVIATION); // 10 minutes
 
-        // Store timer ID
-        saveToLocalStorage('trackingTimer', trackingTimer);
-    } else {
-        // Existing visitor - update visited pages
-        const isVisited = session.visitedPages.some(
-            (item) => item.path === currentPath
-        );
+    const trackingTimer = timerId.toString();
 
-        const isPageTracked = session.visitedPages.some(
-            (item) => item.path === currentPath && item.trackingSent
-        );
-        const isPageTrackedFirstTime = session.visitedPages.some(
-            (item) => item.path === currentPath && item.firstTime
-        );
+    // Store timer ID
+    saveToLocalStorage('trackingTimer', trackingTimer);
+  } else {
+    // Existing visitor - update visited pages
+    const isVisited = session.visitedPages.some((item) => item.path === currentPath);
 
-        if (!isVisited) {
-            session.visitedPages.push({
-                path: currentPath,
-                firstTime: true,
-                trackingSent: false,
-            });
-            saveToLocalStorage('visitorSession', session);
-        }
-
-        const elapsed = new Date().getTime() - session.startTime;
-        const elapsedInSeconds = numberParser(elapsed / 1000);
-
-        if (isPageTrackedFirstTime && !isPageTracked) {
-            sendTrackingData(currentPath, false, false);
-        }
-       
-        // Check if 10 minutes have passed
-        if (elapsedInSeconds >= TRACK_DEVIATION) {
-            sendTrackingData(currentPath, false, true);
-        }
-    }
-};
-
-const sendTrackingData = (
-    pathToUpdate,
-    firstTime,
-    secondTime,
-) => {
-    const session = getFromLocalStorage('visitorSession');
-    if (!session) return;
-
-    const isTrackedPage = session.visitedPages.some(
-        (item) => item.path === pathToUpdate && item.trackingSent
+    const isPageTracked = session.visitedPages.some(
+      (item) => item.path === currentPath && item.trackingSent
+    );
+    const isPageTrackedFirstTime = session.visitedPages.some(
+      (item) => item.path === currentPath && item.firstTime
     );
 
-    // Prevent duplicate sends
-    if (!secondTime && isTrackedPage) return;
+    if (!isVisited) {
+      session.visitedPages.push({
+        path: currentPath,
+        firstTime: true,
+        trackingSent: false,
+      });
+      saveToLocalStorage('visitorSession', session);
+    }
 
-    // Your tracking API call
-    // fetch('/api/track-visitor', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     visitedPages: session.visitedPages,
-    //     duration: new Date().getTime() - session.startTime
-    //   }),
-    // });
-    // console.log('isTrackingSent', isTrackedPage);
-    // console.log('secondTime', secondTime);
+    const elapsed = new Date().getTime() - session.startTime;
+    const elapsedInSeconds = numberParser(elapsed / 1000);
 
-    // Mark as tracked and clean up
-    const updatedRoutes = session.visitedPages.map((route) => {
-        if (route.path === pathToUpdate) {
-            return secondTime
-                ? { ...route, firstTime, secondTime, trackingSent: true }
-                : { ...route, firstTime, trackingSent: true };
-        } else return route;
-    });
+    if (isPageTrackedFirstTime && !isPageTracked) {
+      sendTrackingData(currentPath, false, false);
+    }
 
-    session.visitedPages = updatedRoutes;
-    saveToLocalStorage('visitorSession', session);
-    clearTimeout(numberParser(getFromLocalStorage('trackingTimer')));
-    removeFromLocalStorage('trackingTimer');
+    // Check if 10 minutes have passed
+    if (elapsedInSeconds >= TRACK_DEVIATION) {
+      sendTrackingData(currentPath, false, true);
+    }
+  }
+};
+
+const sendTrackingData = (pathToUpdate, firstTime, secondTime) => {
+  const session = getFromLocalStorage('visitorSession');
+  if (!session) return;
+
+  const isTrackedPage = session.visitedPages.some(
+    (item) => item.path === pathToUpdate && item.trackingSent
+  );
+
+  // Prevent duplicate sends
+  if (!secondTime && isTrackedPage) return;
+
+  // Your tracking API call
+  // fetch('/api/track-visitor', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     visitedPages: session.visitedPages,
+  //     duration: new Date().getTime() - session.startTime
+  //   }),
+  // });
+  // console.log('isTrackingSent', isTrackedPage);
+  // console.log('secondTime', secondTime);
+
+  // Mark as tracked and clean up
+  const updatedRoutes = session.visitedPages.map((route) => {
+    if (route.path === pathToUpdate) {
+      return secondTime
+        ? { ...route, firstTime, secondTime, trackingSent: true }
+        : { ...route, firstTime, trackingSent: true };
+    } else return route;
+  });
+
+  session.visitedPages = updatedRoutes;
+  saveToLocalStorage('visitorSession', session);
+  clearTimeout(numberParser(getFromLocalStorage('trackingTimer')));
+  removeFromLocalStorage('trackingTimer');
 };

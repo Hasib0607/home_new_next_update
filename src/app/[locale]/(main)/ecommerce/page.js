@@ -1,20 +1,19 @@
-"use client";
+'use client';
 
-import AdvantageFromOthers from "@/components/ecommerce/AdvantageFromOthers";
-import Advantages from "@/components/ecommerce/Advantages";
-import CustomerReview from "@/components/ecommerce/CustomerReview";
-import Demo from "@/components/ecommerce/Demo";
-import Features from "@/components/ecommerce/Features";
-import Intro from "@/components/ecommerce/Intro";
-import LandingContacts from "@/components/ecommerce/LandingContacts";
-import LandingFaq from "@/components/ecommerce/LandingFaq";
-import LandingRegistration from "@/components/ecommerce/LandingRegistration";
+import AdvantageFromOthers from '@/components/ecommerce/AdvantageFromOthers';
+import Advantages from '@/components/ecommerce/Advantages';
+import CustomerReview from '@/components/ecommerce/CustomerReview';
+import Demo from '@/components/ecommerce/Demo';
+import Features from '@/components/ecommerce/Features';
+import Intro from '@/components/ecommerce/Intro';
+import LandingContacts from '@/components/ecommerce/LandingContacts';
+import LandingFaq from '@/components/ecommerce/LandingFaq';
+import LandingRegistration from '@/components/ecommerce/LandingRegistration';
 // import Price from "@/components/ecommerce/Price";
-import { useRef } from "react";
-import ViewContentGtm from "../ViewContentGtm";
-import Price1 from "@/components/ecommerce/Price1";
-import Youtube from "@/components/ecommerce/Youtube";
-
+import { useRef } from 'react';
+import ViewContentGtm from '../ViewContentGtm';
+import Price1 from '@/components/ecommerce/Price1';
+import Youtube from '@/components/ecommerce/Youtube';
 
 // export const metadata = {
 //   title: "E-Commerce",
@@ -23,7 +22,7 @@ import Youtube from "@/components/ecommerce/Youtube";
 // };
 
 const Ecommerce = async ({ params: { locale } }) => {
-  const bangla = locale !== "en";
+  const bangla = locale !== 'en';
   const registrationRef = useRef(null);
 
   return (

@@ -1,4 +1,4 @@
-import io from "socket.io-client";
+import io from 'socket.io-client';
 
 // const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL, {
 //     reconnectionDelay: 1000,
@@ -11,10 +11,10 @@ import io from "socket.io-client";
 // });
 
 const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL, {
-    reconnectionDelay: 1000,
-    reconnection: true,
-    reconnectionAttempts: 10, 
-    transports: ["websocket"],
+  reconnectionDelay: 1000,
+  reconnection: true,
+  reconnectionAttempts: 10,
+  transports: ['websocket'],
 });
 
 export default socket;

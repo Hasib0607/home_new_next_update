@@ -1,13 +1,13 @@
-"use client";
-import { fetchTypeWiseBlogData } from "@/helper/api";
-import { useEffect, useState } from "react";
-import BlogCard from "./BlogCard";
-import BlogPagination from "./BlogPagination";
+'use client';
+import { fetchTypeWiseBlogData } from '@/helper/api';
+import { useEffect, useState } from 'react';
+import BlogCard from './BlogCard';
+import BlogPagination from './BlogPagination';
 
 const BlogType = ({ blogTypeData }) => {
-  const [blogType, setBlogType] = useState("");
+  const [blogType, setBlogType] = useState('');
   const [blogTypeId, setBlogTypeId] = useState(1);
-  const [typePage, setTypePage] = useState("?page=1");
+  const [typePage, setTypePage] = useState('?page=1');
   const [paginationType, setTypePagination] = useState(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const BlogType = ({ blogTypeData }) => {
       })
       .catch((error) => {
         setBlogType([]);
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       });
   }, [blogTypeId, typePage]);
 
@@ -30,12 +30,10 @@ const BlogType = ({ blogTypeData }) => {
             key={blog?.id}
             onClick={() => {
               setBlogTypeId(blog?.id);
-              setTypePage("?page=1");
+              setTypePage('?page=1');
             }}
             className={`${
-              blogTypeId === blog?.id
-                ? "bg-[#f1593a] text-white"
-                : "bg-gray-200 text-[#f1593a]"
+              blogTypeId === blog?.id ? 'bg-[#f1593a] text-white' : 'bg-gray-200 text-[#f1593a]'
             } text-xl  font-semibold  hover:bg-[#f1593a] hover:text-white duration-300 lg:cursor-pointer border px-5 py-2`}
           >
             {blog?.type}
@@ -59,7 +57,7 @@ const BlogType = ({ blogTypeData }) => {
             <BlogPagination
               setPage={setTypePage}
               paginate={paginationType}
-              section_id={"type-blog"}
+              section_id={'type-blog'}
             />
           </div>
         )}

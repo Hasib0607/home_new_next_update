@@ -1,1 +1,1 @@
-export const addClassNames = (...classes) => classes.filter(Boolean).join(" ");
+export const addClassNames = (...classes) => classes.filter(Boolean).join(' ');

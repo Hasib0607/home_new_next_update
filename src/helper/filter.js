@@ -1,4 +1,4 @@
-import { numberParser } from "./numberParser";
+import { numberParser } from './numberParser';
 
 export const filterByPrice = (products, min, max) => {
   return products.filter((product) => {

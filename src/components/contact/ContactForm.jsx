@@ -1,21 +1,16 @@
-"use client";
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import { toast } from "react-toastify";
-import styles from "@/components/home/home.module.css";
+'use client';
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify';
+import styles from '@/components/home/home.module.css';
 
 const ContactForm = () => {
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm(
-      "service_c8illig",
-      "template_ryybxbx",
-      form.current,
-      "zMK6Phl5p2yWR61Ps"
-    );
+    emailjs.sendForm('service_c8illig', 'template_ryybxbx', form.current, 'zMK6Phl5p2yWR61Ps');
     e.target.reset();
-    toast("Message Successfully Send", { type: "success" });
+    toast('Message Successfully Send', { type: 'success' });
   };
   return (
     <>

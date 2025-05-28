@@ -1,23 +1,22 @@
-"use client";
+'use client';
 
-import { FaWhatsapp } from "react-icons/fa";
-import { FiPhoneCall } from "react-icons/fi";
-import LandingButton from "./LandingButton";
-import { useContext } from "react";
-import { AnalyticsContext } from "@/context/AnalyticsContext";
+import { FaWhatsapp } from 'react-icons/fa';
+import { FiPhoneCall } from 'react-icons/fi';
+import LandingButton from './LandingButton';
+import { useContext } from 'react';
+import { AnalyticsContext } from '@/context/AnalyticsContext';
 
 const LandingContacts = ({ scrollToRef }) => {
   const { setClickEvents } = useContext(AnalyticsContext);
 
   const handleScroll = () => {
     if (scrollToRef?.current) {
-      const topOffset =
-        scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const topOffset = scrollToRef.current.getBoundingClientRect().top + window.pageYOffset;
       const offset = -160;
 
       window.scrollTo({
         top: topOffset + offset,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -35,7 +34,6 @@ const LandingContacts = ({ scrollToRef }) => {
       whatsapp_button_click: true,
     }));
   };
-
 
   return (
     <>
