@@ -35,7 +35,7 @@ const OtpVerify = () => {
     if (!user?.email_or_phone) {
       router.push("/", { scroll: false });
     }
-  }, [user]);
+  }, [user,router]);
 
   useEffect(() => {
     setOtp(getFromSessionStorage("random"));

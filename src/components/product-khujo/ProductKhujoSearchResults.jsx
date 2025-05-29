@@ -3,7 +3,6 @@
 import Loading from '@/app/[locale]/loading';
 import { baseUrlV2 } from '@/constants/baseUrl';
 import { numberParser } from '@/helper/numberParser';
-import { useRouter } from 'next/navigation';
 import { useScrollData } from '../../hooks/useScrollData';
 import SearchResult from './components/SearchResult';
 import SlugTitle from './components/SlugTitle';
@@ -12,6 +11,7 @@ import PseLayout from './components/PseLayout';
 import ProductKhujoSearchBar from './components/SearchBar';
 import PhoductKhujoHeader from './components/PhoductKhujoHeader';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function ProductKhujoSearchResults({ category, searchParams, locale }) {
   const router = useRouter();
@@ -51,39 +51,24 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
 
   // Update URL
   const updateUrl = useCallback(
-    (page) => {
+    (text) => {
       router.push(
-        `/product-khujo/category?slug=${text.catSlug}&query=${text.debouncedSearchTxt}&page=${page}`
+        `/product-khujo/category?slug=${text.catSlug}&query=${text.debouncedSearchTxt}&page=${currentState.current.page}`
       );
     },
-    [text, router]
+    [router]
   );
 
   // Reset state for new searches
   const resetSearch = useCallback(() => {
+    console.log('Resetting search...');
     setTotal({ currentPage: 1, totalPage: 1, totalProduct: 0 });
     setLoadState({ loading: false, hasMore: true });
     currentState.current.isFetching = true;
     currentState.current.page = 1;
-    updateUrl(1);
+    updateUrl(text);
     setFetchedData([]);
-  }, [updateUrl]);
-
-  const handleSelect = (e) => {
-    currentState.current.isFetching = true;
-    setText({
-      ...text,
-      catSlug: e.target.value,
-    });
-  };
-
-  // filter by search
-  const handleChange = (e) => {
-    setText({
-      ...text,
-      searchTxt: e?.target?.value,
-    });
-  };
+  }, [text,updateUrl]);
 
   // Unified fetch function
   const fetchData = useCallback(
@@ -103,7 +88,7 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
           setFetchedData((prev) => {
             const newProducts =
               currentState.current.page === 1
-                ? res?.data?.products || []
+                ? res.data.products || []
                 : [
                     ...prev,
                     ...(res?.data?.products || []).filter(
@@ -134,7 +119,7 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
         currentState.current.isFetching = false;
         setLoadState({ ...loadState, loading: false });
         scrollLock.current = false;
-        updateUrl(res?.data?.page);
+        updateUrl(text);
       }
     },
     [text, loadState, updateUrl]
@@ -153,6 +138,24 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
       fetchData(true);
     }
   }, [fetchData, loadState]);
+
+    const handleSelect = (e) => {
+    // currentState.current.isFetching = true;
+    const selectedCat = {
+      ...text,
+      catSlug: e.target.value,
+    };
+    setText(selectedCat);
+    updateUrl(selectedCat);
+  };
+
+  // filter by search
+  const handleChange = (e) => {
+    setText({
+      ...text,
+      searchTxt: e?.target?.value,
+    });
+  };
 
   useEffect(() => {
     if (currentState.current.shouldAdjustScroll && scrollRef.current) {
@@ -173,18 +176,6 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
     }
   }); // Trigger when shouldAdjustScroll changes
 
-  // Effect for initial load and search changes
-  useEffect(() => {
-    // const isNewSearch =
-    //   text.debouncedSearchTxt !== searchParams.query ||
-    //   text.catSlug !== searchParams.slug;
-
-    // if (isNewSearch) {
-    resetSearch();
-    fetchData();
-    // }
-  }, [text.debouncedSearchTxt, fetchData, resetSearch]);
-
   useEffect(() => {
     const timeoutID = setTimeout(() => {
       setText({
@@ -197,7 +188,34 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
         clearTimeout(timeoutID);
       }
     };
-  }, [text]);
+  }, [text,text.searchTxt]);
+
+  // Effect for initial load and search changes
+  // useEffect(() => {
+  // const isNewSearch =
+  //   text.debouncedSearchTxt !== searchParams.query ||
+  //   text.catSlug !== searchParams.slug;
+
+  // if (isNewSearch) {
+  // resetSearch();
+  // fetchData();
+  // }
+  // }, [text.debouncedSearchTxt]);
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    const runEffect = async () => {
+      resetSearch(); // Make sure this doesn't update text.debouncedSearchTxt
+      await fetchData(); // Await only if it's async and doesn't trigger updates
+    };
+
+    runEffect();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [text.debouncedSearchTxt]);
 
   return (
     <div
