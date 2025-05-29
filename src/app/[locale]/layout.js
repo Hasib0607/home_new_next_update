@@ -3,18 +3,18 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
 // import Footer from "@/components/common/Footer";
-import ScrollToTop from '@/lib/ScrollToTop';
-import { AOSInit } from './aos';
-import { ThemeContextProvider } from '@/context/ThemeContext';
-import ThemeProvider from '@/providers/ThemeProvider';
 import { AnalyticsProvider } from '@/context/AnalyticsContext';
+import { ThemeContextProvider } from '@/context/ThemeContext';
+import ScrollToTop from '@/lib/ScrollToTop';
+import ThemeProvider from '@/providers/ThemeProvider';
 import { dir } from 'i18next';
 import i18nConfig from '../../../i18nConfig';
+import { AOSInit } from './aos';
 // import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from '@/components/StructuredData';
 import FacebookPixel from '@/utils/FacebookPixel';
-import GoogleTagManager from '@/utils/GoogleTagManager';
 import GoogleAnalytics from '@/utils/GoogleAnalytics';
+import GoogleTagManager from '@/utils/GoogleTagManager';
 import dynamic from 'next/dynamic';
 const PopupWrapper = dynamic(() => import('@/components/PopupWrapper'), { ssr: false });
 
@@ -100,6 +100,7 @@ export default async function RootLayout({ children, params: { locale } }) {
         <FacebookPixel />
         <GoogleTagManager />
         <GoogleAnalytics />
+        <StructuredData />
       </head>
       <body className={archivo.className}>
         <ScrollToTop />
@@ -111,8 +112,7 @@ export default async function RootLayout({ children, params: { locale } }) {
           <div></div>
           <div></div>
         </div>
-        <ToastContainer position="top-right" newestOnTop />
-        <StructuredData />
+
         <ThemeContextProvider>
           <ThemeProvider>
             <AnalyticsProvider>
@@ -121,8 +121,10 @@ export default async function RootLayout({ children, params: { locale } }) {
             </AnalyticsProvider>
           </ThemeProvider>
         </ThemeContextProvider>
-
+        
         <PopupWrapper locale={locale} />
+        <ToastContainer position="top-right" newestOnTop />
+
 
         {/* GTM noscript
         <noscript>
