@@ -2,6 +2,7 @@
 
 import CardThree from './CardThree';
 import { ThreeDots } from 'react-loader-spinner';
+// import VertualizedProductGrid from './VertualizedProductGrid';
 
 const SearchResult = (props) => {
   return (
@@ -33,6 +34,7 @@ const SearchResult = (props) => {
                 <CardThree key={index} item={product} />
               ))}
             </div>
+            {/* <VertualizedProductGrid {...props}/> */}
             {props.loadState.loading && <InfifityLoader />}
             {!props.loadState.hasMore ||
               (props.data.length === 0 && (

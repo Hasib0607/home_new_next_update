@@ -2,9 +2,10 @@ import Image from 'next/image';
 import { extractDomainName, hasProtocol } from '@/helper/protocols';
 import { numberParser } from '@/helper/numberParser';
 import { addClassNames } from '../../../helper/utilities';
+import { createBlurDataURL } from '../../../helper/createBlurDataURL';
 // import { visitorData } from "@/helper/api";
 
-const fallBackImg = 'https://www.dummyimage.com/600x4:3/bfbfbf/000000.png';
+const fallBackImg = 'https://www.dummyimage.com/4:3x250/000/f1593a.png&text=No_Image';
 
 const CardThree = ({ item }) => {
   const handleOpenSourceSite = (e, url) => {
@@ -17,6 +18,7 @@ const CardThree = ({ item }) => {
 
   const isEqualToPrice = numberParser(item?.price) === numberParser(item?.original_price);
   const isNullPrice = numberParser(item?.price) === 0 || numberParser(item?.original_price) === 0;
+  const isNullImg = item?.image === null || item.image === 'null' || item.image === '';
 
   let stock;
 
@@ -27,6 +29,13 @@ const CardThree = ({ item }) => {
   } else {
     stock = null;
   }
+
+  // Usage (change color to any hex with #)
+  const blurDataUrl = createBlurDataURL(10, 10, '#f1593a');
+
+  // if (item?.title == "Tolus 100" || item?.title == "Tolus 50") {
+  //   console.log("🚀 ~ CardThree ~ item:", item.image === null)
+  // }
 
   return (
     <div onClick={(e) => handleOpenSourceSite(e, item?.url)} className="relative cursor-pointer">
@@ -41,11 +50,13 @@ const CardThree = ({ item }) => {
       <div className="p-3 md:p-2 flex flex-col bg-white border border-gray-400 hover:border-[var(--primary-color)] rounded-md w-full h-full hover:shadow-2xl duration-700 gap-y-3">
         <div>
           <Image
-            src={item?.image ?? fallBackImg}
+            src={isNullImg ? fallBackImg : item?.image}
             width={500}
             height={500}
-            alt="product image"
+            alt={item?.title ?? 'product image'}
             className="sm:h-64 h-52 min-w-full"
+            placeholder="blur"
+            blurDataURL={blurDataUrl}
           />
         </div>
         <div className="flex flex-col gap-y-1 max-h-max">

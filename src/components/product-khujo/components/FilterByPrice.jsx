@@ -29,7 +29,7 @@ const FilterByPrice = ({ fetchedData, setData }) => {
         maxPrice,
       });
     }
-  }, [fetchedData.length]);
+  }, [setData, fetchedData, fetchedData.length]);
 
   const rangeRef = useRef(null);
 

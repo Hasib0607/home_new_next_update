@@ -10,6 +10,7 @@ const PhoductKhujoHeader = ({
   text,
   handleSelect,
   handleChange,
+  handleKeyDown,
   category,
   locale,
 }) => {
@@ -42,6 +43,7 @@ const PhoductKhujoHeader = ({
         <input
           value={text.searchTxt}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
           type="text"
           className="w-[95%] bg-white pl-5 outline-none border-gray-500 border-0 p-0 focus:ring-0 focus:outline-none focus:border-0 focus:border-gray-500"
         />

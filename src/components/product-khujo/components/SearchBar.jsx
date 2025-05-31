@@ -24,6 +24,7 @@ const SearchBar = (props, ref) => {
         <input
           value={props.text.searchTxt}
           onChange={props.handleChange}
+          onKeyDown={props.handleKeyDown}
           autoFocus
           type="text"
           className="w-[95%] bg-[#D9D9D9] pl-5 outline-none border-gray-500 border-0 p-0 focus:ring-0 focus:outline-none focus:border-0 focus:border-gray-500"
