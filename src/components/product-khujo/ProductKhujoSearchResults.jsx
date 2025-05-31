@@ -1,6 +1,6 @@
 'use client';
 
-import Loading from '@/app/[locale]/loading';
+import ProductLoading from '@/components/product-khujo/components/ProductLoading';
 import { baseUrlV2 } from '@/constants/baseUrl';
 import { numberParser } from '@/helper/numberParser';
 import { useScrollData } from '../../hooks/useScrollData';
@@ -45,6 +45,8 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
     isFetching: false,
     prevScrollHeight: 0,
     shouldAdjustScroll: false,
+    minSearch: searchParams.minSearch ?? true,
+    keyPresed: false,
   });
 
   const { isIntersecting } = useScrollData(mySearchDiv);
@@ -53,7 +55,7 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
   const updateUrl = useCallback(
     (text) => {
       router.push(
-        `/product-khujo/category?slug=${text.catSlug}&query=${text.debouncedSearchTxt}&page=${currentState.current.page}`
+        `/product-khujo/category?slug=${text.catSlug}&minSearch=${currentState.current.minSearch}&query=${text.debouncedSearchTxt}&page=${currentState.current.page}`
       );
     },
     [router]
@@ -68,11 +70,11 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
     currentState.current.page = 1;
     updateUrl(text);
     setFetchedData([]);
-  }, [text,updateUrl]);
+  }, [text, updateUrl]);
 
   // Unified fetch function
   const fetchData = useCallback(
-    async (increment) => {
+    async (increment, textMode) => {
       if (loadState.loading || !loadState.hasMore) return;
       setLoadState({ ...loadState, loading: true });
       increment ? (currentState.current.shouldAdjustScroll = true) : null;
@@ -80,7 +82,7 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
 
       try {
         const response = await fetch(
-          `${baseUrlV2}/pse/product/search?slug=${text.catSlug}&query=${text.debouncedSearchTxt}&page=${currentState.current.page}`
+          `${baseUrlV2}/pse/product/search?slug=${text.catSlug}&minSearch=${currentState.current.minSearch}&query=${textMode === 'skip' ? text.searchTxt : text.debouncedSearchTxt}&page=${currentState.current.page}`
         );
         res = await response.json();
 
@@ -116,6 +118,7 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
       } catch (err) {
         console.error('Fetch error:', err);
       } finally {
+        currentState.current.minSearch = false;
         currentState.current.isFetching = false;
         setLoadState({ ...loadState, loading: false });
         scrollLock.current = false;
@@ -132,15 +135,20 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
     const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
     const bottomPos = scrollTop + clientHeight;
 
+    // console.log("🚀 ~ handleScroll ~ clientHeight:", clientHeight)
+    // console.log("🚀 ~ handleScroll ~ scrollTop:", scrollTop)
+    // console.log("🚀 ~ handleScroll ~ scrollHeight:", scrollHeight)
     if (scrollHeight - bottomPos < 100 && loadState.hasMore) {
       scrollLock.current = true;
       currentState.current.prevScrollHeight = bottomPos;
+      currentState.current.minSearch = false;
       fetchData(true);
     }
   }, [fetchData, loadState]);
 
-    const handleSelect = (e) => {
+  const handleSelect = (e) => {
     // currentState.current.isFetching = true;
+    currentState.current.minSearch = true;
     const selectedCat = {
       ...text,
       catSlug: e.target.value,
@@ -149,8 +157,23 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
     updateUrl(selectedCat);
   };
 
+  // handle enter key down
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      currentState.current.minSearch = true;
+      currentState.current.keyPresed = true;
+      // setText({
+      //   ...text,
+      //   debouncedSearchTxt: text.searchTxt,
+      // });
+      resetSearch();
+      fetchData(false, 'skip');
+    }
+  };
+
   // filter by search
   const handleChange = (e) => {
+    currentState.current.minSearch = true;
     setText({
       ...text,
       searchTxt: e?.target?.value,
@@ -182,35 +205,38 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
         ...text,
         debouncedSearchTxt: text.searchTxt,
       });
-    }, 500);
+    }, 1500);
+
+    if (currentState.current.keyPresed) {
+      clearTimeout(timeoutID);
+    }
+
+    currentState.current.keyPresed = false;
+
     return function () {
       if (timeoutID) {
         clearTimeout(timeoutID);
       }
     };
-  }, [text,text.searchTxt]);
+  }, [text, text.searchTxt]);
 
   // Effect for initial load and search changes
-  // useEffect(() => {
-  // const isNewSearch =
-  //   text.debouncedSearchTxt !== searchParams.query ||
-  //   text.catSlug !== searchParams.slug;
-
-  // if (isNewSearch) {
-  // resetSearch();
-  // fetchData();
-  // }
-  // }, [text.debouncedSearchTxt]);
-
   useEffect(() => {
     let isCancelled = false;
 
-    const runEffect = async () => {
-      resetSearch(); // Make sure this doesn't update text.debouncedSearchTxt
-      await fetchData(); // Await only if it's async and doesn't trigger updates
-    };
-
-    runEffect();
+    // const runEffect = async () => {
+    //   const isNewSearch =
+    //     text.debouncedSearchTxt !== searchParams.query || text.catSlug !== searchParams.slug;
+    //   if (isNewSearch) {
+    //     // Make sure this doesn't update text.debouncedSearchTxt
+    //     resetSearch();
+    //     await fetchData(); // Await only if it's async and doesn't trigger updates
+    //   }
+    // };
+    if (!isCancelled) {
+      resetSearch();
+      fetchData();
+    }
 
     return () => {
       isCancelled = true;
@@ -233,6 +259,7 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
           isIntersecting={isIntersecting}
           text={text}
           handleChange={handleChange}
+          handleKeyDown={handleKeyDown}
           handleSelect={handleSelect}
           category={category}
           locale={locale}
@@ -242,12 +269,13 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
         <Banner category={category} text={text} />
       </div>
       <div className="container min-w-9xl">
-        <div className="space-y-5">
+        <div className="space-y-5 px-2 md:px-0">
           <div className="sticky md:static top-0 z-10">
             <ProductKhujoSearchBar
               text={text}
               handleChange={handleChange}
               handleSelect={handleSelect}
+              handleKeyDown={handleKeyDown}
               category={category}
               ref={mySearchDiv}
             />
@@ -256,11 +284,15 @@ export default function ProductKhujoSearchResults({ category, searchParams, loca
             <PseLayout setData={setData} fetchedData={fetchedData}>
               <SlugTitle text={text} category={category} />
               {currentState.current.isFetching ? (
-                <div>
-                  <Loading />
-                </div>
+                <ProductLoading />
               ) : (
-                <SearchResult data={data} loadState={loadState} text={text} total={total} />
+                <SearchResult
+                  data={data}
+                  loadState={loadState}
+                  text={text}
+                  total={total}
+                  fetchData={fetchData}
+                />
               )}
             </PseLayout>
           </div>

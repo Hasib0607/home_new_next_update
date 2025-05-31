@@ -6,15 +6,18 @@ import { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const ProductSearch = ({ category }) => {
-  const searchParams = useSearchParams();
-  const queryCat = searchParams.get('slug') || 'all-products';
-  const queryText = searchParams.get('query') || '';
-  const queryPage = searchParams.get('page') || 1;
+  // const searchParams = useSearchParams();
+  // const queryCat = searchParams.get('slug') || 'all-products';
+  // const queryText = searchParams.get('query') || '';
+  // const queryPage = searchParams.get('page') || 1;
+  // const minQuery = searchParams.get('minSearch') == false ? searchParams.get('minSearch') : true;
+  // console.log("🚀 ~ ProductSearch ~ searchParams.get('minSearch') == false:", searchParams)
+  
 
   const [data, setData] = useState([]);
-  const [searchTxt, setSearchTxt] = useState(queryText);
-  const [selectedCat, setSelectedCat] = useState(queryCat);
-  const [page, setPage] = useState(queryPage);
+  const [searchTxt, setSearchTxt] = useState('');
+  const [selectedCat, setSelectedCat] = useState('all-products');
+  const [page, setPage] = useState(1);
 
   const categorySlug = category?.find((item) => item?.slug === selectedCat);
 
@@ -29,13 +32,8 @@ const ProductSearch = ({ category }) => {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [searchTxt]);
+  }, [searchTxt,categorySlug]);
 
-  // useEffect(() => {
-  //   router.push(
-  //     `/product-khujo/category?slug=${selectedCat}&query=${searchTxt}&page=${page}`
-  //   );
-  // });
 
   function handleKeyPress(event) {
     if (event.key === 'Enter') {
@@ -46,7 +44,7 @@ const ProductSearch = ({ category }) => {
 
   const searchHandle = () => {
     if (searchTxt) {
-      router.push(`/product-khujo/category?slug=${selectedCat}&query=${searchTxt}&page=${page}`);
+      router.push(`/product-khujo/category?slug=${selectedCat}&minSearch=true&query=${searchTxt}&page=${page}`);
     }
   };
 
